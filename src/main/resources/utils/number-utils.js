@@ -1,4 +1,4 @@
-Neosavvy = Neosavvy || {};
+var Neosavvy = Neosavvy || {};
 Neosavvy.Core = Neosavvy.Core || {};
 Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
 
