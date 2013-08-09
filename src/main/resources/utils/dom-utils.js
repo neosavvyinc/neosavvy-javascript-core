@@ -2,7 +2,7 @@ var Neosavvy = Neosavvy || {};
 Neosavvy.Core = Neosavvy.Core || {};
 Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
 
-Neosavvy.Core.Utils.Utils.DomUtils = (function () {
+Neosavvy.Core.Utils.DomUtils = (function () {
     return {
         getElementsByAttribute:function (tagName, attr, value) {
             var matchingElements = [];

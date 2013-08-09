@@ -1,5 +1,33 @@
-/*! neosavvy-core - v0.1.0 - 2013-07-21
+/*! neosavvy-core - v0.1.0 - 2013-08-09
 * Copyright (c) 2013 Neosavvy, Inc.; Licensed  */
+var Neosavvy = Neosavvy || {};
+Neosavvy.Core = Neosavvy.Core || {};
+Neosavvy.Core.Builders = Neosavvy.Core.Builders || {};
+
+Neosavvy.Core.Builders.StringBuilder = function (input) {
+    //Nothing defined here yet
+    if (input) {
+        this.input = input;
+        this.output = input;
+    } else {
+        throw "Do not try to build a string with no input, it is pointless.";
+    }
+};
+
+Neosavvy.Core.Builders.StringBuilder.prototype = {
+    camelToDash:function () {
+        this.output = this.output.replace(/\W+/g, '-')
+            .replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase();
+        return this;
+    },
+    constantToDash:function () {
+        this.output = this.output.replace(/_/g, '-').toLowerCase();
+        return this;
+    },
+    build:function () {
+        return this.output;
+    }
+};
 var Neosavvy = Neosavvy || {};
 Neosavvy.Core = Neosavvy.Core || {};
 Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
@@ -27,7 +55,7 @@ var Neosavvy = Neosavvy || {};
 Neosavvy.Core = Neosavvy.Core || {};
 Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
 
-Neosavvy.Core.Utils.Utils.DomUtils = (function () {
+Neosavvy.Core.Utils.DomUtils = (function () {
     return {
         getElementsByAttribute:function (tagName, attr, value) {
             var matchingElements = [];
