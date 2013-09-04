@@ -38,7 +38,7 @@ Neosavvy.Core.Utils.CollectionUtils = (function() {
             var map = {};
             if (collection && collection.length) {
                 for (var i = 0; i < collection.length; i++) {
-                    map[String(FilmBot.Core.Utils.MapUtils.get(collection[i], properties))] = collection[i];
+                    map[String(Neosavvy.Core.Utils.MapUtils.get(collection[i], properties))] = collection[i];
                 }
             }
             return map;
