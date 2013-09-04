@@ -18,6 +18,6 @@ Neosavvy.Core.Utils.DateUtils = (function () {
         daysFromNow:function (days) {
             return new Date(new Date().getTime() + (days * (24 * 60 * 60 * 1000)));
         }
-    }
+    };
 
 })();

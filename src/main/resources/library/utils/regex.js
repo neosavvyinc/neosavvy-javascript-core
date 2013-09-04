@@ -1,8 +1,8 @@
 var Neosavvy = Neosavvy || {};
 Neosavvy.Core = Neosavvy.Core || {};
 Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
-
 Neosavvy.Core.Utils.RegexUtils = (function () {
+    var EMAIL_REGEX = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
     return {
         matchStringAndLeadup: function(str) {
             if (!_.isEmpty(str)) {
@@ -18,6 +18,12 @@ Neosavvy.Core.Utils.RegexUtils = (function () {
                 return new RegExp(re.replace(/([.?*+[\]\\(){}-])/g, "\\$1"), "i");
             }
             return undefined;
+        },
+        isEmail: function(str) {
+            if (str !== undefined && str !== null) {
+                return String(str).search(EMAIL_REGEX) != -1;
+            }
+            return false;
         }
     };
 })();
