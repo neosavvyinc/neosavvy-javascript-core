@@ -47,6 +47,23 @@ Neosavvy.Core.Utils.StringUtils = (function () {
                 }
             }
             return str;
+        },
+        properCase:function (str) {
+            if (str) {
+                return str.replace(/\w\S*/g, function (txt) {
+                    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+                });
+            }
+            return "";
+        },
+        remove:function (value) {
+            if (value && arguments.length > 1) {
+                value = String(value);
+                for (var i = 1; i < arguments.length; i++) {
+                    value = value.replace(new RegExp(arguments[i], "g"), "");
+                }
+            }
+            return value;
         }
     }
 

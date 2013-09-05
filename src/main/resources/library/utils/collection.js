@@ -43,16 +43,6 @@ Neosavvy.Core.Utils.CollectionUtils = (function() {
             }
             return map;
         },
-        containsItemByProperty: function (collection, value, propertyName) {
-            if (collection && collection.length && value) {
-                for (var i = 0; i < collection.length; i++) {
-                    if (collection[i][propertyName] == value) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        },
         containMatchByProperty: function (collectionA, collectionB, propertyName) {
             if (collectionA && collectionB && collectionA.length && collectionB.length) {
                 var compare = collectionB.map(function (item) {
