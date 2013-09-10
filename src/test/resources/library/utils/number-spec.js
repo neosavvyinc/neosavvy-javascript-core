@@ -36,6 +36,22 @@ describe("Neosavvy.Core.Utils.NumberUtils", function () {
 
     });
 
+    describe("roundUpIfFloat", function () {
+        it("Should keep integers the same", function () {
+            expect(Neosavvy.Core.Utils.NumberUtils.roundUpIfFloat(0)).toEqual(0);
+            expect(Neosavvy.Core.Utils.NumberUtils.roundUpIfFloat(2)).toEqual(2);
+        });
+
+        it("Should round up floats", function () {
+            expect(Neosavvy.Core.Utils.NumberUtils.roundUpIfFloat(2.00001)).toEqual(3);
+            expect(Neosavvy.Core.Utils.NumberUtils.roundUpIfFloat(79.92)).toEqual(80);
+        });
+
+        it("Should round down for negatives", function () {
+
+        });
+    });
+
     describe("leadingZeroes", function () {
         it("Should return NaN if the number is undefined, null or NaN", function () {
             expect(Neosavvy.Core.Utils.NumberUtils.leadingZeroes(undefined)).toBeUndefined();
