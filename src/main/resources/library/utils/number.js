@@ -16,8 +16,9 @@ Neosavvy.Core.Utils.NumberUtils = (function () {
             return value;
         },
         roundUpIfFloat:function (n) {
-            if ((n - parseInt(n)) > 0) {
-                return parseInt(n) + 1;
+            var absN = Math.abs(n);
+            if ((absN - parseInt(absN)) > 0) {
+                return parseInt(n) + (n < 0 ? -1 : 1);
             }
             return n;
         },

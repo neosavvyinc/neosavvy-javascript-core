@@ -48,7 +48,9 @@ describe("Neosavvy.Core.Utils.NumberUtils", function () {
         });
 
         it("Should round down for negatives", function () {
-
+            expect(Neosavvy.Core.Utils.NumberUtils.roundUpIfFloat(-2.2)).toEqual(-3);
+            expect(Neosavvy.Core.Utils.NumberUtils.roundUpIfFloat(-37.9)).toEqual(-38);
+            expect(Neosavvy.Core.Utils.NumberUtils.roundUpIfFloat(-0.00001)).toEqual(-1);
         });
     });
 
