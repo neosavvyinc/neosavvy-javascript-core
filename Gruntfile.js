@@ -58,7 +58,7 @@ module.exports = function (grunt) {
 
         grunt.util.spawn({
             cmd: './node_modules/jsdoc/jsdoc',
-            args: ['-r', './src/', '-d', 'docs'],
+            args: ['-r', './src/', '-d', 'docs', '-p'],
             opts: {
                 stdio: 'inherit'
             }
