@@ -51,4 +51,24 @@ module.exports = function (grunt) {
     // Default task.
     grunt.registerTask('default', ['karma:build', 'concat', 'uglify']);
 
+    // Generate docs
+    grunt.registerTask('docs', 'generating documentation...', function() {
+        
+        console.log('generating documentation...');
+
+        grunt.util.spawn({
+            cmd: './node_modules/jsdoc/jsdoc',
+            args: ['-r', './src/', '-d', 'docs', '-p'],
+            opts: {
+                stdio: 'inherit'
+            }
+        }, function done(error, result, code) {
+            if(error) {
+                grunt.log.error(error);
+            }
+            grunt.log.ok(result);
+        });
+
+    });
+
 };
