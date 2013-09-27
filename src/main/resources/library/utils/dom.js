@@ -2,8 +2,20 @@ var Neosavvy = Neosavvy || {};
 Neosavvy.Core = Neosavvy.Core || {};
 Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
 
+/**
+ * @class Neosavvy.Core.Utils.DomUtils
+ **/
 Neosavvy.Core.Utils.DomUtils = (function () {
     return {
+        /**
+         * returns an array of DOM elements that contain the passed
+         * in attribute matching value
+         * @param {string} tagName
+         * @param {string} attr
+         * @param {string} value
+         * @returns array
+         * @method getElementsByAttribute
+         **/
         getElementsByAttribute:function (tagName, attr, value) {
             var matchingElements = [];
             var allElements = document.getElementsByTagName(tagName);
