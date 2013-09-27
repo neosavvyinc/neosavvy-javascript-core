@@ -5,6 +5,7 @@ Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
 
 /**
  * @class Neosavvy.Core.Utils.DateUtils
+ * @static
  **/
 Neosavvy.Core.Utils.DateUtils = (function () {
     var DAY_IN_MILLISECONDS = (24 * 60 * 60 * 1000);

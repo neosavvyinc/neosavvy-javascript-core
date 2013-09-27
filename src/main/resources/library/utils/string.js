@@ -2,6 +2,10 @@ var Neosavvy = Neosavvy || {};
 Neosavvy.Core = Neosavvy.Core || {};
 Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
 
+/**
+ * @class Neosavvy.Core.Utils.StringUtils
+ * @static
+ **/
 Neosavvy.Core.Utils.StringUtils = (function () {
     var BLANK_STRING_REGEX = /^\s*$/;
 

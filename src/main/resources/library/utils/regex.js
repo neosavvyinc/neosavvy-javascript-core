@@ -1,6 +1,11 @@
 var Neosavvy = Neosavvy || {};
 Neosavvy.Core = Neosavvy.Core || {};
 Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+
+/**
+ * @class Neosavvy.Core.Utils.RegexUtils
+ * @static
+ **/
 Neosavvy.Core.Utils.RegexUtils = (function () {
     var EMAIL_REGEX = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
     return {

@@ -2,6 +2,10 @@ var Neosavvy = Neosavvy || {};
 Neosavvy.Core = Neosavvy.Core || {};
 Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
 
+/**
+ * @class Neosavvy.Core.Utils.RequestUrlUtils
+ * @static
+ **/
 Neosavvy.Core.Utils.RequestUrlUtils = (function () {
     function addParam(url, key, value) {
         if (url && url != null && key != null && key != "" && value != null && value != "") {

@@ -1,6 +1,11 @@
 var Neosavvy = Neosavvy || {};
 Neosavvy.Core = Neosavvy.Core || {};
 Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+
+/**
+ * @class Neosavvy.Core.Utils.NumberUtils
+ * @static
+ **/
 Neosavvy.Core.Utils.NumberUtils = (function () {
 
     return {

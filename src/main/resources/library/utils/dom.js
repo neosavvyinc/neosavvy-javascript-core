@@ -4,6 +4,7 @@ Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
 
 /**
  * @class Neosavvy.Core.Utils.DomUtils
+ * @static
  **/
 Neosavvy.Core.Utils.DomUtils = (function () {
     return {

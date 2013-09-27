@@ -1,8 +1,19 @@
 var Neosavvy = Neosavvy || {};
 Neosavvy.Core = Neosavvy.Core || {};
 Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+
+/**
+ * @class Neosavvy.Core.Utils.CollectionUtils
+ * @static
+ **/
 Neosavvy.Core.Utils.CollectionUtils = (function() {
     return {
+        /**
+         * does a thing...
+         * @param {type} name
+         * @returns type
+         * @method itemByProperty
+         **/
         itemByProperty: function (collection, property, value) {
             if (collection && collection.length && value) {
                 for (var i = 0; i < collection.length; i++) {
@@ -14,6 +25,12 @@ Neosavvy.Core.Utils.CollectionUtils = (function() {
             }
             return null;
         },
+        /**
+         * does a thing...
+         * @param {type} name
+         * @returns type
+         * @method updateByProperty
+         **/
         updateByProperty: function (collection, item, propertyName) {
             if (collection && collection.length && item && item[propertyName] && propertyName) {
                 for (var i = 0; i < collection.length; i++) {
@@ -24,6 +41,12 @@ Neosavvy.Core.Utils.CollectionUtils = (function() {
                 }
             }
         },
+        /**
+         * does a thing...
+         * @param {type} name
+         * @returns type
+         * @method removeByProperty
+         **/
         removeByProperty: function (collection, item, propertyName) {
             if (collection && collection.length && item && item[propertyName] && propertyName) {
                 for (var i = 0; i < collection.length; i++) {
@@ -34,6 +57,12 @@ Neosavvy.Core.Utils.CollectionUtils = (function() {
                 }
             }
         },
+        /**
+         * does a thing...
+         * @param {type} name
+         * @returns type
+         * @method uniqueMap
+         **/
         uniqueMap: function (collection, properties) {
             var map = {};
             if (collection && collection.length) {
@@ -43,6 +72,12 @@ Neosavvy.Core.Utils.CollectionUtils = (function() {
             }
             return map;
         },
+        /**
+         * does a thing...
+         * @param {type} name
+         * @returns type
+         * @method containMatchByProperty
+         **/
         containMatchByProperty: function (collectionA, collectionB, propertyName) {
             if (collectionA && collectionB && collectionA.length && collectionB.length) {
                 var compare = collectionB.map(function (item) {
@@ -57,6 +92,12 @@ Neosavvy.Core.Utils.CollectionUtils = (function() {
             }
             return false;
         },
+        /**
+         * does a thing...
+         * @param {type} name
+         * @returns type
+         * @method collectionContainsAllOtherItems
+         **/
         collectionContainsAllOtherItems: function (collection, otherItems, propertyName) {
             if (collection && collection.length && otherItems && otherItems.length) {
                 var collectionProperties = collection.map(function (item) {
@@ -72,6 +113,12 @@ Neosavvy.Core.Utils.CollectionUtils = (function() {
             }
             return false;
         },
+        /**
+         * does a thing...
+         * @param {type} name
+         * @returns type
+         * @method containsExclusively
+         **/
         containsExclusively: function (collection, compare) {
             if (collection && compare) {
                 for (var i = 0; i < collection.length; i++) {

@@ -2,6 +2,10 @@ var Neosavvy = Neosavvy || {};
 Neosavvy.Core = Neosavvy.Core || {};
 Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
 
+/**
+ * @class Neosavvy.Core.Utils.SpecialUtils
+ * @static
+ **/
 Neosavvy.Core.Utils.SpecialUtils = (function () {
     return {
         keepTrying:function () {
