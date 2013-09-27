@@ -2,6 +2,9 @@ var Neosavvy = Neosavvy || {};
 Neosavvy.Core = Neosavvy.Core || {};
 Neosavvy.Core.Builders = Neosavvy.Core.Builders || {};
 Neosavvy.Core.Builders.RequestUrlBuilder = function(baseUrl) {
+    if (!baseUrl) {
+        throw "You must provide a base url for every request url built.";
+    }
     this.prototype.addParam = function(key, value) {
         return this;
     };
