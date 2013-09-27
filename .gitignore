@@ -1,5 +1,7 @@
 .idea/
+.tern-port
 node_modules/
 dist/
 *.log
+*.swp
 coverage/
