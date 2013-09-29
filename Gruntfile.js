@@ -51,6 +51,16 @@ module.exports = function (grunt) {
                     outdir: 'docs/'
                 }
             }
+        },
+        nodemon: {
+            dev: {
+                options: {
+                    file: './web-server.js',
+                    args: ['3000'],
+                    cwd: __dirname,
+                    logConcurrentOutput: true
+                }
+            }
         }
     });
 
@@ -60,6 +70,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
+    grunt.loadNpmTasks('grunt-nodemon');
 
 
     // Default task.
