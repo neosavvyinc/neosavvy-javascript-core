@@ -63,7 +63,7 @@ module.exports = function (grunt) {
 
 
     // Default task.
-    grunt.registerTask('default', ['karma:build', 'concat', 'uglify']);
+    grunt.registerTask('default', ['karma:build', 'grunt-contrib-yuidoc', 'concat', 'uglify']);
 
     // Generate docs
 
