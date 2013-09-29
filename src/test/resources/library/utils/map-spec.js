@@ -24,4 +24,30 @@ describe("Neosavvy.Core.Utils.MapUtils", function () {
             });
         });
     });
+
+    describe("keysDistinct", function () {
+        it("Should return true for undefined arguments", function () {
+            expect(Neosavvy.Core.Utils.MapUtils.keysDistinct()).toBeTruthy();
+        });
+
+        it("Should return true for a single object", function () {
+            expect(Neosavvy.Core.Utils.MapUtils.keysDistinct({schwan: 1, doo: 2})).toBeTruthy();
+        });
+
+        it("Should return true for 2 objects with distinct keys", function () {
+            expect(Neosavvy.Core.Utils.MapUtils.keysDistinct({schwan: 1, doo: 2}, {tree: 3, scheven: 7})).toBeTruthy();
+        });
+
+        it("Should return true for more than 2 objects with distinct keys", function () {
+            expect(Neosavvy.Core.Utils.MapUtils.keysDistinct({schwan: 1, doo: 2}, {tree: 3, scheven: 7}, {schfourteenteen: 14})).toBeTruthy();
+        });
+
+        it("Should return false for objects that have overlapping keys", function () {
+            expect(Neosavvy.Core.Utils.MapUtils.keysDistinct({schwan: 1, doo: 2}, {tree: 3, doo: 7})).toBeFalsy();
+        });
+
+        it("Should return false for more than two objects where there are overlapping keys", function () {
+            expect(Neosavvy.Core.Utils.MapUtils.keysDistinct({schwan: 1, doo: 2}, {tree: 3, doo: 7}, {schwan: 14})).toBeFalsy();
+        });
+    });
 });

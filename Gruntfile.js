@@ -17,7 +17,7 @@ module.exports = function (grunt) {
                 stripBanners:true
             },
             dist:{
-                src:'src/main/resources/**/*.js',
+                src:'src/main/resources/library/**/*.js',
                 dest:'dist/<%= pkg.name %>.js'
             }
         },
