@@ -18,9 +18,8 @@ Neosavvy.Core.Builders.StringBuilder = function (input) {
 
 Neosavvy.Core.Builders.StringBuilder.prototype = {
     /**
-     * does a thing...
-     * @param {type} name
-     * @returns type
+     * Converts any camel case in a string to dash case: myNameMike >> my-name-mike.
+     * @returns Neosavvy.Core.Builders.StringBuilder
      * @method camelToDash
      **/
     camelToDash:function () {
@@ -29,9 +28,8 @@ Neosavvy.Core.Builders.StringBuilder.prototype = {
         return this;
     },
     /**
-     * does a thing...
-     * @param {type} name
-     * @returns type
+     * Changes a standard constant syntax to standard dash syntax: MY_NAME_MIKE >> my-name-mike.
+     * @returns Neosavvy.Core.Builders.StringBuilder
      * @method constantToDash
      **/
     constantToDash:function () {
@@ -39,9 +37,8 @@ Neosavvy.Core.Builders.StringBuilder.prototype = {
         return this;
     },
     /**
-     * does a thing...
-     * @param {type} name
-     * @returns type
+     * Rusn all the operations specified for the builder.
+     * @returns String
      * @method build
      **/
     build:function () {
