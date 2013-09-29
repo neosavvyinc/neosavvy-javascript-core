@@ -56,12 +56,30 @@ module.exports = function (grunt) {
             dev: {
                 options: {
                     file: './web-server.js',
-                    args: ['3000'],
-                    cwd: __dirname,
-                    logConcurrentOutput: true
+                    args: ['4900'],
+                    cwd: __dirname
                 }
             }
+        },
+        open : {
+            docs : {
+                path: 'http://127.0.0.1:4900/docs',
+                app: 'Google Chrome'
+            },
+            coverage : {
+                path: 'http://127.0.0.1:4900/coverage',
+                app: 'Google Chrome'
+            }
+        },
+        concurrent: {
+            dev: {
+                options: {
+                    logConcurrentOutput: true
+                },
+                tasks: ['nodemon', 'open']
+            }
         }
+
     });
 
     // These plugins provide necessary tasks.
@@ -71,10 +89,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
     grunt.loadNpmTasks('grunt-nodemon');
-
+    grunt.loadNpmTasks('grunt-open');
+    grunt.loadNpmTasks('grunt-concurrent');
 
     // Default task.
-    grunt.registerTask('default', ['karma:build', 'yuidoc', 'concat', 'uglify']);
+    grunt.registerTask('default', ['karma:build', 'yuidoc', 'concat', 'uglify', 'concurrent']);
 
     // Generate docs
 
