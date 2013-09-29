@@ -6,3 +6,4 @@ dist/
 *.swp
 coverage/
 docs/
+copy_to_bower.sh
