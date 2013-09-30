@@ -66,6 +66,16 @@ describe("Neosavvy.Core.Builders.StringBuilder", function () {
             });
         });
 
+        describe("properCase", function () {
+            it("Should change the casing for an improperly formatted string casing", function () {
+                expect(new Neosavvy.Core.Builders.StringBuilder("an improper Casing dude!").properCase().output).toEqual("An Improper Casing Dude!");
+            });
+
+            it("Should correct an all uppercase string", function () {
+                expect(new Neosavvy.Core.Builders.StringBuilder("HELLO DUDE").properCase().output).toEqual("Hello Dude");
+            });
+        });
+
         describe("build", function () {
             it("Should be able to string methods for different kinds of strings", function () {
                 //Notice order must be preserved

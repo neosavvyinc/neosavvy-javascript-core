@@ -39,5 +39,8 @@
     "buildOutputDirectory": "target",
     "sourceDirectory": "src/main/resources",
     "testDirectory": "src/test/resources"
+  },
+  "testPaths": {
+    "libraries": "src/test/resources/lib"
   }
 }

@@ -6,7 +6,7 @@ Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
  * @class Neosavvy.Core.Utils.CollectionUtils
  * @static
  **/
-Neosavvy.Core.Utils.CollectionUtils = (function() {
+Neosavvy.Core.Utils.CollectionUtils = (function () {
     return {
         /**
          * does a thing...
@@ -73,19 +73,24 @@ Neosavvy.Core.Utils.CollectionUtils = (function() {
             return map;
         },
         /**
-         * does a thing...
-         * @param {type} name
-         * @returns type
+         * Returns true if two collections contain at least one match by a property value, ie a.id === b.id.
+         * @param {Array} collectionA
+         * @param {Array} collectionB
+         * @param {String} propertyName
+         * @returns Boolean
          * @method containMatchByProperty
          **/
         containMatchByProperty: function (collectionA, collectionB, propertyName) {
             if (collectionA && collectionB && collectionA.length && collectionB.length) {
                 var compare = collectionB.map(function (item) {
-                    return item[propertyName];
+                    return Neosavvy.Core.Utils.MapUtils.get(item, propertyName);
                 });
 
+                var item;
                 for (var i = 0; i < collectionA.length; i++) {
-                    if (compare.indexOf(collectionA[i][propertyName]) != -1) {
+                    item = Neosavvy.Core.Utils.MapUtils.get(collectionA[i], propertyName);
+                    if (item !== undefined &&
+                        compare.indexOf(item) !== -1) {
                         return true;
                     }
                 }
@@ -93,19 +98,23 @@ Neosavvy.Core.Utils.CollectionUtils = (function() {
             return false;
         },
         /**
-         * does a thing...
-         * @param {type} name
-         * @returns type
+         * Matches the containing of an exclusive set of items by property. Supports deep properties as well.
+         * @param {Array} collection
+         * @param {Array} otherItems
+         * @param {String} propertyName
+         * @returns Boolean
          * @method collectionContainsAllOtherItems
          **/
         collectionContainsAllOtherItems: function (collection, otherItems, propertyName) {
             if (collection && collection.length && otherItems && otherItems.length) {
                 var collectionProperties = collection.map(function (item) {
-                    return item[propertyName];
+                    return Neosavvy.Core.Utils.MapUtils.get(item, propertyName);
                 });
 
+                var item;
                 for (var i = 0; i < otherItems.length; i++) {
-                    if (collectionProperties.indexOf(otherItems[i][propertyName]) == -1) {
+                    item = typeof otherItems[i] === 'object' ? Neosavvy.Core.Utils.MapUtils.get(otherItems[i], propertyName) : undefined;
+                    if (item === undefined && collectionProperties.indexOf(item) === -1) {
                         return false;
                     }
                 }
@@ -114,9 +123,10 @@ Neosavvy.Core.Utils.CollectionUtils = (function() {
             return false;
         },
         /**
-         * does a thing...
-         * @param {type} name
-         * @returns type
+         * Returns true for an exclusive contents but not order match of collections.
+         * @param {Array} collection
+         * @param {Array} compare
+         * @returns Boolean
          * @method containsExclusively
          **/
         containsExclusively: function (collection, compare) {

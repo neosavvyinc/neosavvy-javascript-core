@@ -32,10 +32,6 @@ describe("Neosavvy.Core.Utils.NumberUtils", function () {
         });
     });
 
-    describe("round", function () {
-
-    });
-
     describe("roundUpIfFloat", function () {
         it("Should keep integers the same", function () {
             expect(Neosavvy.Core.Utils.NumberUtils.roundUpIfFloat(0)).toEqual(0);
