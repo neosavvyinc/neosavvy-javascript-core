@@ -14,6 +14,18 @@ describe("Neosavvy.Core.Builders.RequestUrlBuilder", function () {
         }).toThrow();
     });
 
+    it("Should instantiate keyValues as an empty object", function () {
+        expect(new Neosavvy.Core.Builders.RequestUrlBuilder("http://www.neosavvy.com").keyValues).toEqual({});
+    });
+
+    it("Should instantiate replacements as an empty object", function () {
+        expect(new Neosavvy.Core.Builders.RequestUrlBuilder("http://www.neosavvy.com").replacements).toEqual({});
+    });
+
+    it("Should set the baseUrl to the baseUrl parameter", function () {
+        expect(new Neosavvy.Core.Builders.RequestUrlBuilder("http://www.neosavvy.com").baseUrl).toEqual("http://www.neosavvy.com");
+    });
+
     describe("addParam", function () {
         it("Should throw an error if both the key and value are undefined", function () {
             expect(function () {

@@ -71,8 +71,7 @@ describe("Neosavvy.Core.Builders.StringBuilder", function () {
                 //Notice order must be preserved
                 expect(new Neosavvy.Core.Builders.StringBuilder("camelCasedVars_thatBehave_LikeConstants").
                     camelToDash().
-                    constantToDash().
-                    output).toEqual("camel-cased-vars-that-behave-like-constants");
+                    constantToDash().build()).toEqual("camel-cased-vars-that-behave-like-constants");
             });
         });
     });
