@@ -13,13 +13,6 @@ Neosavvy.Core.Utils.NumberUtils = (function () {
             var s = ["th", "st", "nd", "rd"], v = Math.abs(n) % 100;
             return n + (s[(v - 20) % 10] || s[v] || s[0]);
         },
-        round:function (value, significantDigits) {
-            if (value !== undefined && value !== null) {
-                var str = String(Math.round(parseFloat(value) * Math.pow(10, significantDigits)));
-                return significantDigits ? str.slice(0, str.length - significantDigits) + "." + str.slice(str.length - significantDigits, str.length) : str;
-            }
-            return value;
-        },
         roundUpIfFloat:function (n) {
             var absN = Math.abs(n);
             if ((absN - parseInt(absN)) > 0) {
