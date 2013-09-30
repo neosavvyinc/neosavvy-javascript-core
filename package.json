@@ -29,5 +29,8 @@
     },
     "paths": {
         "libraries": "src/main/resources/lib"
+    },
+    "testPaths": {
+        "libraries": "src/test/resources/lib"
     }
 }
