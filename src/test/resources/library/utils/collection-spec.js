@@ -191,6 +191,10 @@ describe("Neosavvy.Core.Utils.CollectionUtils", function () {
             it("Should worry about types", function () {
                 expect(Neosavvy.Core.Utils.CollectionUtils.containsExclusively([5, 6], [6, "5"])).toBeFalsy();
             });
+
+            it("Should return false when the comparison has an item that the original does not have", function () {
+                expect(Neosavvy.Core.Utils.CollectionUtils.containsExclusively([1, 2], [1, 2, 3])).toBeFalsy();
+            });
         });
     });
 
@@ -284,6 +288,64 @@ describe("Neosavvy.Core.Utils.CollectionUtils", function () {
                 {color: {hue: {saturation: "Med"}}},
                 {color: {hue: {saturation: "Super Heavy"}, hex: "#00FF00"}}
             ], "color.hue.hex")).toBeFalsy();
+        });
+    });
+
+    describe("collectionContainsAllOtherItems", function () {
+        it("Should return false if collectionA is undefined", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.collectionContainsAllOtherItems(undefined, [
+                {name: 1}
+            ], 'name')).toBeFalsy();
+        });
+
+        it("Should return false if collectionB is undefined", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.collectionContainsAllOtherItems([
+                {name: 1}
+            ], null, 'name')).toBeFalsy();
+        });
+
+        it("Should return false if collectionA is empty", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.collectionContainsAllOtherItems([], [
+                {name: "tom"}
+            ], "name")).toBeFalsy();
+        });
+
+        it("Should return false if collectionB is empty", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.collectionContainsAllOtherItems([
+                {age: 50}
+            ], [], 'age')).toBeFalsy();
+        });
+
+        it("Should play nice with single properties", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.collectionContainsAllOtherItems([
+                {age: 60}, {age: 50}
+            ], [
+                {age: 50}, {age: 60}
+            ], 'age')).toBeTruthy();
+        });
+
+        it("Should play nice with deep properties", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.collectionContainsAllOtherItems([
+                {age: {time: 39, value: 78989}}, {age: {time: 34, value: "George"}}
+            ], [
+                {age: {time: 34, value: 67}}, {age: {time: 39, value: 102}}
+            ], 'age.time')).toBeTruthy();
+        });
+
+        it("Should return false when there is a mismatch", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.collectionContainsAllOtherItems([
+                {age: {time: 39, value: 78989}}, {age: {time: 34, value: "George"}}
+            ], [
+                {age: {time: 34, value: 67}}, {age: {time: 39, value: 102}}, 55
+            ], 'age.time')).toBeFalsy();
+        });
+
+        it("Should return true in cases where the collections match up via these properties", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.collectionContainsAllOtherItems([
+                {age: {time: 39, value: 78989}}, {age: {time: 34, value: "George"}}, {name: "Steiny"}, 90
+            ], [
+                {age: {time: 34, value: 67}}, {age: {time: 39, value: 102}}
+            ], 'age.time')).toBeTruthy();
         });
     });
 });
