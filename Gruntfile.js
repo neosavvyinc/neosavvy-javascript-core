@@ -78,8 +78,15 @@ module.exports = function (grunt) {
                 },
                 tasks: ['nodemon', 'open']
             }
+        },
+        bower:{
+            install:{
+                options:{
+                    targetDir:'<%= pkg.paths.libraries %>',
+                    cleanup:true
+                }
+            }
         }
-
     });
 
     // These plugins provide necessary tasks.
@@ -91,6 +98,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-open');
     grunt.loadNpmTasks('grunt-concurrent');
+    grunt.loadNpmTasks('grunt-bower-task');
 
     // Default task.
     grunt.registerTask('default', ['karma:build', 'yuidoc', 'concat', 'uglify', 'concurrent']);

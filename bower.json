@@ -1,0 +1,28 @@
+{
+  "name": "neosavvy-javascript-core",
+  "version": "0.0.1",
+  "homepage": "http://www.neosavvy.com",
+  "authors": [
+    "Neosavvy",
+    "Inc."
+  ],
+  "description": "The neosavvy js core library.",
+  "main": "neosavvy-javascript-core.js",
+  "keywords": [
+    "neosavvy",
+    "js",
+    "javascript",
+    "html5"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~2.1.0"
+  }
+}
