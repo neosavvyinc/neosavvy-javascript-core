@@ -22,7 +22,7 @@ Neosavvy.Core.Builders.StringBuilder.prototype = {
      * @returns Neosavvy.Core.Builders.StringBuilder
      * @method camelToDash
      **/
-    camelToDash:function () {
+    camelToDash: function () {
         this.output = this.output.replace(/\W+/g, '-')
             .replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase();
         return this;
@@ -32,16 +32,27 @@ Neosavvy.Core.Builders.StringBuilder.prototype = {
      * @returns Neosavvy.Core.Builders.StringBuilder
      * @method constantToDash
      **/
-    constantToDash:function () {
+    constantToDash: function () {
         this.output = this.output.replace(/_/g, '-').toLowerCase();
         return this;
     },
     /**
-     * Rusn all the operations specified for the builder.
+     * Changes the string to proper case, first letters of words capitalized.
+     * @returns Neosavvy.Core.Builders.StringBuilder
+     * @method properCase
+     **/
+    properCase: function () {
+        this.output = this.output.replace(/\w\S*/g, function (txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
+        return this;
+    },
+    /**
+     * Runs all the operations specified for the builder.
      * @returns String
      * @method build
      **/
-    build:function () {
+    build: function () {
         return this.output;
     }
 };
