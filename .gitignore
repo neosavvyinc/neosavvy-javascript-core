@@ -7,3 +7,4 @@ dist/
 coverage/
 docs/
 copy_to_bower.sh
+src/main/resources/lib
