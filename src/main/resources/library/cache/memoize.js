@@ -1,11 +1,10 @@
-/*
- * memoize.js
- * by @philogb and @addyosmani
- * further optimizations by @mathias, @DmitryBaranovsk & @GotNoSugarBaby
- * fixes by @AutoSponge
- * perf tests: http://bit.ly/q3zpG3
- * Released under an MIT license.
- */
+/**
+ * @class global
+ * Memoize caches input output functions return values. Just alter the function by passing it into memoize, and you have the cached version.
+ * @param {Function} func
+ * @returns Function
+ * @method memoize
+ **/
 (function (global) {
     "use strict";
     global.memoize || (global.memoize = (typeof JSON === 'object' && typeof JSON.stringify === 'function' ?

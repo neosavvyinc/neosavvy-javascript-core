@@ -6,7 +6,7 @@ Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
  * @class Neosavvy.Core.Utils.CollectionUtils
  * @static
  **/
-Neosavvy.Core.Utils.CollectionUtils = (function() {
+Neosavvy.Core.Utils.CollectionUtils = (function () {
     return {
         /**
          * does a thing...
@@ -73,19 +73,24 @@ Neosavvy.Core.Utils.CollectionUtils = (function() {
             return map;
         },
         /**
-         * does a thing...
-         * @param {type} name
-         * @returns type
+         * Returns true if two collections contain at least one match by a property value, ie a.id === b.id.
+         * @param {Array} collectionA
+         * @param {Array} collectionB
+         * @param {String} propertyName
+         * @returns Boolean
          * @method containMatchByProperty
          **/
         containMatchByProperty: function (collectionA, collectionB, propertyName) {
             if (collectionA && collectionB && collectionA.length && collectionB.length) {
                 var compare = collectionB.map(function (item) {
-                    return item[propertyName];
+                    return Neosavvy.Core.Utils.MapUtils.get(item, propertyName);
                 });
 
+                var item;
                 for (var i = 0; i < collectionA.length; i++) {
-                    if (compare.indexOf(collectionA[i][propertyName]) != -1) {
+                    item = Neosavvy.Core.Utils.MapUtils.get(collectionA[i], propertyName);
+                    if (item !== undefined &&
+                        compare.indexOf(item) !== -1) {
                         return true;
                     }
                 }

@@ -212,4 +212,78 @@ describe("Neosavvy.Core.Utils.CollectionUtils", function () {
             ], "name.last")).toEqual({Evans: {name: {first: "Charles", last: "Evans"}}});
         });
     });
+
+    describe("containsMatchByProperty", function () {
+        it("Should return false if collectionA is undefined", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.containMatchByProperty(undefined, [
+                {name: 1}
+            ], 'name')).toBeFalsy();
+        });
+
+        it("Should return false if collectionB is undefined", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.containMatchByProperty([
+                {name: 1}
+            ], null, 'name')).toBeFalsy();
+        });
+
+        it("Should return false if collectionA is empty", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.containMatchByProperty([], [
+                {name: "tom"}
+            ], "name")).toBeFalsy();
+        });
+
+        it("Should return false if collectionB is empty", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.containMatchByProperty([
+                {age: 50}
+            ], [], 'age')).toBeFalsy();
+        });
+
+        it("Should play nice with single properties", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.containMatchByProperty([
+                {color: "Orange"},
+                {color: "Red"},
+                {color: "Blue"}
+            ], [
+                {color: "Black"},
+                {color: "Red"},
+                {color: "Green"}
+            ], "color")).toBeTruthy();
+        });
+
+        it("Should play nice with deep properties", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.containMatchByProperty([
+                {color: {hue: {saturation: "Light"}}, hex: "#000000"},
+                {color: {hue: {saturation: "Light"}}},
+                {color: {hue: {saturation: "Heavy"}}}
+            ], [
+                {color: {hue: {saturation: "Heavy"}}, hex: "#000000"},
+                {color: {hue: {saturation: "Med"}}},
+                {color: {hue: {saturation: "Super Heavy"}, hex: "#00FF00"}}
+            ], "color.hue.saturation")).toBeTruthy();
+        });
+
+        it("Should return true when there is a match", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.containMatchByProperty([
+                {color: {hue: {saturation: "Light"}}, hex: "#000000"},
+                {color: {hue: {saturation: "Light"}, hex: "#00FF00"}},
+                {color: {hue: {saturation: "Heavy"}}}
+            ], [
+                {color: {hue: {saturation: "Heavy"}}, hex: "#000000"},
+                {color: {hue: {saturation: "Med"}}},
+                {color: {hue: {saturation: "Super Heavy"}, hex: "#00FF00"}}
+            ], "color.hex")).toBeTruthy();
+        });
+
+        it("Should return false when there is not a match", function () {
+            expect(Neosavvy.Core.Utils.CollectionUtils.containMatchByProperty([
+                {color: {hue: {saturation: "Light"}}, hex: "#000000"},
+                {color: {hue: {saturation: "Light"}, hex: "#00FF00"}},
+                {color: {hue: {saturation: "Heavy"}}}
+            ], [
+                {color: {hue: {saturation: "Heavy"}}, hex: "#000000"},
+                {color: {hue: {saturation: "Med"}}},
+                {color: {hue: {saturation: "Super Heavy"}, hex: "#00FF00"}}
+            ], "color.hue.hex")).toBeFalsy();
+        });
+    });
 });
