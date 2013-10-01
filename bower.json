@@ -1,12 +1,11 @@
 {
   "name": "neosavvy-javascript-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "http://www.neosavvy.com",
   "authors": [
-    "Neosavvy",
-    "Inc."
+    "Neosavvy, Inc."
   ],
-  "description": "The neosavvy js core library.",
+  "description": "The Neosavvy core JavaScript library.",
   "main": "neosavvy-javascript-core.js",
   "keywords": [
     "neosavvy",
