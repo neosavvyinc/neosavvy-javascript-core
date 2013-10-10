@@ -23,7 +23,9 @@ module.exports = function (config) {
         // list of files to exclude
         exclude:[
             'src/main/resources/lib/node-uuid/test/**/*',
-            'src/main/resources/lib/node-uuid/benchmark/**/*'
+            'src/main/resources/lib/node-uuid/benchmark/**/*',
+            'src/main/resources/lib/underscore.string/dist/**/*',
+            'src/main/resources/lib/underscore.string/test/**/*'
         ],
 
 
