@@ -1,6 +1,6 @@
 {
   "name": "neosavvy-javascript-core",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "http://www.neosavvy.com",
   "authors": [
     "Neosavvy, Inc."
@@ -23,6 +23,8 @@
   ],
   "dependencies": {
     "lodash": "~2.1.0",
-    "numeral": "~1.5.0"
+    "underscore.string": "~2.3.3",
+    "numeral": "~1.5.0",
+    "node-uuid": "~1.4.1"
   }
 }
