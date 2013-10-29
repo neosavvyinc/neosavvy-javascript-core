@@ -14,6 +14,8 @@ Neosavvy.Core.Utils.UrlUtils = (function () {
         function URL(url, queryString) {
             if (url) {
                 this._parse(url);
+            } else {
+                throw Error("Can not create a url with undefined URL param");
             }
 
             if (queryString) {
@@ -399,24 +401,6 @@ Neosavvy.Core.Utils.UrlUtils = (function () {
                 }
 
                 return value;
-            },
-
-            /**
-             * This function is used to return a value array. If there is only one
-             * parameter with the given name then a new array is returned that
-             * contains the single item.
-             */
-            getValues : function(name) {
-                var value = this._params[name];
-                if (value === undefined) {
-                    return null;
-                }
-
-                if (value.constructor === Array) {
-                    return value;
-                } else {
-                    return [ value ];
-                }
             },
 
 

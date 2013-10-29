@@ -3,7 +3,7 @@ describe("url utils",function() {
     describe("basic parsing", function() {
 
         var origUrl = 'http://www.google.com:8080/?q=red%20roses#this#is#a#test';
-        var url = Neosavvy.Core.Utils.UrlUtils.URL.parse(origUrl);
+        var url = Neosavvy.Core.Utils.UrlUtils.parse(origUrl);
         var queryString = url.getQueryString();
 
         it('should format ' + url, function() {
@@ -35,7 +35,7 @@ describe("url utils",function() {
 
     describe("more basic parsing", function() {
         var origUrl = 'http://www.google.com:8080/?q=red%20roses&q=something#this#is#a#test';
-        var url = Neosavvy.Core.Utils.UrlUtils.URL.parse(origUrl);
+        var url = Neosavvy.Core.Utils.UrlUtils.parse(origUrl);
         var queryString = url.getQueryString();
 
         it('should format ' + url, function() {
@@ -78,6 +78,31 @@ describe("url utils",function() {
             expect(url.toString()).toEqual("http://www.adam.com/wrote/this/awesome/app");
         })
 
+
+    });
+
+    describe("should handle errors properly", function() {
+
+        it("should throw an error when undefined or null param for url", function() {
+            expect(function() {Neosavvy.Core.Utils.UrlUtils.parse(undefined)}).toThrow(new Error("Can not create a url with undefined URL param"));
+        })
+
+    });
+
+
+    describe("should verify getter/setters", function() {
+
+        it("should set and get host", function() {
+            var url = Neosavvy.Core.Utils.UrlUtils.URL.parse("http://www.neosavvy.com/something/else");
+            expect(url.getHost()).toEqual("www.neosavvy.com");
+            url.setHost("api.neosavvy.com");
+            expect(url.getHost()).toEqual("api.neosavvy.com");
+
+            expect(url.getPath()).toEqual("/something/else");
+            url.setPath("/another/service/location")
+            expect(url.getPath()).toEqual("/another/service/location");
+
+        })
 
     })
 })
