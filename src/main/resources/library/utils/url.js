@@ -231,7 +231,7 @@ Neosavvy.Core.Utils.UrlUtils = (function () {
              *            name parameter name
              */
             removeParameter : function(name) {
-                this.getQueryString().removeParameter(name);
+                this.getQueryString().remove(name);
             },
 
             /**
@@ -243,7 +243,7 @@ Neosavvy.Core.Utils.UrlUtils = (function () {
              *            value parameter value
              */
             setParameter : function(name, value) {
-                this.getQueryString().setParameter(name, value);
+                this.getQueryString().set(name, value);
             },
 
             /**
@@ -253,18 +253,12 @@ Neosavvy.Core.Utils.UrlUtils = (function () {
              *            name parameter name
              */
             getParameter : function(name) {
-                return this.getQueryString().getParameter(name);
-            },
-
-            getPathWithQueryString : function() {
-                return (this.queryString)
-                    ? this.path + '?' + this.queryString
-                    : this.path;
+                return this.getQueryString().get(name);
             },
 
             getPort : function() {
-                if (this.port !== undefined) {
-                    return this.port;
+                if (this.port !== undefined && this.port !== null) {
+                    return parseInt(this.port);
                 }
 
                 if (this.protocol === 'http') {
@@ -355,7 +349,7 @@ Neosavvy.Core.Utils.UrlUtils = (function () {
              * @param {Strign} value parameter value
              */
             set : function(name, value) {
-                if (value === null) {
+                if (value === undefined || value === null) {
                     this.remove(name);
                 } else {
                     this._params[name] = value;

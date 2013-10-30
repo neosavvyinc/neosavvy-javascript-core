@@ -38,8 +38,44 @@ describe("Neosavvy.Core.Utils.MapUtils", function () {
             expect(Neosavvy.Core.Utils.MapUtils.highPerformanceGet({name: "Charlie", number: 7}, "number")).toEqual(7);
         });
 
+        it("Should return the map itself when properties is blank", function () {
+            expect(Neosavvy.Core.Utils.MapUtils.highPerformanceGet({name: "Lesli Chow"}, "")).toEqual({name: "Lesli Chow"});
+        });
+        
         it("Should play nice with dot properties", function () {
             expect(Neosavvy.Core.Utils.MapUtils.highPerformanceGet({name: {first: "Charlie", town: "White Plains"}}, "name.town")).toEqual("White Plains");
+        });
+
+        it("Should play nice with 3 dot properties", function () {
+            expect(Neosavvy.Core.Utils.MapUtils.highPerformanceGet({response: {name: {first: "Charlie", town: "Jersey City"}}}, "response.name.town")).toEqual("Jersey City");
+        });
+
+        it("Should play nice with 4 dot properties", function () {
+            expect(Neosavvy.Core.Utils.MapUtils.highPerformanceGet({something: {response: {name: {first: "Charlie", town: "Charleston"}}}}, "something.response.name.town")).toEqual("Charleston");
+        });
+
+        it("Should play nice with 5 dot properties", function () {
+            expect(Neosavvy.Core.Utils.MapUtils.highPerformanceGet({president: {something: {response: {name: {first: "Charlie", town: "Firmwood"}}}}}, "president.something.response.name.town")).toEqual("Firmwood");
+        });
+
+        it("Should play nice with 6 dot properties", function () {
+            expect(Neosavvy.Core.Utils.MapUtils.highPerformanceGet({vice: {president: {something: {response: {name: {first: "Charlie", town: "Des Moines"}}}}}}, "vice.president.something.response.name.town")).toEqual("Des Moines");
+        });
+
+        it("Should play nice with 7 dot properties", function () {
+            expect(Neosavvy.Core.Utils.MapUtils.highPerformanceGet({second: {vice: {president: {something: {response: {name: {first: "Charlie", town: "Bacon"}}}}}}}, "second.vice.president.something.response.name.town")).toEqual("Bacon");
+        });
+
+        it("Should play nice with 8 dot properties", function () {
+            expect(Neosavvy.Core.Utils.MapUtils.highPerformanceGet({cool: {second: {vice: {president: {something: {response: {name: {first: "Charlie", town: "El Rancho"}}}}}}}}, "cool.second.vice.president.something.response.name.town")).toEqual("El Rancho");
+        });
+
+        it("Should play nice with 9 dot properties", function () {
+            expect(Neosavvy.Core.Utils.MapUtils.highPerformanceGet({west: {cool: {second: {vice: {president: {something: {response: {name: {first: "Charlie", town: "Cleveland"}}}}}}}}}, "west.cool.second.vice.president.something.response.name.town")).toEqual("Cleveland");
+        });
+
+        it("Should play nice with 10 dot properties", function () {
+            expect(Neosavvy.Core.Utils.MapUtils.highPerformanceGet({mountain: {west: {cool: {second: {vice: {president: {something: {response: {name: {first: "Charlie", town: "Nantucket"}}}}}}}}}}, "mountain.west.cool.second.vice.president.something.response.name.town")).toEqual("Nantucket");
         });
 
         it("Should play nice with properties that don't exist, by returning undefined", function () {

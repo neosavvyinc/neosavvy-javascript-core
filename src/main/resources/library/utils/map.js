@@ -55,8 +55,6 @@ Neosavvy.Core.Utils.MapUtils = (function () {
                 }
                 try {
                     switch (properties.length) {
-                        case 0:
-                            return map
                         case 1:
                             return map[properties[0]];
                         case 2:
