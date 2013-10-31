@@ -1,4 +1,4 @@
-describe("url utils",function() {
+describe("url utils", function () {
 
     describe("URL", function () {
 
@@ -23,27 +23,27 @@ describe("url utils",function() {
                 var url = Neosavvy.Core.Utils.UrlUtils.parse(origUrl);
                 var queryString = url.getQueryString();
 
-                it('should format ' + url, function() {
+                it('should format ' + url, function () {
                     expect(url.toString()).toEqual(origUrl);
                 });
 
-                it('should parse protocol in ' + url, function() {
+                it('should parse protocol in ' + url, function () {
                     expect(url.protocol).toEqual('http');
                 });
 
-                it('should parse host in ' + url, function() {
+                it('should parse host in ' + url, function () {
                     expect(url.host).toEqual('www.google.com');
                 });
 
-                it('should parse port in ' + url, function() {
+                it('should parse port in ' + url, function () {
                     expect(url.port).toEqual('8080');
                 });
 
-                it('should parse query string in ' + url, function() {
+                it('should parse query string in ' + url, function () {
                     expect(queryString.get('q')).toEqual('red roses');
                 });
 
-                it('should parse hash in ' + url, function() {
+                it('should parse hash in ' + url, function () {
                     expect(url.hash).toEqual('this#is#a#test');
                 });
             });
@@ -53,27 +53,27 @@ describe("url utils",function() {
                 var url = Neosavvy.Core.Utils.UrlUtils.parse(origUrl);
                 var queryString = url.getQueryString();
 
-                it('should format ' + url, function() {
+                it('should format ' + url, function () {
                     expect(url.toString()).toEqual(origUrl);
                 });
 
-                it('should parse protocol in ' + url, function() {
+                it('should parse protocol in ' + url, function () {
                     expect(url.protocol).toEqual('http');
                 });
 
-                it('should parse host in ' + url, function() {
+                it('should parse host in ' + url, function () {
                     expect(url.host).toEqual('www.google.com');
                 });
 
-                it('should parse port in ' + url, function() {
+                it('should parse port in ' + url, function () {
                     expect(url.port).toEqual('8080');
                 });
 
-                it('should parse query string in ' + url, function() {
+                it('should parse query string in ' + url, function () {
                     expect(queryString.get('q')).toEqual(['red roses', 'something']);
                 });
 
-                it('should parse hash in ' + url, function() {
+                it('should parse hash in ' + url, function () {
                     expect(url.hash).toEqual('this#is#a#test');
                 });
             });
@@ -114,7 +114,7 @@ describe("url utils",function() {
         describe("setParameter", function () {
             var url;
 
-            beforeEach(function() {
+            beforeEach(function () {
                 url = new Neosavvy.Core.Utils.UrlUtils.URL("http://www.neosavvy.com", "uid=sprite&make=chevy");
             });
 
@@ -140,7 +140,7 @@ describe("url utils",function() {
         });
 
         describe("setHost", function () {
-            it("should set and get host", function() {
+            it("should set and get host", function () {
                 var url = Neosavvy.Core.Utils.UrlUtils.URL.parse("http://www.neosavvy.com/something/else");
                 expect(url.getHost()).toEqual("www.neosavvy.com");
                 url.setHost("api.neosavvy.com");
@@ -152,13 +152,13 @@ describe("url utils",function() {
 
             });
 
-            it("should correctly return the hostname", function() {
+            it("should correctly return the hostname", function () {
                 var originalUrl = "http://www.neosavvy.com/wrote/this/awesome/app";
                 var url = Neosavvy.Core.Utils.UrlUtils.URL.parse(originalUrl);
                 expect(url.host).toEqual("www.neosavvy.com");
             });
 
-            it("should allow you to override the hostname", function() {
+            it("should allow you to override the hostname", function () {
                 var originalUrl = "http://www.neosavvy.com/wrote/this/awesome/app";
                 var url = Neosavvy.Core.Utils.UrlUtils.URL.parse(originalUrl);
                 url.setHost("www.adam.com");
@@ -170,7 +170,7 @@ describe("url utils",function() {
         describe("getParameter", function () {
             var url;
 
-            beforeEach(function() {
+            beforeEach(function () {
                 url = new Neosavvy.Core.Utils.UrlUtils.URL("http://www.evileyes.org:87", "uid=sprite&make=chevy");
             });
 
@@ -186,7 +186,7 @@ describe("url utils",function() {
         describe("getPort", function () {
             var url;
 
-            beforeEach(function() {
+            beforeEach(function () {
                 url = new Neosavvy.Core.Utils.UrlUtils.URL("http://www.neosavvy.com:96", "uid=sprite&make=chevy");
             });
 
@@ -216,8 +216,8 @@ describe("url utils",function() {
     describe("QueryString", function () {
         var qs;
 
-        beforeEach(function() {
-           qs = new Neosavvy.Core.Utils.UrlUtils.QueryString("make=ford&model=T&cut=75");
+        beforeEach(function () {
+            qs = new Neosavvy.Core.Utils.UrlUtils.QueryString("make=ford&model=T&cut=75");
         });
 
         describe("getParameters", function () {
@@ -233,15 +233,44 @@ describe("url utils",function() {
 
         describe("parse", function () {
 
-            it("Should be able to create a new string", function () {
-                qs = new Neosavvy.Core.Utils.UrlUtils.QueryString.parse("hair=brown&eyes=blue");
-                expect(qs.getParameters()).toEqual({hair: "brown", eyes: "blue"});
+            describe("definition", function () {
+                it("Should just return a new QueryString when passed nothing", function () {
+                    expect(Neosavvy.Core.Utils.UrlUtils.QueryString.parse()).toEqual(new Neosavvy.Core.Utils.UrlUtils.QueryString());
+                });
+
+                it("Should just return the queryString if it is passed the object", function () {
+                    expect(Neosavvy.Core.Utils.UrlUtils.QueryString.parse(new Neosavvy.Core.Utils.UrlUtils.QueryString())).toEqual(new Neosavvy.Core.Utils.UrlUtils.QueryString());
+                });
             });
 
-            it("Should be able to create a QueryString from an existing one", function () {
-                qs = new Neosavvy.Core.Utils.UrlUtils.QueryString.parse(qs);
-                expect(qs.getParameters()).toEqual({make: "ford", model: "T", cut: "75"});
+            describe("prototype", function () {
+                it("Should be able to create a new string", function () {
+                    qs = new Neosavvy.Core.Utils.UrlUtils.QueryString.parse("hair=brown&eyes=blue");
+                    expect(qs.getParameters()).toEqual({hair: "brown", eyes: "blue"});
+                });
+
+                it("Should be able to create a QueryString from an existing one", function () {
+                    qs = new Neosavvy.Core.Utils.UrlUtils.QueryString.parse(qs);
+                    expect(qs.getParameters()).toEqual({make: "ford", model: "T", cut: "75"});
+                });
+
+                it("Should play nice with a parsible object", function () {
+                    qs = new Neosavvy.Core.Utils.UrlUtils.QueryString();
+                    qs.parse({dollars: 50, cents: 89});
+                    expect(qs.getParameters()).toEqual({dollars: 50, cents: 89});
+                });
+
+                it("Should set a param to null if there is no equal sign", function () {
+                    qs = new Neosavvy.Core.Utils.UrlUtils.QueryString.parse("country");
+                    expect(qs.getParameters()).toEqual({country: null});
+                });
+
+                it("Should not add a param if it does not have a name", function () {
+                    qs = new Neosavvy.Core.Utils.UrlUtils.QueryString.parse("=saudiarabia");
+                    expect(qs.getParameters()).toEqual({});
+                });
             });
+
 
         });
 
@@ -280,7 +309,21 @@ describe("url utils",function() {
         });
 
         describe("add", function () {
-            
+            it("Should work with multiple parameters", function () {
+                qs = new Neosavvy.Core.Utils.UrlUtils.QueryString();
+                qs.parse({dollars: [17, 26, 89], cents: 89});
+                expect(qs.getParameters()).toEqual({dollars: [17, 26, 89], cents: 89});
+                qs.add("dollars", 18);
+                expect(qs.getParameters()).toEqual({dollars: [17, 26, 89, 18], cents: 89});
+            });
+
+            it("Should work with adding another array to multiple parameters", function () {
+                qs = new Neosavvy.Core.Utils.UrlUtils.QueryString();
+                qs.parse({dollars: [17, 26, 89], cents: 89});
+                expect(qs.getParameters()).toEqual({dollars: [17, 26, 89], cents: 89});
+                qs.add("dollars", [90, 92]);
+                expect(qs.getParameters()).toEqual({dollars: [17, 26, 89, 90, 92], cents: 89});
+            });
         });
 
         describe("get", function () {
@@ -297,6 +340,11 @@ describe("url utils",function() {
             it("Should be able to return the QueryString as a string", function () {
                 expect(qs.toString()).toEqual("make=ford&model=T&cut=75");
             });
+
+            it("Should work with null and undefined properties", function () {
+                qs = new Neosavvy.Core.Utils.UrlUtils.QueryString.parse("hair=brown&eyes=blue&something");
+                expect(qs.toString()).toEqual("hair=brown&eyes=blue&something");
+            });
         });
     });
 
@@ -307,8 +355,19 @@ describe("url utils",function() {
             expect(parseSpy).toHaveBeenCalledWith(1, 2, 7);
         });
 
-        it("should throw an error when undefined or null param for url", function() {
-            expect(function() {Neosavvy.Core.Utils.UrlUtils.parse(undefined)}).toThrow(new Error("Can not create a url with undefined URL param"));
+        it("Should only set a protocol for http", function () {
+            expect(Neosavvy.Core.Utils.UrlUtils.parse("http:").protocol).toEqual("http");
+        });
+
+        it("Should play nice with non http or https protocols", function () {
+            expect(Neosavvy.Core.Utils.UrlUtils.parse("ftp:neosavvy.org").protocol).toEqual("ftp");
+            expect(Neosavvy.Core.Utils.UrlUtils.parse("ftp:neosavvy.org").path).toEqual("neosavvy.org");
+        });
+
+        it("should throw an error when undefined or null param for url", function () {
+            expect(function () {
+                Neosavvy.Core.Utils.UrlUtils.parse(undefined)
+            }).toThrow(new Error("Can not create a url with undefined URL param"));
         });
 
     });

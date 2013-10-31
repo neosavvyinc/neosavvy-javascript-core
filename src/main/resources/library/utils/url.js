@@ -284,10 +284,6 @@ Neosavvy.Core.Utils.UrlUtils = (function () {
         QueryString.parse = function(queryString) {
             if (!queryString) {
                 return new QueryString();
-            }
-
-            if (queryString.constructor === QueryString) {
-                return queryString;
             } else {
                 return new QueryString(queryString.toString());
             }
