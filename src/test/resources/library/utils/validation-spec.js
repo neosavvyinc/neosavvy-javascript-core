@@ -85,6 +85,126 @@ describe('Neosavvy.Core.Utils.Validation', function () {
             expect(res(4)).toEqual(testFn(4));
         });
     });
+
+    describe('setConditions', function () {
+        var setConditions,
+            validator;
+
+        beforeEach (function () {
+            setConditions = Neosavvy.Core.Utils.Validation.setConditions;
+            validator = Neosavvy.Core.Utils.Validation.validator;
+        });
+
+        it('should work with a single validator', function () {
+             var valOne = validator('must be greater than 5', function (x) {
+                 return x > 5;
+             });
+
+             var res = setConditions(valOne);
+             expect(res(_.identity, 6)).toEqual(6);
+
+             expect(function () {
+                 res(_.identity, 4)
+             }).toThrow('must be greater than 5');
+        });
+
+        it('should work with multiple validators', function () {
+            var valOne = validator('must be greater than 5', function (x) {
+                return x > 5;
+            });
+
+            var valTwo = validator('must be less than 10', function (x) {
+                return x < 10;
+            });
+            var res = setConditions(valOne, valTwo);
+
+            expect(res(_.identity, 7)).toEqual(7);
+
+            expect(function () {
+                res(_.identity, 10);
+            }).toThrow('must be less than 10');
+
+            expect(function () {
+                res(_.identity, 5);
+            }).toThrow('must be greater than 5');
+        });
+
+        it('should work with multiple parameters', function () {
+            var valOne = validator('must be greater than 5', function (x) {
+                return x > 5;
+            });
+
+            var valTwo = validator('must be less than 10', function (x, y) {
+                return y < 10;
+            });
+            var res = setConditions(valOne, valTwo);
+
+            expect(res(_.identity, 10, 2)).toEqual(10);
+
+            expect(function () {
+                res(_.identity, 3, 11);
+            }).toThrow('must be greater than 5, must be less than 10');
+
+            expect(function () {
+                res(_.identity, 3, 9);
+            }).toThrow('must be greater than 5');
+
+            expect(function () {
+                res(_.identity, 6, 12);
+            }).toThrow('must be less than 10');
+        });
+
+        it('should work with _.partial to apply pre-conditions to functions', function () {
+             var uncheckedSquare = function (x, y, z) {
+                 return [x*x, y*y, z*z];
+             };
+
+             var pre = setConditions(
+                 validator('x must be greater than 1', function (x, y, z) { return x > 1; }),
+                 validator('y must be greater than 2', function (x, y, z) { return y > 2; }),
+                 validator('z must be greater than 3', function (x, y, z) { return z > 3; })
+             );
+
+             var checkedSquare = _.partial(pre, uncheckedSquare);
+
+             expect(checkedSquare(2,3,4)).toEqual([4,9,16]);
+
+             expect(function () {
+                 checkedSquare(1,3,4)
+             }).toThrow('x must be greater than 1');
+
+             expect(function () {
+                 checkedSquare(2,2,4)
+             }).toThrow('y must be greater than 2');
+
+             expect(function () {
+                 checkedSquare(2,3,3)
+             }).toThrow('z must be greater than 3');
+
+             expect(function () {
+                 checkedSquare(1,2,3)
+             }).toThrow('x must be greater than 1, y must be greater than 2, z must be greater than 3');
+        });
+
+        it('should  /* does things /*', function () {
+            var uncheckedLink = function (scope, elem, attrs) {
+                return scope; 
+            };
+
+            var pre = setConditions(
+                validator('scope must be defined', function (scope) {
+                    return !_.isUndefined(scope);
+                })
+            );
+
+            var checkedLink = _.partial(pre, uncheckedLink);
+
+            expect(checkedLink({ name: 'myScope' })).toEqual({ name: 'myScope' });
+            expect(function () {
+                checkedLink();
+            }).toThrow('scope must be defined');
+        });
+    });
     
 });
 

@@ -370,7 +370,7 @@ describe("Neosavvy.Core.Utils.CollectionUtils", function () {
             flatMapConcat = Neosavvy.Core.Utils.CollectionUtils.flatMapConcat;
         });
 
-        it('should ', function () {
+        it('should return a collection doubled even numbers', function () {
             var res = flatMapConcat(function (x) {
                 return x % 2 == 0 ? [x*2] : [];
             }, [1,2,3,4]);
@@ -378,12 +378,20 @@ describe("Neosavvy.Core.Utils.CollectionUtils", function () {
             expect(res).toEqual([4,8]);
         });
 
-        it('should ', function () {
+        it('should return the original collection', function () {
             var res = flatMapConcat(function (x) {
                 return [x]
             }, [1,2,3,4]);
 
             expect(res).toEqual([1,2,3,4]);
+        });
+
+        it('should concat a range of values', function () {
+            var res = flatMapConcat(function (x) {
+                return _.range(x)
+            }, [1,2,3]);
+
+            expect(res).toEqual([0,0,1,0,1,2]);
         });
     });
 });

@@ -40,20 +40,19 @@ Neosavvy.Core.Utils.Validation = (function () {
             return f;
         },
         setConditions: function (/* validators */) {
-            var validators = _.toArray(arguments, 0);
+            var validators = _.toArray(arguments);
 
-            return function (fn) {
-                var args = _.rest(arguments, 1),
+            return function (fn /*, arguments */) {
+                var args = _.rest(arguments),
                     errors = Neosavvy.Core.Utils.CollectionUtils.flatMapConcat(function (isValid) {
                         return isValid.apply(null, args) ? [] : [isValid.message];
                     }, validators);
 
-                if (errors.length === 0)
+                if (!_.isEmpty(errors))
                     throw new Error(errors.join(', '));
 
                 return fn.apply(null, args);
             }
         }
-
     }
 })();
