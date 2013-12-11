@@ -144,6 +144,25 @@ Neosavvy.Core.Utils.CollectionUtils = (function () {
                 return true;
             }
             return false;
+        },
+        /**
+         * ???
+         **/
+        flatConcat: function () {
+            var head = _.head(arguments);
+                tail = _.tail(arguments);
+
+            if (Neosavvy.Core.Utils.Validation.existy(head))
+                return head.concat.apply(head, tail);
+            else
+                return [];
+        },
+        /**
+         * apply fn (which should take a value and return an array) to each member 
+         * of collection and flatten the resulting array
+         **/
+        flatMapConcat: function (fn, collection) {
+            return Neosavvy.Core.Utils.CollectionUtils.flatConcat.apply(null, _.map(collection, fn));
         }
     };
 })();

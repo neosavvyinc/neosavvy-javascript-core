@@ -348,4 +348,42 @@ describe("Neosavvy.Core.Utils.CollectionUtils", function () {
             ], 'age.time')).toBeTruthy();
         });
     });
+
+    describe('flatConcat', function () {
+        var flatConcat;
+        beforeEach (function () {
+            flatConcat = Neosavvy.Core.Utils.CollectionUtils.flatConcat;
+        });
+
+        it('should flatten the arrays', function () {
+            expect(flatConcat([1,2], [3,4])).toEqual([1,2,3,4]);
+        });
+
+        it('should return an empty array if no arguments are passed', function () {
+            expect(flatConcat()).toEqual([]);
+        });
+    });
+
+    describe('flatMapConcat', function () {
+        var flatMapConcat;
+        beforeEach (function () {
+            flatMapConcat = Neosavvy.Core.Utils.CollectionUtils.flatMapConcat;
+        });
+
+        it('should ', function () {
+            var res = flatMapConcat(function (x) {
+                return x % 2 == 0 ? [x*2] : [];
+            }, [1,2,3,4]);
+
+            expect(res).toEqual([4,8]);
+        });
+
+        it('should ', function () {
+            var res = flatMapConcat(function (x) {
+                return [x]
+            }, [1,2,3,4]);
+
+            expect(res).toEqual([1,2,3,4]);
+        });
+    });
 });
