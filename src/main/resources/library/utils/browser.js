@@ -9,19 +9,33 @@ Neosavvy.Core.Utils.BrowserUtils = (function () {
 
     function _load(userAgent) {
         userAgent = userAgent.toLowerCase();
-        var operaBrowserParts = /(opr)(?:.*version)?(?:[ \/])?([\w.]+)/.exec(userAgent);
-        var browserParts = /(msie|trident|firefox|chrome|safari|opera)(?:.*version)?(?:[ \/])?([\w.]+)/.exec(userAgent);
+
+        //Browser
+        var operaBrowserParts = /(opr|opera)(?:.*version)?(?:[ \/])?([\w.]+)/.exec(userAgent);
+        var browserParts = /(msie|trident|firefox|chrome|safari)(?:.*version)?(?:[ \/])?([\w.]+)/.exec(userAgent);
         browser = (operaBrowserParts && operaBrowserParts.length) ? operaBrowserParts[1] : browserParts[1];
-        if (browser.indexOf(/msie|trident/g) !== -1) {
-            browser = "msie";
+        if (browser === "trident") {
+            browser = _CONSTANTS.BROWSER.INTERNET_EXPLORER;
+
+            var tridentVersion = String(parseFloat(browserParts[2]) + 4.0);
+            browserVersion = tridentVersion.length === 2 ? tridentVersion + ".0" : tridentVersion;
+        } else if (browser === "opera" || browser === "opr") {
+            browser = "opr";
+            browserVersion = operaBrowserParts[2];
+        } else if (browser === "safari") {
+            browserVersion = /(version)(?:.*version)?(?:[ \/])?([\w.]+)/.exec(userAgent)[2];
+        } else {
+            browserVersion = browserParts[2];
         }
-        browserVersion = browserParts[2];
-        os = /(mac|win|linux|freebsd|mobile|iphone|ipod|ipad|android|blackberry|j2me|webtv)/.exec(userAgent)[1];
+
+        //OS
+        var androidOs = /(android)/.exec(userAgent);
+        os = (androidOs && androidOs.length) ? 'android' : /(mac|win|linux|freebsd|mobile|iphone|ipod|ipad|android|blackberry|j2me|webtv)/.exec(userAgent)[1];
         osVersion = null;
     }
 
     var _CONSTANTS = {
-        PLATFORM: {
+        OS: {
             OSX: "mac",
             WINDOWS: "win",
             LINUX: "linux",
@@ -32,7 +46,7 @@ Neosavvy.Core.Utils.BrowserUtils = (function () {
             IPAD: "ipad",
             ANDROID: "android",
             BLACKBERRY: "blackberry",
-            OPERA_MINI: "j2me",
+            J2ME: "j2me",
             WEB_TV: "webtv"
         },
         BROWSER: {
@@ -71,15 +85,24 @@ Neosavvy.Core.Utils.BrowserUtils = (function () {
         })(key);
     }
 
-    //is... methods
-    var browsersAndPlatforms = _.merge(_CONSTANTS.PLATFORM, _CONSTANTS.BROWSER);
-    for (var key in browsersAndPlatforms) {
-        var name = key.toLowerCase().replace(/^.|_./g,function (val) {
+    function _nameFromKey(key) {
+        return key.toLowerCase().replace(/^.|_./g,function (val) {
             return val.toUpperCase();
         }).replace(/_/g, "");
-        def['is' + name] = (function (key) {
+    }
+
+    //is... methods
+    for (var key in _CONSTANTS.BROWSER) {
+        def['is' + _nameFromKey(key)] = (function (key) {
             return function () {
-                return (browser === browsersAndPlatforms[key]);
+                return (browser === _CONSTANTS.BROWSER[key]);
+            }
+        })(key);
+    }
+    for (var key in _CONSTANTS.OS) {
+        def['is' + _nameFromKey(key)] = (function (key) {
+            return function () {
+                return (os === _CONSTANTS.OS[key]);
             }
         })(key);
     }
