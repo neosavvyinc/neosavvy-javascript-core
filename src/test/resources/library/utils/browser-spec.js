@@ -524,4 +524,9 @@ describe("Neosavvy.Core.Utils.BrowserUtils", function () {
             });
         });
     });
+
+    it("Should set the osVersion to null if the regex raises an error", function () {
+        Neosavvy.Core.Utils.BrowserUtils.reload("Mozilla/3.0 WebTV  /1.2 (compatible; MSIE 2.0)");
+        expect(Neosavvy.Core.Utils.BrowserUtils.osVersion()).toBeNull();
+    });
 });

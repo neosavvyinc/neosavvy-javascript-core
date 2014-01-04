@@ -32,23 +32,21 @@ Neosavvy.Core.Utils.BrowserUtils = (function () {
         var androidOs = /(android)/.exec(userAgent);
         os = (androidOs && androidOs.length) ? 'android' : /(mac|win|linux|freebsd|mobile|iphone|ipod|ipad|android|blackberry|j2me|webtv)/.exec(userAgent)[1];
 
-        //OS Version
-        switch (os) {
-            case _CONSTANTS.OS.OSX:
-            case _CONSTANTS.OS.IPHONE:
-            case _CONSTANTS.OS.IPAD:
-            case _CONSTANTS.OS.WINDOWS:
-            case _CONSTANTS.OS.ANDROID:
-            case _CONSTANTS.OS.BLACKBERRY:
-            case _CONSTANTS.OS.WEB_TV:
-                osVersion = /(mac\sos\sx\s|iphone os\s|ipad;\scpu\sos\s|windows nt\s|android\s|blackberry\s|webtv\/)((\d|\.|_)*)/.exec(userAgent)[2].replace(/_/g, ".");
-                break;
-            default:
-                osVersion = null;
-        }
-
         try {
-
+            //OS Version
+            switch (os) {
+                case _CONSTANTS.OS.OSX:
+                case _CONSTANTS.OS.IPHONE:
+                case _CONSTANTS.OS.IPAD:
+                case _CONSTANTS.OS.WINDOWS:
+                case _CONSTANTS.OS.ANDROID:
+                case _CONSTANTS.OS.BLACKBERRY:
+                case _CONSTANTS.OS.WEB_TV:
+                    osVersion = /(mac\sos\sx\s|iphone os\s|ipad;\scpu\sos\s|windows nt\s|android\s|blackberry\s|webtv\/)((\d|\.|_)*)/.exec(userAgent)[2].replace(/_/g, ".");
+                    break;
+                default:
+                    osVersion = null;
+            }
         } catch (error) {
             console.warn("Trouble getting the os version, check the code or report a bug.");
             osVersion = null;
