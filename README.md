@@ -3,7 +3,7 @@ javascript-core
 
 Neosavvy, Inc. core libraries for Javascript.
 
-### 0.0.5 - 09/29/2013
+### 0.0.6 - 09/29/2013
 
 Initial release.
 
