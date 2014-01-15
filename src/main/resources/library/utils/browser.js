@@ -22,7 +22,7 @@ Neosavvy.Core.Utils.BrowserUtils = (function () {
         } else if (browser === "opera" || browser === "opr") {
             browser = "opr";
             browserVersion = operaBrowserParts[2];
-        } else if (browser === "safari") {
+        } else if (browser === "safari" && userAgent.indexOf("phantomjs") === -1) {
             browserVersion = /(version)(?:.*version)?(?:[ \/])?([\w.]+)/.exec(userAgent)[2];
         } else {
             browserVersion = browserParts[2];
