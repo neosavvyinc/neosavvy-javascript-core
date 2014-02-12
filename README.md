@@ -146,7 +146,7 @@ Neosavvy.Core.Utils.BrowserUtils.osVersion()
 
 "10.8.5"
 
-/* 'is' Methods */
+/* 'is' Methods, Available For All Proper Cased Constants */
 
 Neosavvy.Core.Utils.BrowserUtils.isChrome()
 
@@ -193,6 +193,30 @@ Neosavvy.Core.Utils.BrowserUtils.CONSTANTS.BROWSER
   OPERA: "opr"
 }
 
+```
+
+### CollectionUtils
+
+Get an item from a collection, by a property string.
+
+```JavaScript
+Neosavvy.Core.Utils.CollectionUtils.itemByProperty(
+  [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}],
+  "fruit.id",
+  7)
+
+{fruit: {id: 7, name: "Pear"}}
+```
+
+Update an item in a collection from a single property.
+
+```JavaScript
+Neosavvy.Core.Utils.CollectionUtils.updateByProperty(
+  [{id: 6, name: "Apple"}, {id: 7, name: "Pear"}],
+  {id: 7, name: "Orange"},
+  "id")
+
+[{id: 6, name: "Apple"}, {id: 7, name: "Orange"}]
 ```
 
 
