@@ -58,6 +58,33 @@ new Neosavvy.Core.Builders.CollectionBuilder(
 ]
 ```
 
+```JavaScript
+/* Required & Optional Params */
+
+new Neosavvy.Core.Builders.RequestUrlBuilder(
+    "http://api.neosavvy.com/:user_id/clients/:company_id"
+  )
+  .paramReplace(":user_id", 150)
+  .paramReplace(":company_id", 7)
+  .addParam("page", 2)
+  .build()
+
+"http://api.neosavvy.com/150/clients/7?page=2"
+
+/* Object Support */
+
+new Neosavvy.Core.Builders.RequestUrlBuilder(
+    "http://api.neosavvy.com/:user_id/clients/:company_id"
+  )
+  .paramReplace({":user_id": 150, ":company_id", 7})
+  .addParam({"page": 10, "device": "android"})
+  .build()
+
+"http://api.neosavvy.com/150/clients/7?page=2"
+
+```
+
+
 ### 0.0.6 - 09/29/2013
 
 Initial release.
