@@ -47,7 +47,6 @@ Neosavvy.Core.Utils
 Nest collections into properties.
 
 ```JavaScript
-
 new Neosavvy.Core.Builders.CollectionBuilder(
     [{name: "Cheddar"}, {name: "Swiss"}, {name: "Pepperjack"}]
   ).nest('my.favorite.cheese').build()

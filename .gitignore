@@ -8,3 +8,4 @@ coverage/
 docs/
 src/main/resources/lib
 target
+quick_commit.sh
