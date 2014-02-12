@@ -314,13 +314,15 @@ Neosavvy.Core.Utils.DomUtils.getElementsByAttribute("input", "type", "submit")
 Get a property string off of a hash.
 
 ```JavaScript
-Neosavvy.Core.Utils.MapUtils.get({fruit: {name: {first: "Pear"}}}, "fruit.name.first")
+Neosavvy.Core.Utils.MapUtils.get(
+  {fruit: {name: {first: "Pear"}}}, "fruit.name.first")
 
 "Pear"
 
 /* Fallback for when the property is not found */
 
-Neosavvy.Core.Utils.MapUtils.get({fruit: {name: {first: "Pear"}}}, "fruit.otherName.last")
+Neosavvy.Core.Utils.MapUtils.get(
+  {fruit: {name: {first: "Pear"}}}, "fruit.otherName.last")
 
 undefined
 ```
@@ -328,13 +330,15 @@ undefined
 Get up to a length of 10 properties, no loops, more performant.
 
 ```JavaScript
-Neosavvy.Core.Utils.MapUtils.highPerformanceGet({fruit: {name: {first: "Pear"}}}, "fruit.name.first")
+Neosavvy.Core.Utils.MapUtils.highPerformanceGet(
+  {fruit: {name: {first: "Pear"}}}, "fruit.name.first")
 
 "Pear"
 
 /* Fallback for when the property is not found */
 
-Neosavvy.Core.Utils.MapUtils.highPerformanceGet({fruit: {name: {first: "Pear"}}}, "fruit.otherName.last")
+Neosavvy.Core.Utils.MapUtils.highPerformanceGet(
+  {fruit: {name: {first: "Pear"}}}, "fruit.otherName.last")
 
 undefined
 ```
