@@ -3,6 +3,56 @@ javascript-core
 
 Neosavvy, Inc. core libraries for Javascript.
 
+## Getting Started
+Via bower,
+
+    bower install neosavvy-javascript-core
+
+###Development Version,
+
+Install all through npm,
+
+    npm install
+
+Install bower,
+
+    sudo npm -g install bower
+
+Install Grunt,
+
+    sudo npm -g install grunt-cli
+
+Scripts dependencies,
+
+    bower install
+
+
+To compile source code,
+
+    grunt
+
+To run unit tests while developing,
+
+    grunt karma:unit
+
+## Modules
+
+```JavaScript
+Neosavvy.Core.Builders
+Neosavvy.Core.Utils
+```
+
+## Neosavvy.Core.Builders
+
+Nest collections into properties.
+
+```JavaScript
+
+new Neosavvy.Core.Builders.CollectionBuilder([{name: "Cheddar"}, {name: "Swiss"}, {name: "Pepperjack"}]).nest('my.favorite.cheese').build()
+
+[{"my":{"favorite":{"cheese":{"name":"Cheddar"}}}},{"my":{"favorite":{"cheese":{"name":"Swiss"}}}},{"my":{"favorite":{"cheese":{"name":"Pepperjack"}}}}]
+```
+
 ### 0.0.6 - 09/29/2013
 
 Initial release.
