@@ -302,7 +302,6 @@ false
 Get all the elements with the attribute of value.
 
 ```JavaScript
-
 Neosavvy.Core.Utils.DomUtils.getElementsByAttribute("input", "type", "submit")
 
 /* Returns native submit elements */
@@ -346,7 +345,6 @@ undefined
 Apply a value to an object via string.
 
 ```JavaScript
-
 var val = {names: {first: "Stein"};
 
 Neosavvy.Core.Utils.MapUtils.applyTo(val, "names.last", "Malloy")
@@ -360,7 +358,6 @@ Neosavvy.Core.Utils.MapUtils.applyTo(val, "names.last", "Malloy")
 Determine if the keys in multiple hashes are distinct.
 
 ```JavaScript
-
 Neosavvy.Core.Utils.MapUtils.keysDistinct({whoomp: 'there it is'}, {whoomp: 'here it goes'})
 
 false
@@ -371,6 +368,43 @@ true
 
 ```
 
+### NumberUtils
+
+Format number to ordinal string.
+
+```JavaScript
+Neosavvy.Core.Utils.NumberUtils.asOrdinal(1)
+
+"1st"
+
+Neosavvy.Core.Utils.NumberUtils.asOrdinal(25)
+
+"25th"
+```
+
+Round up a float.
+
+```JavaScript
+Neosavvy.Core.Utils.NumberUtils.roundUpIfFloat(1.22)
+
+"2"
+
+Neosavvy.Core.Utils.NumberUtils.roundUpIfFloat(-37.00001)
+
+"-38"
+```
+
+Leading zeroes. Number string.
+
+```JavaScript
+Neosavvy.Core.Utils.NumberUtils.leadingZeroes(18, 6)
+
+"000018"
+
+Neosavvy.Core.Utils.NumberUtils.leadingZeroes(-11.923, 4)
+
+"-0011.923"
+```
 
 ### 0.0.6 - 09/29/2013
 
