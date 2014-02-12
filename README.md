@@ -414,7 +414,6 @@ Match a string and all the characters leading up to it.
 Neosavvy.Core.Utils.RegexUtils.matchStringAndLeadup("House")
 
 /* Returns regex that matches h, H, ho, Ho, hou, Hou, etc. */
-
 ```
 
 Check if a string is an email.
@@ -423,7 +422,6 @@ Check if a string is an email.
 Neosavvy.Core.Utils.RegexUtils.isEmail("contact@neosavvy.com")
 
 true
-
 ```
 
 ### SpecialUtils
@@ -431,7 +429,6 @@ true
 Continue trying until a function does not throw an error.
 
 ```JavaScript
-
 var f1 = function() {
   throw "Some error";
 };
@@ -442,6 +439,24 @@ var f2 = function(a) {
 Neosavvy.Core.Utils.SpecialUtils.keepTrying(f1, [], f2, ["First Argument"]);
 
 "First Argument"
+```
+
+### StringUtils
+
+Check if a string or number is blank, returns true for undefined, null, "" and "    ", etc.
+
+```JavaScript
+Neosavvy.Core.Utils.StringUtils.isBlank(" ")
+
+true
+
+Neosavvy.Core.Utils.StringUtils.isBlank(undefined)
+
+true
+
+Neosavvy.Core.Utils.StringUtils.isBlank(0)
+
+false
 
 ```
 
