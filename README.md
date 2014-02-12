@@ -406,6 +406,26 @@ Neosavvy.Core.Utils.NumberUtils.leadingZeroes(-11.923, 4)
 "-0011.923"
 ```
 
+### RegexUtils
+
+Match a string and all the characters leading up to it.
+
+```JavaScript
+Neosavvy.Core.Utils.RegexUtils.matchStringAndLeadup("House")
+
+/* Returns regex that matches h, H, ho, Ho, hou, Hou, etc. */
+
+```
+
+Check if a string is an email.
+
+```JavaScript
+Neosavvy.Core.Utils.RegexUtils.isEmail("contact@neosavvy.com")
+
+true
+
+```
+
 ### 0.0.6 - 09/29/2013
 
 Initial release.
