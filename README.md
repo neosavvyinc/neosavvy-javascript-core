@@ -117,7 +117,83 @@ new Neosavvy.Core.Builders.StringBuilder(
 
 ## Neosavvy.Core.Utils
 
-### Neosavvy.Core.Utils.BrowserUtils
+### BrowserUtils
+
+Browser and user agent info.
+
+```JavaScript
+/* Full Info Hash */
+
+Neosavvy.Core.Utils.BrowserUtils.info()
+
+{"browser":"chrome","browserVersion":"32.0.1700.107","os":"mac","osVersion":"10.8.5"}
+
+/* Individual Methods */
+
+Neosavvy.Core.Utils.BrowserUtils.browser()
+
+"chrome"
+
+Neosavvy.Core.Utils.BrowserUtils.browserVersion()
+
+"32.0.1700.107"
+
+Neosavvy.Core.Utils.BrowserUtils.os()
+
+"mac"
+
+Neosavvy.Core.Utils.BrowserUtils.osVersion()
+
+"10.8.5"
+
+/* 'is' Methods */
+
+Neosavvy.Core.Utils.BrowserUtils.isChrome()
+
+true
+
+Neosavvy.Core.Utils.BrowserUtils.isOsx()
+
+true
+
+Neosavvy.Core.Utils.BrowserUtils.isFirefox()
+
+false
+
+Neosavvy.Core.Utils.BrowserUtils.isWindows()
+
+false
+
+
+/* Constants */
+
+Neosavvy.Core.Utils.BrowserUtils.CONSTANTS.OS
+
+{
+  OSX: "mac",
+  WINDOWS: "win",
+  LINUX: "linux",
+  FREE_BSD: "freebsd",
+  IPHONE: "iphone",
+  IPOD: "ipod",
+  IPAD: "ipad",
+  ANDROID: "android",
+  BLACKBERRY: "blackberry",
+  J2ME: "j2me",
+  WEB_TV: "webtv"
+}
+
+Neosavvy.Core.Utils.BrowserUtils.CONSTANTS.BROWSER
+
+{
+  INTERNET_EXPLORER: "msie",
+  FIREFOX: "firefox",
+  CHROME: "chrome",
+  SAFARI: "safari",
+  OPERA: "opr"
+}
+
+```
 
 
 ### 0.0.6 - 09/29/2013
