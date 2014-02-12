@@ -357,6 +357,20 @@ Neosavvy.Core.Utils.MapUtils.applyTo(val, "names.last", "Malloy")
 
 ```
 
+Determine if the keys in multiple hashes are distinct.
+
+```JavaScript
+
+Neosavvy.Core.Utils.MapUtils.keysDistinct({whoomp: 'there it is'}, {whoomp: 'here it goes'})
+
+false
+
+Neosavvy.Core.Utils.MapUtils.keysDistinct({whoomp: 'there it is'}, {tagTeam: 'back again'})
+
+true
+
+```
+
 
 ### 0.0.6 - 09/29/2013
 
