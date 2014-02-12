@@ -426,6 +426,25 @@ true
 
 ```
 
+### SpecialUtils
+
+Continue trying until a function does not throw an error.
+
+```JavaScript
+
+var f1 = function() {
+  throw "Some error";
+};
+var f2 = function(a) {
+  return a;
+};
+
+Neosavvy.Core.Utils.SpecialUtils.keepTrying(f1, [], f2, ["First Argument"]);
+
+"First Argument"
+
+```
+
 ### 0.0.6 - 09/29/2013
 
 Initial release.
