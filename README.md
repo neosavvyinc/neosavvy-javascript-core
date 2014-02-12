@@ -343,6 +343,21 @@ Neosavvy.Core.Utils.MapUtils.highPerformanceGet(
 undefined
 ```
 
+Apply a value to an object via string.
+
+```JavaScript
+
+var val = {names: {first: "Stein"};
+
+Neosavvy.Core.Utils.MapUtils.applyTo(val, "names.last", "Malloy)
+
+/* Updates val to */
+
+{names: {first: "Stein", last: "Malloy"}
+
+```
+
+
 ### 0.0.6 - 09/29/2013
 
 Initial release.
