@@ -219,6 +219,84 @@ Neosavvy.Core.Utils.CollectionUtils.updateByProperty(
 [{id: 6, name: "Apple"}, {id: 7, name: "Orange"}]
 ```
 
+Remove an item from a single property.
+
+```JavaScript
+Neosavvy.Core.Utils.CollectionUtils.removeByProperty(
+  [{id: 6, name: "Apple"}, {id: 7, name: "Pear"}],
+  {id: 7},
+  "id")
+
+[{id: 6, name: "Apple"}]
+```
+
+A unique map by property value.
+
+```JavaScript
+Neosavvy.Core.Utils.CollectionUtils.uniqueMap(
+  [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}],
+  "fruit.name")
+
+{
+  "Apple": {fruit: {id: 6, name: "Apple"}},
+  "Pear": {fruit: {id: 7, name: "Pear"}}
+}
+```
+
+A match for a single property contained in both collections.
+
+```JavaScript
+Neosavvy.Core.Utils.CollectionUtils.containMatchByProperty(
+  [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}],
+  [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 7, name: "Pear"}}]
+  "fruit.name")
+
+true
+
+Neosavvy.Core.Utils.CollectionUtils.containMatchByProperty(
+  [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}],
+  [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 8, name: "Plum"}}]
+  "fruit.name")
+
+false
+```
+
+Check to see if collection contains another collection as subset. Non order specific.
+
+```JavaScript
+Neosavvy.Core.Utils.CollectionUtils.collectionContainsAllOtherItems(
+  [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}, {fruit: {id: 5, name: "Orange"}}],
+  [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 7, name: "Pear"}}]
+  "fruit.id")
+
+true
+
+Neosavvy.Core.Utils.CollectionUtils.collectionContainsAllOtherItems(
+  [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}],
+  [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 8, name: "Plum"}}]
+  "fruit.name")
+
+false
+```
+
+Check to see if two collections contain the same values, order does not matter.
+
+```JavaScript
+Neosavvy.Core.Utils.CollectionUtils.containsExclusively(
+  [{fruit: {id: 7, name: "Pear"}}, {fruit: {id: 5, name: "Orange"}}],
+  [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 7, name: "Pear"}}]
+  "fruit.id")
+
+true
+
+Neosavvy.Core.Utils.CollectionUtils.containsExclusively(
+  [{fruit: {id: 8, name: "Plum"}}, {fruit: {id: 7, name: "Pear"}}, {fruit: {id: 5, name: "Orange"}}],
+  [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 8, name: "Plum"}}]
+  "fruit.name")
+
+false
+```
+
 
 ### 0.0.6 - 09/29/2013
 
