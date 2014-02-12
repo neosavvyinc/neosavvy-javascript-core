@@ -58,6 +58,8 @@ new Neosavvy.Core.Builders.CollectionBuilder(
 ]
 ```
 
+Build out service and parameterized urls.
+
 ```JavaScript
 /* Required & Optional Params */
 
@@ -84,6 +86,34 @@ new Neosavvy.Core.Builders.RequestUrlBuilder(
 
 ```
 
+String operations.
+
+```JavaScript
+/* Camel To Dash */
+
+new Neosavvy.Core.Builders.StringBuilder(
+    "myCamelCaseString"
+  ).camelToDash().build()
+
+"my-camel-case-string"
+
+
+/* Constant Case To Dash */
+
+new Neosavvy.Core.Builders.StringBuilder(
+    "MY_CONSTANT_CASE"
+  ).constantToDash().build()
+
+"my-constant-case"
+
+
+/* Proper Case */
+new Neosavvy.Core.Builders.StringBuilder(
+    "MY iNCorrect cAse"
+  ).camelToDash().build()
+
+"My Incorrect Case"
+```
 
 ### 0.0.6 - 09/29/2013
 
