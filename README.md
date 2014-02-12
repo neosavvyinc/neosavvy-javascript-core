@@ -297,6 +297,47 @@ Neosavvy.Core.Utils.CollectionUtils.containsExclusively(
 false
 ```
 
+### DomUtils
+
+Get all the elements with the attribute of value.
+
+```JavaScript
+
+Neosavvy.Core.Utils.DomUtils.getElementsByAttribute("input", "type", "submit")
+
+/* Returns native submit elements */
+
+```
+
+### MapUtils
+
+Get a property string off of a hash.
+
+```JavaScript
+Neosavvy.Core.Utils.MapUtils.get({fruit: {name: {first: "Pear"}}}, "fruit.name.first")
+
+"Pear"
+
+/* Fallback for when the property is not found */
+
+Neosavvy.Core.Utils.MapUtils.get({fruit: {name: {first: "Pear"}}}, "fruit.otherName.last")
+
+undefined
+```
+
+Get up to a length of 10 properties, no loops, more performant.
+
+```JavaScript
+Neosavvy.Core.Utils.MapUtils.highPerformanceGet({fruit: {name: {first: "Pear"}}}, "fruit.name.first")
+
+"Pear"
+
+/* Fallback for when the property is not found */
+
+Neosavvy.Core.Utils.MapUtils.highPerformanceGet({fruit: {name: {first: "Pear"}}}, "fruit.otherName.last")
+
+undefined
+```
 
 ### 0.0.6 - 09/29/2013
 
