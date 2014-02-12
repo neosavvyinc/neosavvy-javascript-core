@@ -349,9 +349,9 @@ Apply a value to an object via string.
 
 var val = {names: {first: "Stein"};
 
-Neosavvy.Core.Utils.MapUtils.applyTo(val, "names.last", "Malloy)
+Neosavvy.Core.Utils.MapUtils.applyTo(val, "names.last", "Malloy")
 
-/* Updates val to */
+/* Updates Val */
 
 {names: {first: "Stein", last: "Malloy"}
 
