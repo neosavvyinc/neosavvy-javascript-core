@@ -115,6 +115,11 @@ new Neosavvy.Core.Builders.StringBuilder(
 "My Incorrect Case"
 ```
 
+## Neosavvy.Core.Utils
+
+# Neosavvy.Core.Utils.BrowserUtils
+
+
 ### 0.0.6 - 09/29/2013
 
 Initial release.
