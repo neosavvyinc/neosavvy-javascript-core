@@ -48,9 +48,15 @@ Nest collections into properties.
 
 ```JavaScript
 
-new Neosavvy.Core.Builders.CollectionBuilder([{name: "Cheddar"}, {name: "Swiss"}, {name: "Pepperjack"}]).nest('my.favorite.cheese').build()
+new Neosavvy.Core.Builders.CollectionBuilder(
+    [{name: "Cheddar"}, {name: "Swiss"}, {name: "Pepperjack"}]
+  ).nest('my.favorite.cheese').build()
 
-[{"my":{"favorite":{"cheese":{"name":"Cheddar"}}}},{"my":{"favorite":{"cheese":{"name":"Swiss"}}}},{"my":{"favorite":{"cheese":{"name":"Pepperjack"}}}}]
+[
+  {"my":{"favorite":{"cheese":{"name":"Cheddar"}}}},
+  {"my":{"favorite":{"cheese":{"name":"Swiss"}}}},
+  {"my":{"favorite":{"cheese":{"name":"Pepperjack"}}}}
+]
 ```
 
 ### 0.0.6 - 09/29/2013
