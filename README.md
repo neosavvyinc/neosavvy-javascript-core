@@ -495,7 +495,7 @@ url.toString()
 "http://www.amazon.com:8888/another/api/call?otherParam=447"
 
 
-/* Create URL Objects Using Constructor
+/* Create URL Objects Using Constructor */
 
 var url = new Neosavvy.Core.Utils.UrlUtils.URL("http://www.google.com:8888/api?param=56");
 
