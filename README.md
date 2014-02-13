@@ -457,8 +457,59 @@ true
 Neosavvy.Core.Utils.StringUtils.isBlank(0)
 
 false
+```
+
+### UrlUtils
+
+```JavaScript
+/* Create Url Objects */
+
+var url = Neosavvy.Core.Utils.UrlUtils.parse("http://www.google.com:8888/api?param=56");
+
+url.getHost()
+
+"www.google.com"
+
+url.setHost("www.amazon.com")
+
+url.getPath()
+
+/api
+
+url.setPath("/another/api/call")
+
+url.getParameter("param")
+
+"56"
+
+url.setParameter("otherParam", 447)
+
+url.removeParameter("param")
+
+url.getPort()
+
+8888
+
+url.toString()
+
+"http://www.amazon.com:8888/another/api/call?otherParam=447"
+
+
+/* Create URL Objects Using Constructor
+
+var url = new Neosavvy.Core.Utils.UrlUtils.URL("http://www.google.com:8888/api?param=56");
+
+/* All the same methods are implemented */
+
+
+/* Create QueryString Objects */
+
+var queryString = new Neosavvy.Core.Utils.UrlUtils.QueryString("param=78&otherParam=cheese");
+
+/* Also implements parse, get, set, remove, add */
 
 ```
+
 
 ### 0.0.6 - 09/29/2013
 
