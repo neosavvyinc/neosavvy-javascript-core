@@ -310,8 +310,22 @@ Neosavvy.Core.Utils.DomUtils.getElementsByAttribute("input", "type", "submit")
 
 ### FunctionalUtils
 
+Try to call a function, doesn't fail if the object is not there.
 
+```JavaScript
+var possiblyBlankArray = ["Terry", "Jim", "Willis"];
 
+Neosavvy.Core.Utils.FunctionalUtils.tryCall(possiblyBlankArray, 'join', [', '], 'No Names Provided');
+
+'Terry, Jim, Willis'
+
+possiblyBlankArray = null;
+
+Neosavvy.Core.Utils.FunctionalUtils.tryCall(possiblyBlankArray, 'join', [', '], 'No Names Provided');
+
+'No Names Provided'
+
+```
 
 ### MapUtils
 
