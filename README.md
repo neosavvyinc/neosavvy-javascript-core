@@ -308,6 +308,11 @@ Neosavvy.Core.Utils.DomUtils.getElementsByAttribute("input", "type", "submit")
 
 ```
 
+### FunctionalUtils
+
+
+
+
 ### MapUtils
 
 Get a property string off of a hash.

@@ -16,6 +16,13 @@ describe("Neosavvy.Core.Utils.FunctionalUtils", function () {
             expect(_tryCall({name: 'Mike'}, 'age', [false], 50)).toEqual(50);
         });
 
+        it("Should be good to call a nested function on an object", function () {
+            var myObj = {name: {first: function (param) {
+                return param;
+            }}};
+            expect(_tryCall(myObj.name, 'first', ['Mike'])).toEqual('Mike');
+        });
+
         it("Should play nice with native js objects", function () {
             expect(_tryCall(['Mike', 'Tony', 'Terri'], 'join', ['_'])).toEqual('Mike_Tony_Terri');
         });
