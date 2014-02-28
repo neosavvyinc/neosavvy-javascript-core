@@ -530,7 +530,7 @@ var queryString = new Neosavvy.Core.Utils.UrlUtils.QueryString("param=78&otherPa
 ```
 
 
-### 0.0.9 - 09/29/2013
+### 0.1.0 - 09/29/2013
 
 ## LICENSE
 
