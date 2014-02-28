@@ -529,4 +529,33 @@ describe("Neosavvy.Core.Utils.BrowserUtils", function () {
         Neosavvy.Core.Utils.BrowserUtils.reload("Mozilla/3.0 WebTV  /1.2 (compatible; MSIE 2.0)");
         expect(Neosavvy.Core.Utils.BrowserUtils.osVersion()).toBeNull();
     });
+
+    describe("discovered strings", function () {
+        /* This section is a great place to test new user agent strings and add the behavior, this will be automated in the future */
+
+        describe("Chrome for IOS", function () {
+
+            beforeEach(function () {
+                Neosavvy.Core.Utils.BrowserUtils.reload('Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_6 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/33.0.1750.14 Mobile/11B651 Safari/9537.53');
+            });
+
+            it("Should return true for isChrome()", function () {
+                expect(Neosavvy.Core.Utils.BrowserUtils.isChrome()).toBeTruthy();
+            });
+
+            it("Should return true for isIphone()", function () {
+                expect(Neosavvy.Core.Utils.BrowserUtils.isIphone()).toBeTruthy();
+            });
+
+            it("Should return the proper chrome version", function () {
+                expect(Neosavvy.Core.Utils.BrowserUtils.browserVersion()).toEqual('33.0.1750.14');
+            });
+
+            it("Should return the proper iPhone version", function () {
+                expect(Neosavvy.Core.Utils.BrowserUtils.osVersion()).toEqual('7.0.6');
+            });
+
+        });
+
+    });
 });
