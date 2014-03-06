@@ -1,4 +1,40 @@
 describe("Neosavvy.Core.Utils.BrowserUtils", function () {
+
+    beforeEach(function () {
+        console.warn = jasmine.createSpy('console.warn');
+    });
+
+    describe("browser error", function () {
+        it("Should not throw an error on loading a string that causes a browser error", function () {
+            expect(function () {
+                Neosavvy.Core.Utils.BrowserUtils.reload("chrome");
+            }).not.toThrow();
+            expect(console.warn).toHaveBeenCalledWith("Trouble getting the browser or browser version, check the code or report a bug with the userAgent listed.");
+        });
+    });
+
+
+    it("Should not throw an error on loading a string that causes a browserVersion error", function () {
+        expect(function () {
+            Neosavvy.Core.Utils.BrowserUtils.reload("opera, version");
+        }).not.toThrow();
+        expect(console.warn).toHaveBeenCalledWith("Trouble getting the browser or browser version, check the code or report a bug with the userAgent listed.");
+    });
+
+    it("Should not throw an error on loading a string that causes and os error", function () {
+        expect(function () {
+            Neosavvy.Core.Utils.BrowserUtils.reload("mac");
+        }).not.toThrow();
+        expect(console.warn).toHaveBeenCalledWith("Trouble getting the os, check the code or report a bug with the userAgent listed.");
+    });
+
+    it("Should throw an error on loading a string that causes and osVersion error", function () {
+        expect(function () {
+            Neosavvy.Core.Utils.BrowserUtils.reload("mac");
+        }).not.toThrow();
+        expect(console.warn).toHaveBeenCalledWith("Trouble getting the os, check the code or report a bug with the userAgent listed.");
+    });
+
     describe("info", function () {
 
         it("Should return a hash that defines a browser attribute", function () {

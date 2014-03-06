@@ -11,34 +11,43 @@ Neosavvy.Core.Utils.BrowserUtils = (function () {
         userAgent = userAgent.toLowerCase();
 
         //Browser
-        var operaBrowserParts = /(opr|opera)(?:.*version)?(?:[ \/])?([\w.]+)/.exec(userAgent);
-        var browserParts = /(msie|trident|firefox|chrome|safari)(?:.*version)?(?:[ \/])?([\w.]+)/.exec(userAgent);
-        browser = (operaBrowserParts && operaBrowserParts.length) ? operaBrowserParts[1] : browserParts[1];
-        if (browser === "trident") {
-            browser = _CONSTANTS.BROWSER.INTERNET_EXPLORER;
+        try {
+            var operaBrowserParts = /(opr|opera)(?:.*version)?(?:[ \/])?([\w.]+)/.exec(userAgent);
+            var browserParts = /(msie|trident|firefox|chrome|safari)(?:.*version)?(?:[ \/])?([\w.]+)/.exec(userAgent);
+            browser = (operaBrowserParts && operaBrowserParts.length) ? operaBrowserParts[1] : browserParts[1];
+            if (browser === "trident") {
+                browser = _CONSTANTS.BROWSER.INTERNET_EXPLORER;
 
-            var tridentVersion = String(parseFloat(browserParts[2]) + 4.0);
-            browserVersion = tridentVersion.length === 2 ? tridentVersion + ".0" : tridentVersion;
-        } else if (browser === "opera" || browser === "opr") {
-            browser = "opr";
-            browserVersion = operaBrowserParts[2];
-        } else if (browser === "safari" && userAgent.indexOf("phantomjs") === -1) {
-            /* Chrome For iOS case */
-            if (userAgent.indexOf('crios') !== -1) {
-                browser = _CONSTANTS.BROWSER.CHROME;
-                browserVersion = /(crios\/)((\d|\.)*)/g.exec(userAgent)[2];
+                var tridentVersion = String(parseFloat(browserParts[2]) + 4.0);
+                browserVersion = tridentVersion.length === 2 ? tridentVersion + ".0" : tridentVersion;
+            } else if (browser === "opera" || browser === "opr") {
+                browser = "opr";
+                browserVersion = operaBrowserParts[2];
+            } else if (browser === "safari" && userAgent.indexOf("phantomjs") === -1) {
+                /* Chrome For iOS case */
+                if (userAgent.indexOf('crios') !== -1) {
+                    browser = _CONSTANTS.BROWSER.CHROME;
+                    browserVersion = /(crios\/)((\d|\.)*)/g.exec(userAgent)[2];
+                }
+                /* Normal safari case */
+                else {
+                    browserVersion = /(version)(?:.*version)?(?:[ \/])?([\w.]+)/.exec(userAgent)[2];
+                }
+            } else {
+                browserVersion = browserParts[2];
             }
-            /* Normal safari case */
-            else {
-                browserVersion = /(version)(?:.*version)?(?:[ \/])?([\w.]+)/.exec(userAgent)[2];
-            }
-        } else {
-            browserVersion = browserParts[2];
+        } catch (e) {
+            console.warn("Trouble getting the browser or browser version, check the code or report a bug with the userAgent listed.");
         }
 
         //OS
-        var androidOs = /(android)/.exec(userAgent);
-        os = (androidOs && androidOs.length) ? 'android' : /(mac|win|linux|freebsd|mobile|iphone|ipod|ipad|android|blackberry|j2me|webtv)/.exec(userAgent)[1];
+        try {
+            var androidOs = /(android)/.exec(userAgent);
+            os = (androidOs && androidOs.length) ? 'android' : /(mac|win|linux|freebsd|mobile|iphone|ipod|ipad|android|blackberry|j2me|webtv)/.exec(userAgent)[1];
+        } catch (e) {
+            console.warn("Trouble getting the os, check the code or report a bug with the userAgent listed.");
+            os = null;
+        }
 
         try {
             //OS Version
@@ -56,7 +65,7 @@ Neosavvy.Core.Utils.BrowserUtils = (function () {
                     osVersion = null;
             }
         } catch (error) {
-            console.warn("Trouble getting the os version, check the code or report a bug.");
+            console.warn("Trouble getting the os version, check the code or report a bug with the userAgent listed.");
             osVersion = null;
         }
     }
