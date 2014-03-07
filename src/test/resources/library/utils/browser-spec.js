@@ -7,32 +7,78 @@ describe("Neosavvy.Core.Utils.BrowserUtils", function () {
     describe("browser error", function () {
         it("Should not throw an error on loading a string that causes a browser error", function () {
             expect(function () {
-                Neosavvy.Core.Utils.BrowserUtils.reload("chrome");
+                Neosavvy.Core.Utils.BrowserUtils.reload("peanut");
             }).not.toThrow();
             expect(console.warn).toHaveBeenCalledWith("Trouble getting the browser or browser version, check the code or report a bug with the userAgent listed.");
         });
+
+        it("Should return null for the info().browser", function () {
+            Neosavvy.Core.Utils.BrowserUtils.reload("peanut");
+            expect(Neosavvy.Core.Utils.BrowserUtils.info().browser).toBeNull();
+        });
+
+        it("Should return null for the browser", function () {
+            Neosavvy.Core.Utils.BrowserUtils.reload("peanut");
+            expect(Neosavvy.Core.Utils.BrowserUtils.browser()).toBeNull();
+        });
     });
 
+    describe("browserVersion error", function () {
+        it("Should not throw an error on loading a string that causes a browserVersion error", function () {
+            expect(function () {
+                Neosavvy.Core.Utils.BrowserUtils.reload("opera, version");
+            }).not.toThrow();
+            expect(console.warn).toHaveBeenCalledWith("Trouble getting the browser or browser version, check the code or report a bug with the userAgent listed.");
+        });
 
-    it("Should not throw an error on loading a string that causes a browserVersion error", function () {
-        expect(function () {
-            Neosavvy.Core.Utils.BrowserUtils.reload("opera, version");
-        }).not.toThrow();
-        expect(console.warn).toHaveBeenCalledWith("Trouble getting the browser or browser version, check the code or report a bug with the userAgent listed.");
+        it("Should return null for the info().version", function () {
+            Neosavvy.Core.Utils.BrowserUtils.reload("OPR, Version");
+            expect(Neosavvy.Core.Utils.BrowserUtils.info().browser).toBeNull();
+        });
+
+        it("Should return null for the browserVersion() method", function () {
+            Neosavvy.Core.Utils.BrowserUtils.reload("OPR, Version");
+            expect(Neosavvy.Core.Utils.BrowserUtils.browserVersion()).toBeNull();
+        });
     });
 
-    it("Should not throw an error on loading a string that causes and os error", function () {
-        expect(function () {
-            Neosavvy.Core.Utils.BrowserUtils.reload("mac");
-        }).not.toThrow();
-        expect(console.warn).toHaveBeenCalledWith("Trouble getting the os, check the code or report a bug with the userAgent listed.");
+    describe("os error", function () {
+        it("Should not throw an error on loading a string that causes and os error", function () {
+            expect(function () {
+                Neosavvy.Core.Utils.BrowserUtils.reload("OPR/17932478");
+            }).not.toThrow();
+            expect(console.warn).toHaveBeenCalledWith("Trouble getting the os, check the code or report a bug with the userAgent listed.");
+        });
+
+        it("Should have info().os set to null ", function () {
+            Neosavvy.Core.Utils.BrowserUtils.reload("OPR/17932478");
+            expect(Neosavvy.Core.Utils.BrowserUtils.info().os).toBeNull();
+        });
+
+        it("Should have os() set to null", function () {
+            Neosavvy.Core.Utils.BrowserUtils.reload("OPR/17932478");
+            expect(Neosavvy.Core.Utils.BrowserUtils.os()).toBeNull();
+        });
     });
 
-    it("Should throw an error on loading a string that causes and osVersion error", function () {
-        expect(function () {
-            Neosavvy.Core.Utils.BrowserUtils.reload("mac");
-        }).not.toThrow();
-        expect(console.warn).toHaveBeenCalledWith("Trouble getting the os, check the code or report a bug with the userAgent listed.");
+    describe("osVersion error", function () {
+        it("Should throw an error on loading a string that causes and osVersion error", function () {
+            expect(function () {
+                Neosavvy.Core.Utils.BrowserUtils.reload("OPR/17932478, mac");
+            }).not.toThrow();
+            expect(console.warn).toHaveBeenCalledWith("Trouble getting the os version, check the code or report a bug with the userAgent listed.");
+        });
+
+        it("Should have the info().osVersion set to null", function () {
+            Neosavvy.Core.Utils.BrowserUtils.reload("OPR/17932478, mac");
+            expect(Neosavvy.Core.Utils.BrowserUtils.info().osVersion).toBeNull();
+        });
+
+        it("Should have the osVersion() set to null", function () {
+            Neosavvy.Core.Utils.BrowserUtils.reload("OPR/17932478, mac");
+            expect(Neosavvy.Core.Utils.BrowserUtils.osVersion()).toBeNull();
+        });
+
     });
 
     describe("info", function () {
@@ -175,7 +221,7 @@ describe("Neosavvy.Core.Utils.BrowserUtils", function () {
 
         describe("OPERA", function () {
             beforeEach(function () {
-                Neosavvy.Core.Utils.BrowserUtils.reload("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36 OPR/17.0.1241.53");
+                    Neosavvy.Core.Utils.BrowserUtils.reload("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36 OPR/17.0.1241.53");
             });
 
             it("Should equal the OPERA def when opera userAgent", function () {

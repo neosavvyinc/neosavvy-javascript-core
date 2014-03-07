@@ -8,9 +8,13 @@ Neosavvy.Core.Utils.BrowserUtils = (function () {
     var browser, browserVersion, os, osVersion;
 
     function _load(userAgent) {
+        /* Reset */
+        browser = browserVersion = os = osVersion = null;
+
+        /* Evaluate */
         userAgent = userAgent.toLowerCase();
 
-        //Browser
+        /* Browser, Browser Version */
         try {
             var operaBrowserParts = /(opr|opera)(?:.*version)?(?:[ \/])?([\w.]+)/.exec(userAgent);
             var browserParts = /(msie|trident|firefox|chrome|safari)(?:.*version)?(?:[ \/])?([\w.]+)/.exec(userAgent);
@@ -40,17 +44,16 @@ Neosavvy.Core.Utils.BrowserUtils = (function () {
             console.warn("Trouble getting the browser or browser version, check the code or report a bug with the userAgent listed.");
         }
 
-        //OS
+        /* OS */
         try {
             var androidOs = /(android)/.exec(userAgent);
             os = (androidOs && androidOs.length) ? 'android' : /(mac|win|linux|freebsd|mobile|iphone|ipod|ipad|android|blackberry|j2me|webtv)/.exec(userAgent)[1];
         } catch (e) {
             console.warn("Trouble getting the os, check the code or report a bug with the userAgent listed.");
-            os = null;
         }
 
+        /* OS Version */
         try {
-            //OS Version
             switch (os) {
                 case _CONSTANTS.OS.OSX:
                 case _CONSTANTS.OS.IPHONE:
@@ -66,7 +69,6 @@ Neosavvy.Core.Utils.BrowserUtils = (function () {
             }
         } catch (error) {
             console.warn("Trouble getting the os version, check the code or report a bug with the userAgent listed.");
-            osVersion = null;
         }
     }
 
