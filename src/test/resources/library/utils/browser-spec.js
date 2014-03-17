@@ -639,5 +639,27 @@ describe("Neosavvy.Core.Utils.BrowserUtils", function () {
 
         });
 
+        describe("firefox 27", function () {
+            beforeEach(function () {
+                Neosavvy.Core.Utils.BrowserUtils.reload('Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:27.0) Gecko/20100101 Firefox/27.0');
+            });
+
+            it("Should return true for isFirefox()", function () {
+                expect(Neosavvy.Core.Utils.BrowserUtils.isFirefox()).toBeTruthy();
+            });
+
+            it("Should return true for isOsx()", function () {
+                expect(Neosavvy.Core.Utils.BrowserUtils.isOsx()).toBeTruthy();
+            });
+
+            it("Should return 27.0 for the browserVersion", function () {
+                expect(Neosavvy.Core.Utils.BrowserUtils.browserVersion()).toEqual('27.0');
+            });
+
+            it("Should return 10.8 for osVersion", function () {
+                expect(Neosavvy.Core.Utils.BrowserUtils.osVersion()).toEqual("10.8");
+            });
+        });
+
     });
 });
