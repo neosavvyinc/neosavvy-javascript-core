@@ -1,12 +1,10 @@
 var _ns = _ns || {};
-_ns.Core = _ns.Core || {};
-_ns.Core.Utils = _ns.Core.Utils || {};
 
 /**
  * @class _ns.Core.Utils.DomUtils
  * @static
  **/
-_ns.Core.Utils.DomUtils = (function () {
+_ns.DomUtils = (function () {
     return {
         /**
          * returns an array of DOM elements that contain the passed

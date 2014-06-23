@@ -1,6 +1,4 @@
 var _ns = _ns || {};
-_ns.Core = _ns.Core || {};
-_ns.Core.Utils = _ns.Core.Utils || {};
 
 /**
  * Thanks to philidem on github for this great starting point.
@@ -9,7 +7,7 @@ _ns.Core.Utils = _ns.Core.Utils || {};
  * @class _ns.Core.Utils.UrlUtils
  * @static
  **/
-_ns.Core.Utils.UrlUtils = (function () {
+_ns.UrlUtils = (function () {
 
         function URL(url, queryString) {
             if (url) {

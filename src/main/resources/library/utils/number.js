@@ -1,12 +1,10 @@
 var _ns = _ns || {};
-_ns.Core = _ns.Core || {};
-_ns.Core.Utils = _ns.Core.Utils || {};
 
 /**
- * @class _ns.Core.Utils.NumberUtils
+ * @class _ns.NumberUtils
  * @static
  **/
-_ns.Core.Utils.NumberUtils = (function () {
+_ns.NumberUtils = (function () {
 
     return {
         asOrdinal:function (n) {

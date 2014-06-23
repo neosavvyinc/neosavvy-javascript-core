@@ -1,12 +1,10 @@
 var _ns = _ns || {};
-_ns.Core = _ns.Core || {};
-_ns.Core.Utils = _ns.Core.Utils || {};
 
 /**
  * @class _ns.Core.Utils.MapUtils
  * @static
  **/
-_ns.Core.Utils.MapUtils = (function () {
+_ns.MapUtils = (function () {
     return {
         /**
          * returns the value in map that matches the passed in property.

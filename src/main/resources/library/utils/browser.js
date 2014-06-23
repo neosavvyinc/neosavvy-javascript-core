@@ -1,10 +1,10 @@
 var _ns = _ns || {};
-_ns.Core = _ns.Core || {};
+
 /**
- * @class _ns.Core.Utils.BrowserUtils
+ * @class _ns.BrowserUtils
  * @static
  **/
-_ns.Core.Utils.BrowserUtils = (function () {
+_ns.BrowserUtils = (function () {
     var browser, browserVersion, os, osVersion;
 
     function _load(userAgent) {
@@ -151,5 +151,3 @@ _ns.Core.Utils.BrowserUtils = (function () {
 
     return def;
 })();
-
-_ns.Core.Utils = _ns.Core.Utils || {};

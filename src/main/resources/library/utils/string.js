@@ -1,12 +1,10 @@
 var _ns = _ns || {};
-_ns.Core = _ns.Core || {};
-_ns.Core.Utils = _ns.Core.Utils || {};
 
 /**
  * @class _ns.Core.Utils.StringUtils
  * @static
  **/
-_ns.Core.Utils.StringUtils = (function () {
+_ns.StringUtils = (function () {
     var BLANK_STRING_REGEX = /^\s*$/;
 
     return {

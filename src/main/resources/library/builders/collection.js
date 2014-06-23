@@ -1,12 +1,10 @@
 var _ns = _ns || {};
-_ns.Core = _ns.Core || {};
-_ns.Core.Builders = _ns.Core.Builders || {};
 
 /**
  * @class _ns.Core.Builders.Collection
  * @constructor
  **/
-_ns.Core.Builders.CollectionBuilder = function (collection) {
+_ns.CollectionBuilder = function (collection) {
     if (collection) {
         this.operations = {};
         this.collection = collection;
@@ -14,7 +12,7 @@ _ns.Core.Builders.CollectionBuilder = function (collection) {
         throw "You must pass in a collection as the base upon which to build!";
     }
 };
-_ns.Core.Builders.CollectionBuilder.prototype = {
+_ns.CollectionBuilder.prototype = {
     /**
      * Operates on the collection to nest each item down to the level of the property string specified
      * @param {String} propertyString

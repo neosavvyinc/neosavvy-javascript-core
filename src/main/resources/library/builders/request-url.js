@@ -1,12 +1,10 @@
 var _ns = _ns || {};
-_ns.Core = _ns.Core || {};
-_ns.Core.Builders = _ns.Core.Builders || {};
 
 /**
- * @class _ns.Core.Utils.RequestUrlBuilder
+ * @class _ns.RequestUrlBuilder
  * @constructor
  **/
-_ns.Core.Builders.RequestUrlBuilder = function (baseUrl) {
+_ns.RequestUrlBuilder = function (baseUrl) {
     if (!baseUrl) {
         throw "You must provide a base url for every request url built.";
     }
@@ -14,7 +12,7 @@ _ns.Core.Builders.RequestUrlBuilder = function (baseUrl) {
     this.replacements = {};
     this.baseUrl = baseUrl;
 };
-_ns.Core.Builders.RequestUrlBuilder.prototype = {
+_ns.RequestUrlBuilder.prototype = {
     /**
      * Adds a url parameter style param (key=value) to the url being built. Pass in either a key value pair, or an object with one or many key values.
      * @param {String|Object} key
@@ -24,7 +22,7 @@ _ns.Core.Builders.RequestUrlBuilder.prototype = {
      **/
     addParam: function (key, value) {
         if (typeof(key) === 'object') {
-            if (_ns.Core.Utils.MapUtils.keysDistinct(this.keyValues, key)) {
+            if (_ns.MapUtils.keysDistinct(this.keyValues, key)) {
                 this.keyValues = _.merge(this.keyValues, key);
             } else {
                 throw "You have passed overlapping keys for object arguments."
@@ -51,7 +49,7 @@ _ns.Core.Builders.RequestUrlBuilder.prototype = {
      **/
     paramReplace: function (key, value) {
         if (typeof(key) === 'object') {
-            if (_ns.Core.Utils.MapUtils.keysDistinct(this.replacements, key)) {
+            if (_ns.MapUtils.keysDistinct(this.replacements, key)) {
                 this.replacements = _.merge(this.replacements, key);
             } else {
                 throw "You have passed overlapping keys for object arguments."

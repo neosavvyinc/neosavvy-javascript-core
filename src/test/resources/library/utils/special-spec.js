@@ -1,20 +1,20 @@
-describe("_ns.Core.Utils.SpecialUtils", function () {
+describe("_ns.SpecialUtils", function () {
 
     describe("keepTrying", function () {
         it("Should return null when called with no arguments", function () {
-            expect(_ns.Core.Utils.SpecialUtils.keepTrying()).toBeNull();
+            expect(_ns.SpecialUtils.keepTrying()).toBeNull();
         });
 
         it("Should throw an error when called with an odd number of arguments", function () {
             expect(function () {
-                _ns.Core.Utils.SpecialUtils.keepTrying(function () {
+                _ns.SpecialUtils.keepTrying(function () {
                 }, [], function () {
                 });
             }).toThrow();
         });
 
         it("Should return the value of the first function in the list if it does not throw an error", function () {
-            expect(_ns.Core.Utils.SpecialUtils.keepTrying(
+            expect(_ns.SpecialUtils.keepTrying(
                 function () {
                     return 6;
                 }, [], function () {
@@ -24,7 +24,7 @@ describe("_ns.Core.Utils.SpecialUtils", function () {
         });
 
         it("Should return the value of the second function in the list if the first throws an error", function () {
-            expect(_ns.Core.Utils.SpecialUtils.keepTrying(
+            expect(_ns.SpecialUtils.keepTrying(
                 function () {
                     throw "Some error!";
                 }, [88], function () {
@@ -34,7 +34,7 @@ describe("_ns.Core.Utils.SpecialUtils", function () {
         });
 
         it("Should return the value of n function in the list if 0 >> n - 1 throw errors", function () {
-            expect(_ns.Core.Utils.SpecialUtils.keepTrying(
+            expect(_ns.SpecialUtils.keepTrying(
                 function () {
                     throw "Some error!";
                 }, [88],

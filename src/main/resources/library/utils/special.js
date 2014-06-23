@@ -1,12 +1,10 @@
 var _ns = _ns || {};
-_ns.Core = _ns.Core || {};
-_ns.Core.Utils = _ns.Core.Utils || {};
 
 /**
- * @class _ns.Core.Utils.SpecialUtils
+ * @class _ns.SpecialUtils
  * @static
  **/
-_ns.Core.Utils.SpecialUtils = (function () {
+_ns.SpecialUtils = (function () {
     return {
         /**
          * Allows the developer to functionally stack up methods that may fail and move on to the next in that case.

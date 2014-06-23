@@ -1,12 +1,10 @@
 var _ns = _ns || {};
-_ns.Core = _ns.Core || {};
-_ns.Core.Utils = _ns.Core.Utils || {};
 
 /**
  * @class _ns.Core.Utils.RegexUtils
  * @static
  **/
-_ns.Core.Utils.RegexUtils = (function () {
+_ns.RegexUtils = (function () {
     var EMAIL_REGEX = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
     return {
         matchStringAndLeadup: function(str) {

@@ -1,12 +1,11 @@
 var _ns = _ns || {};
-_ns.Core = _ns.Core || {};
-_ns.Core.Builders = _ns.Core.Builders || {};
+
 
 /**
  * @class _ns.Core.Builders.StringBuilder
  * @constructor
  **/
-_ns.Core.Builders.StringBuilder = function (input) {
+_ns.StringBuilder = function (input) {
     //Nothing defined here yet
     if (input) {
         this.input = input;
@@ -16,7 +15,7 @@ _ns.Core.Builders.StringBuilder = function (input) {
     }
 };
 
-_ns.Core.Builders.StringBuilder.prototype = {
+_ns.StringBuilder.prototype = {
     /**
      * Converts any camel case in a string to dash case: myNameMike >> my-name-mike.
      * @returns _ns.Core.Builders.StringBuilder

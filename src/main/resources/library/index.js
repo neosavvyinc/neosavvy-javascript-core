@@ -5,27 +5,30 @@
 
 var _ns = _ns || {};
 
+
+/* Backward compatibility*/
+
 /**
- * @class _ns
+ * @class Neosavvy
  * @static
  **/
 var Neosavvy = _ns;
 
 /**
- * @class _ns.Core
+ * @class Neosavvy.Core
  * @static
  **/
-_ns.Core = _ns.Core || {};
+Neosavvy.Core = _ns || {};
 
 /**
- * @class _ns.Core.Utils
+ * @class Neosavvy.Core.Utils
  * @static
  **/
-_ns.Core.Utils = _ns.Core.Utils || {};
+Neosavvy.Core.Utils = _ns || {};
 
 /**
- * @class _ns.Core.Builders
+ * @class Neosavvy.Core.Builders
  * @static
  **/
-_ns.Core.Builders = _ns.Core.Builders || {};
+Neosavvy.Core.Builders = _ns || {};
 
