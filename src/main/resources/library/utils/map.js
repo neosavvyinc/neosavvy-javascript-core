@@ -1,12 +1,12 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+var _ns = _ns || {};
+_ns.Core = _ns.Core || {};
+_ns.Core.Utils = _ns.Core.Utils || {};
 
 /**
- * @class Neosavvy.Core.Utils.MapUtils
+ * @class _ns.Core.Utils.MapUtils
  * @static
  **/
-Neosavvy.Core.Utils.MapUtils = (function () {
+_ns.Core.Utils.MapUtils = (function () {
     return {
         /**
          * returns the value in map that matches the passed in property.

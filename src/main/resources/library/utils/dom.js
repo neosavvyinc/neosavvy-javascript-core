@@ -1,12 +1,12 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+var _ns = _ns || {};
+_ns.Core = _ns.Core || {};
+_ns.Core.Utils = _ns.Core.Utils || {};
 
 /**
- * @class Neosavvy.Core.Utils.DomUtils
+ * @class _ns.Core.Utils.DomUtils
  * @static
  **/
-Neosavvy.Core.Utils.DomUtils = (function () {
+_ns.Core.Utils.DomUtils = (function () {
     return {
         /**
          * returns an array of DOM elements that contain the passed

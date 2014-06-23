@@ -1,10 +1,10 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
+var _ns = _ns || {};
+_ns.Core = _ns.Core || {};
 /**
- * @class Neosavvy.Core.Utils.BrowserUtils
+ * @class _ns.Core.Utils.BrowserUtils
  * @static
  **/
-Neosavvy.Core.Utils.BrowserUtils = (function () {
+_ns.Core.Utils.BrowserUtils = (function () {
     var browser, browserVersion, os, osVersion;
 
     function _load(userAgent) {
@@ -152,4 +152,4 @@ Neosavvy.Core.Utils.BrowserUtils = (function () {
     return def;
 })();
 
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+_ns.Core.Utils = _ns.Core.Utils || {};

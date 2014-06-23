@@ -1,15 +1,15 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+var _ns = _ns || {};
+_ns.Core = _ns.Core || {};
+_ns.Core.Utils = _ns.Core.Utils || {};
 
 /**
  * Thanks to philidem on github for this great starting point.
  * https://github.com/philidem/url-util-js/blob/master/test/url-util-spec.js
  *
- * @class Neosavvy.Core.Utils.UrlUtils
+ * @class _ns.Core.Utils.UrlUtils
  * @static
  **/
-Neosavvy.Core.Utils.UrlUtils = (function () {
+_ns.Core.Utils.UrlUtils = (function () {
 
         function URL(url, queryString) {
             if (url) {

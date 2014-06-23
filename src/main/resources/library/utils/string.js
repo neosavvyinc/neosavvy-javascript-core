@@ -1,12 +1,12 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+var _ns = _ns || {};
+_ns.Core = _ns.Core || {};
+_ns.Core.Utils = _ns.Core.Utils || {};
 
 /**
- * @class Neosavvy.Core.Utils.StringUtils
+ * @class _ns.Core.Utils.StringUtils
  * @static
  **/
-Neosavvy.Core.Utils.StringUtils = (function () {
+_ns.Core.Utils.StringUtils = (function () {
     var BLANK_STRING_REGEX = /^\s*$/;
 
     return {

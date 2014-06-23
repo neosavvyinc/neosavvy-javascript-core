@@ -1,12 +1,12 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Builders = Neosavvy.Core.Builders || {};
+var _ns = _ns || {};
+_ns.Core = _ns.Core || {};
+_ns.Core.Builders = _ns.Core.Builders || {};
 
 /**
- * @class Neosavvy.Core.Utils.RequestUrlBuilder
+ * @class _ns.Core.Utils.RequestUrlBuilder
  * @constructor
  **/
-Neosavvy.Core.Builders.RequestUrlBuilder = function (baseUrl) {
+_ns.Core.Builders.RequestUrlBuilder = function (baseUrl) {
     if (!baseUrl) {
         throw "You must provide a base url for every request url built.";
     }
@@ -14,17 +14,17 @@ Neosavvy.Core.Builders.RequestUrlBuilder = function (baseUrl) {
     this.replacements = {};
     this.baseUrl = baseUrl;
 };
-Neosavvy.Core.Builders.RequestUrlBuilder.prototype = {
+_ns.Core.Builders.RequestUrlBuilder.prototype = {
     /**
      * Adds a url parameter style param (key=value) to the url being built. Pass in either a key value pair, or an object with one or many key values.
      * @param {String|Object} key
      * @param {String} value
-     * @returns Neosavvy.Core.Builders.RequestUrlBuilder
+     * @returns _ns.Core.Builders.RequestUrlBuilder
      * @method addParam
      **/
     addParam: function (key, value) {
         if (typeof(key) === 'object') {
-            if (Neosavvy.Core.Utils.MapUtils.keysDistinct(this.keyValues, key)) {
+            if (_ns.Core.Utils.MapUtils.keysDistinct(this.keyValues, key)) {
                 this.keyValues = _.merge(this.keyValues, key);
             } else {
                 throw "You have passed overlapping keys for object arguments."
@@ -46,12 +46,12 @@ Neosavvy.Core.Builders.RequestUrlBuilder.prototype = {
      * Replaces a key in the url with the value specified. Pass in a key value pair as separate arguments or an object with one or many key value pairs defined.
      * @param {String|Object} key
      * @param {String} value
-     * @returns Neosavvy.Core.Builders.RequestUrlBuilder
+     * @returns _ns.Core.Builders.RequestUrlBuilder
      * @method paramReplace
      **/
     paramReplace: function (key, value) {
         if (typeof(key) === 'object') {
-            if (Neosavvy.Core.Utils.MapUtils.keysDistinct(this.replacements, key)) {
+            if (_ns.Core.Utils.MapUtils.keysDistinct(this.replacements, key)) {
                 this.replacements = _.merge(this.replacements, key);
             } else {
                 throw "You have passed overlapping keys for object arguments."

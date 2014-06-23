@@ -1,24 +1,31 @@
 /**
- * @class Neosavvy
+ * @class _ns
  * @static
  **/
-var Neosavvy = Neosavvy || {};
+
+var _ns = _ns || {};
 
 /**
- * @class Neosavvy.Core
+ * @class _ns
  * @static
  **/
-Neosavvy.Core = Neosavvy.Core || {};
+var Neosavvy = _ns;
 
 /**
- * @class Neosavvy.Core.Utils
+ * @class _ns.Core
  * @static
  **/
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+_ns.Core = _ns.Core || {};
 
 /**
- * @class Neosavvy.Core.Builders
+ * @class _ns.Core.Utils
  * @static
  **/
-Neosavvy.Core.Builders = Neosavvy.Core.Builders || {};
+_ns.Core.Utils = _ns.Core.Utils || {};
+
+/**
+ * @class _ns.Core.Builders
+ * @static
+ **/
+_ns.Core.Builders = _ns.Core.Builders || {};
 
