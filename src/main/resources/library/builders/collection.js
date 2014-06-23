@@ -1,7 +1,7 @@
 var _ns = _ns || {};
 
 /**
- * @class _ns.Core.Builders.Collection
+ * @class _ns.Collection
  * @constructor
  **/
 _ns.CollectionBuilder = function (collection) {
@@ -16,7 +16,7 @@ _ns.CollectionBuilder.prototype = {
     /**
      * Operates on the collection to nest each item down to the level of the property string specified
      * @param {String} propertyString
-     * @returns _ns.Core.Builders.Collection
+     * @returns _ns.Collection
      * @method nest
      **/
     nest: function (propertyString) {

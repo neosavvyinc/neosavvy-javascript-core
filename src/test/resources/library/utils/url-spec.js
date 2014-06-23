@@ -3,7 +3,7 @@ describe("url utils", function () {
     describe("URL", function () {
 
         it("Should be able to construct a url with the url and queryString", function () {
-            new _ns.Core.Utils.UrlUtils.URL("http://www.neosavvy.com", "id=50");
+            new _ns.UrlUtils.URL("http://www.neosavvy.com", "id=50");
         });
 
         it("Should throw an error when no url is provided", function () {

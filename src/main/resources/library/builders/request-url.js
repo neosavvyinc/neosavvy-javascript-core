@@ -17,7 +17,7 @@ _ns.RequestUrlBuilder.prototype = {
      * Adds a url parameter style param (key=value) to the url being built. Pass in either a key value pair, or an object with one or many key values.
      * @param {String|Object} key
      * @param {String} value
-     * @returns _ns.Core.Builders.RequestUrlBuilder
+     * @returns _ns.RequestUrlBuilder
      * @method addParam
      **/
     addParam: function (key, value) {
@@ -44,7 +44,7 @@ _ns.RequestUrlBuilder.prototype = {
      * Replaces a key in the url with the value specified. Pass in a key value pair as separate arguments or an object with one or many key value pairs defined.
      * @param {String|Object} key
      * @param {String} value
-     * @returns _ns.Core.Builders.RequestUrlBuilder
+     * @returns _ns.RequestUrlBuilder
      * @method paramReplace
      **/
     paramReplace: function (key, value) {

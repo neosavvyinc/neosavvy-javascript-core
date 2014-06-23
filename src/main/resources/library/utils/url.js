@@ -4,7 +4,7 @@ var _ns = _ns || {};
  * Thanks to philidem on github for this great starting point.
  * https://github.com/philidem/url-util-js/blob/master/test/url-util-spec.js
  *
- * @class _ns.Core.Utils.UrlUtils
+ * @class _ns.UrlUtils
  * @static
  **/
 _ns.UrlUtils = (function () {

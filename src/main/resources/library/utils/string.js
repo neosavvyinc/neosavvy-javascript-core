@@ -1,7 +1,7 @@
 var _ns = _ns || {};
 
 /**
- * @class _ns.Core.Utils.StringUtils
+ * @class _ns.StringUtils
  * @static
  **/
 _ns.StringUtils = (function () {

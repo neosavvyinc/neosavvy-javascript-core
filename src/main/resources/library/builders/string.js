@@ -2,7 +2,7 @@ var _ns = _ns || {};
 
 
 /**
- * @class _ns.Core.Builders.StringBuilder
+ * @class _ns.StringBuilder
  * @constructor
  **/
 _ns.StringBuilder = function (input) {
@@ -18,7 +18,7 @@ _ns.StringBuilder = function (input) {
 _ns.StringBuilder.prototype = {
     /**
      * Converts any camel case in a string to dash case: myNameMike >> my-name-mike.
-     * @returns _ns.Core.Builders.StringBuilder
+     * @returns _ns.StringBuilder
      * @method camelToDash
      **/
     camelToDash: function () {
@@ -28,7 +28,7 @@ _ns.StringBuilder.prototype = {
     },
     /**
      * Changes a standard constant syntax to standard dash syntax: MY_NAME_MIKE >> my-name-mike.
-     * @returns _ns.Core.Builders.StringBuilder
+     * @returns _ns.StringBuilder
      * @method constantToDash
      **/
     constantToDash: function () {
@@ -37,7 +37,7 @@ _ns.StringBuilder.prototype = {
     },
     /**
      * Changes the string to proper case, first letters of words capitalized.
-     * @returns _ns.Core.Builders.StringBuilder
+     * @returns _ns.StringBuilder
      * @method properCase
      **/
     properCase: function () {

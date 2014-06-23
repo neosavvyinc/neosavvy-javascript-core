@@ -1,7 +1,7 @@
 var _ns = _ns || {};
 
 /**
- * @class _ns.Core.Utils.MapUtils
+ * @class _ns.MapUtils
  * @static
  **/
 _ns.MapUtils = (function () {

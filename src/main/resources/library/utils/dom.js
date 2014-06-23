@@ -1,7 +1,7 @@
 var _ns = _ns || {};
 
 /**
- * @class _ns.Core.Utils.DomUtils
+ * @class _ns.DomUtils
  * @static
  **/
 _ns.DomUtils = (function () {

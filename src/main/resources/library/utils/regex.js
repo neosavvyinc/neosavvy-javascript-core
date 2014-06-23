@@ -1,7 +1,7 @@
 var _ns = _ns || {};
 
 /**
- * @class _ns.Core.Utils.RegexUtils
+ * @class _ns.RegexUtils
  * @static
  **/
 _ns.RegexUtils = (function () {

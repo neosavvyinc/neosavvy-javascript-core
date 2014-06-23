@@ -1,7 +1,7 @@
 var _ns = _ns || {};
 
 /**
- * @class _ns.Core.Utils.SpecialUtils
+ * @class _ns.SpecialUtils
  * @static
  **/
 _ns.FunctionalUtils = (function () {
