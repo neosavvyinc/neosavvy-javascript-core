@@ -1,12 +1,10 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+var _ns = _ns || {};
 
 /**
- * @class Neosavvy.Core.Utils.NumberUtils
+ * @class _ns.NumberUtils
  * @static
  **/
-Neosavvy.Core.Utils.NumberUtils = (function () {
+_ns.NumberUtils = (function () {
 
     return {
         asOrdinal:function (n) {

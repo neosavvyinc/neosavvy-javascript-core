@@ -1,12 +1,10 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+var _ns = _ns || {};
 
 /**
- * @class Neosavvy.Core.Utils.CollectionUtils
+ * @class _ns.CollectionUtils
  * @static
  **/
-Neosavvy.Core.Utils.CollectionUtils = (function () {
+_ns.CollectionUtils = (function () {
     return {
         /**
          * does a thing...
@@ -17,7 +15,7 @@ Neosavvy.Core.Utils.CollectionUtils = (function () {
         itemByProperty: function (collection, property, value) {
             if (collection && collection.length && value) {
                 for (var i = 0; i < collection.length; i++) {
-                    var found = Neosavvy.Core.Utils.MapUtils.get(collection[i], property);
+                    var found = _ns.MapUtils.get(collection[i], property);
                     if (found === value) {
                         return collection[i];
                     }
@@ -67,7 +65,7 @@ Neosavvy.Core.Utils.CollectionUtils = (function () {
             var map = {};
             if (collection && collection.length) {
                 for (var i = 0; i < collection.length; i++) {
-                    map[String(Neosavvy.Core.Utils.MapUtils.get(collection[i], properties))] = collection[i];
+                    map[String(_ns.MapUtils.get(collection[i], properties))] = collection[i];
                 }
             }
             return map;
@@ -83,12 +81,12 @@ Neosavvy.Core.Utils.CollectionUtils = (function () {
         containMatchByProperty: function (collectionA, collectionB, propertyName) {
             if (collectionA && collectionB && collectionA.length && collectionB.length) {
                 var compare = collectionB.map(function (item) {
-                    return Neosavvy.Core.Utils.MapUtils.get(item, propertyName);
+                    return _ns.MapUtils.get(item, propertyName);
                 });
 
                 var item;
                 for (var i = 0; i < collectionA.length; i++) {
-                    item = Neosavvy.Core.Utils.MapUtils.get(collectionA[i], propertyName);
+                    item = _ns.MapUtils.get(collectionA[i], propertyName);
                     if (item !== undefined &&
                         compare.indexOf(item) !== -1) {
                         return true;
@@ -108,12 +106,12 @@ Neosavvy.Core.Utils.CollectionUtils = (function () {
         collectionContainsAllOtherItems: function (collection, otherItems, propertyName) {
             if (collection && collection.length && otherItems && otherItems.length) {
                 var collectionProperties = collection.map(function (item) {
-                    return Neosavvy.Core.Utils.MapUtils.get(item, propertyName);
+                    return _ns.MapUtils.get(item, propertyName);
                 });
 
                 var item;
                 for (var i = 0; i < otherItems.length; i++) {
-                    item = typeof otherItems[i] === 'object' ? Neosavvy.Core.Utils.MapUtils.get(otherItems[i], propertyName) : undefined;
+                    item = typeof otherItems[i] === 'object' ? _ns.MapUtils.get(otherItems[i], propertyName) : undefined;
                     if (item === undefined && collectionProperties.indexOf(item) === -1) {
                         return false;
                     }

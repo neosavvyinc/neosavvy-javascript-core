@@ -1,12 +1,10 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+var _ns = _ns || {};
 
 /**
- * @class Neosavvy.Core.Utils.SpecialUtils
+ * @class _ns.SpecialUtils
  * @static
  **/
-Neosavvy.Core.Utils.SpecialUtils = (function () {
+_ns.SpecialUtils = (function () {
     return {
         /**
          * Allows the developer to functionally stack up methods that may fail and move on to the next in that case.
