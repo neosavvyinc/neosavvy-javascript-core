@@ -1,17 +1,17 @@
-describe("_ns.RegexUtils", function () {
+describe("RegexUtils", function () {
 
     describe("matchStringAndLeadup", function () {
 
         it("Should return undefined for an undefined string", function () {
-            expect(_ns.RegexUtils.matchStringAndLeadup()).toBeUndefined();
+            expect(_ns.matchStringAndLeadup()).toBeUndefined();
         });
 
         it("Should return undefined for an empty string", function () {
-            expect(_ns.RegexUtils.matchStringAndLeadup("")).toBeUndefined();
+            expect(_ns.matchStringAndLeadup("")).toBeUndefined();
         });
 
         it("Should return a regex that can match a string and every leadup word", function () {
-            var re = _ns.RegexUtils.matchStringAndLeadup("Morton Shapiro");
+            var re = _ns.matchStringAndLeadup("Morton Shapiro");
             expect(re.test("M")).toBeTruthy();
             expect(re.test("N")).toBeFalsy();
             expect(re.test("Mo")).toBeTruthy();
@@ -29,7 +29,7 @@ describe("_ns.RegexUtils", function () {
         });
 
         it("Should be case insensitive", function () {
-            var re = _ns.RegexUtils.matchStringAndLeadup("Morton Shapiro");
+            var re = _ns.matchStringAndLeadup("Morton Shapiro");
             expect(re.test("m")).toBeTruthy();
             expect(re.test("n")).toBeFalsy();
             expect(re.test("mo")).toBeTruthy();
@@ -49,27 +49,27 @@ describe("_ns.RegexUtils", function () {
 
     describe("isEmail", function () {
         it("Should return true for a valid email", function () {
-            expect(_ns.RegexUtils.isEmail("tewen@_ns.com")).toBeTruthy();
+            expect(_ns.isEmail("tewen@_ns.com")).toBeTruthy();
         });
 
         it("Should return true for other valid emails with weirder suffix", function () {
-            expect(_ns.RegexUtils.isEmail("mike.howard@worldbiz.me")).toBeTruthy();
+            expect(_ns.isEmail("mike.howard@worldbiz.me")).toBeTruthy();
         });
 
         it("Should return false for missing @ signs", function () {
-            expect(_ns.RegexUtils.isEmail("someone&earthlink.net")).toBeFalsy();
+            expect(_ns.isEmail("someone&earthlink.net")).toBeFalsy();
         });
 
         it("Should return false with spaces", function () {
-            expect(_ns.RegexUtils.isEmail("some name of a@comcastic.comc")).toBeFalsy();
+            expect(_ns.isEmail("some name of a@comcastic.comc")).toBeFalsy();
         });
 
         it("Should return false when the string is null", function () {
-            expect(_ns.RegexUtils.isEmail(null)).toBeFalsy();
+            expect(_ns.isEmail(null)).toBeFalsy();
         });
 
         it("Should return false when the string is undefined", function () {
-            expect(_ns.RegexUtils.isEmail(undefined)).toBeFalsy();
+            expect(_ns.isEmail(undefined)).toBeFalsy();
         });
     });
 

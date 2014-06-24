@@ -6,7 +6,7 @@
 var _ns = _ns || {};
 
 
-/* Backward compatibility*/
+/* Ensuring backward compatibility*/
 
 /**
  * @class Neosavvy

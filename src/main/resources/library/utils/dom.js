@@ -1,10 +1,10 @@
 var _ns = _ns || {};
 
 /**
- * @class _ns.DomUtils
+ * @class DomUtils
  * @static
  **/
-_ns.DomUtils = (function () {
+var DomUtils = (function () {
     return {
         /**
          * returns an array of DOM elements that contain the passed
@@ -28,3 +28,8 @@ _ns.DomUtils = (function () {
         }
     };
 })();
+
+_.merge(_ns, DomUtils);
+
+//For backward compatibility
+_ns.DomUtils = DomUtils;

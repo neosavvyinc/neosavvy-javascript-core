@@ -115,8 +115,6 @@ new _ns.StringBuilder(
 "My Incorrect Case"
 ```
 
-## _ns
-
 ### BrowserUtils
 
 Browser and user agent info.
@@ -124,50 +122,50 @@ Browser and user agent info.
 ```JavaScript
 /* Full Info Hash */
 
-_ns.BrowserUtils.info()
+_ns.info()
 
 {"browser":"chrome","browserVersion":"32.0.1700.107","os":"mac","osVersion":"10.8.5"}
 
 /* Individual Methods */
 
-_ns.BrowserUtils.browser()
+_ns.browser()
 
 "chrome"
 
-_ns.BrowserUtils.browserVersion()
+_ns.browserVersion()
 
 "32.0.1700.107"
 
-_ns.BrowserUtils.os()
+_ns.os()
 
 "mac"
 
-_ns.BrowserUtils.osVersion()
+_ns.osVersion()
 
 "10.8.5"
 
 /* 'is' Methods, Available For All Proper Cased Constants */
 
-_ns.BrowserUtils.isChrome()
+_ns.isChrome()
 
 true
 
-_ns.BrowserUtils.isOsx()
+_ns.isOsx()
 
 true
 
-_ns.BrowserUtils.isFirefox()
+_ns.isFirefox()
 
 false
 
-_ns.BrowserUtils.isWindows()
+_ns.isWindows()
 
 false
 
 
 /* Constants */
 
-_ns.BrowserUtils.CONSTANTS.OS
+_ns.CONSTANTS.OS
 
 {
   OSX: "mac",
@@ -200,7 +198,7 @@ _ns.BrowserUtils.CONSTANTS.BROWSER
 Get an item from a collection, by a property string.
 
 ```JavaScript
-_ns.CollectionUtils.itemByProperty(
+_ns.itemByProperty(
   [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}],
   "fruit.id",
   7)
@@ -211,7 +209,7 @@ _ns.CollectionUtils.itemByProperty(
 Update an item in a collection from a single property.
 
 ```JavaScript
-_ns.CollectionUtils.updateByProperty(
+_ns.updateByProperty(
   [{id: 6, name: "Apple"}, {id: 7, name: "Pear"}],
   {id: 7, name: "Orange"},
   "id")
@@ -222,7 +220,7 @@ _ns.CollectionUtils.updateByProperty(
 Remove an item from a single property.
 
 ```JavaScript
-_ns.CollectionUtils.removeByProperty(
+_ns.removeByProperty(
   [{id: 6, name: "Apple"}, {id: 7, name: "Pear"}],
   {id: 7},
   "id")
@@ -233,7 +231,7 @@ _ns.CollectionUtils.removeByProperty(
 A unique map by property value.
 
 ```JavaScript
-_ns.CollectionUtils.uniqueMap(
+_ns.uniqueMap(
   [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}],
   "fruit.name")
 
@@ -246,14 +244,14 @@ _ns.CollectionUtils.uniqueMap(
 A match for a single property contained in both collections.
 
 ```JavaScript
-_ns.CollectionUtils.containMatchByProperty(
+_ns.containMatchByProperty(
   [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}],
   [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 7, name: "Pear"}}]
   "fruit.name")
 
 true
 
-_ns.CollectionUtils.containMatchByProperty(
+_ns.containMatchByProperty(
   [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}],
   [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 8, name: "Plum"}}]
   "fruit.name")
@@ -264,14 +262,14 @@ false
 Check to see if collection contains another collection as subset. Non order specific.
 
 ```JavaScript
-_ns.CollectionUtils.collectionContainsAllOtherItems(
+_ns.collectionContainsAllOtherItems(
   [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}, {fruit: {id: 5, name: "Orange"}}],
   [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 7, name: "Pear"}}]
   "fruit.id")
 
 true
 
-_ns.CollectionUtils.collectionContainsAllOtherItems(
+_ns.collectionContainsAllOtherItems(
   [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}],
   [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 8, name: "Plum"}}]
   "fruit.name")
@@ -282,14 +280,14 @@ false
 Check to see if two collections contain the same values, order does not matter.
 
 ```JavaScript
-_ns.CollectionUtils.containsExclusively(
+_ns.containsExclusively(
   [{fruit: {id: 7, name: "Pear"}}, {fruit: {id: 5, name: "Orange"}}],
   [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 7, name: "Pear"}}]
   "fruit.id")
 
 true
 
-_ns.CollectionUtils.containsExclusively(
+_ns.containsExclusively(
   [{fruit: {id: 8, name: "Plum"}}, {fruit: {id: 7, name: "Pear"}}, {fruit: {id: 5, name: "Orange"}}],
   [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 8, name: "Plum"}}]
   "fruit.name")
@@ -302,7 +300,7 @@ false
 Get all the elements with the attribute of value.
 
 ```JavaScript
-_ns.DomUtils.getElementsByAttribute("input", "type", "submit")
+_ns.getElementsByAttribute("input", "type", "submit")
 
 /* Returns native submit elements */
 
@@ -315,13 +313,13 @@ Try to call a function, doesn't fail if the object is not there.
 ```JavaScript
 var possiblyBlankArray = ["Terry", "Jim", "Willis"];
 
-_ns.FunctionalUtils.tryCall(possiblyBlankArray, 'join', [', '], 'No Names Provided');
+_ns.tryCall(possiblyBlankArray, 'join', [', '], 'No Names Provided');
 
 'Terry, Jim, Willis'
 
 possiblyBlankArray = null;
 
-_ns.FunctionalUtils.tryCall(possiblyBlankArray, 'join', [', '], 'No Names Provided');
+_ns.tryCall(possiblyBlankArray, 'join', [', '], 'No Names Provided');
 
 'No Names Provided'
 
@@ -332,14 +330,14 @@ _ns.FunctionalUtils.tryCall(possiblyBlankArray, 'join', [', '], 'No Names Provid
 Get a property string off of a hash.
 
 ```JavaScript
-_ns.MapUtils.get(
+_ns.get(
   {fruit: {name: {first: "Pear"}}}, "fruit.name.first")
 
 "Pear"
 
 /* Fallback for when the property is not found */
 
-_ns.MapUtils.get(
+_ns.get(
   {fruit: {name: {first: "Pear"}}}, "fruit.otherName.last")
 
 undefined
@@ -348,14 +346,14 @@ undefined
 Get up to a length of 10 properties, no loops, more performant.
 
 ```JavaScript
-_ns.MapUtils.highPerformanceGet(
+_ns.highPerformanceGet(
   {fruit: {name: {first: "Pear"}}}, "fruit.name.first")
 
 "Pear"
 
 /* Fallback for when the property is not found */
 
-_ns.MapUtils.highPerformanceGet(
+_ns.highPerformanceGet(
   {fruit: {name: {first: "Pear"}}}, "fruit.otherName.last")
 
 undefined
@@ -366,7 +364,7 @@ Apply a value to an object via string.
 ```JavaScript
 var val = {names: {first: "Stein"};
 
-_ns.MapUtils.applyTo(val, "names.last", "Malloy")
+_ns.applyTo(val, "names.last", "Malloy")
 
 /* Updates Val */
 
@@ -377,11 +375,11 @@ _ns.MapUtils.applyTo(val, "names.last", "Malloy")
 Determine if the keys in multiple hashes are distinct.
 
 ```JavaScript
-_ns.MapUtils.keysDistinct({whoomp: 'there it is'}, {whoomp: 'here it goes'})
+_ns.keysDistinct({whoomp: 'there it is'}, {whoomp: 'here it goes'})
 
 false
 
-_ns.MapUtils.keysDistinct({whoomp: 'there it is'}, {tagTeam: 'back again'})
+_ns.keysDistinct({whoomp: 'there it is'}, {tagTeam: 'back again'})
 
 true
 
@@ -392,11 +390,11 @@ true
 Format number to ordinal string.
 
 ```JavaScript
-_ns.NumberUtils.asOrdinal(1)
+_ns.asOrdinal(1)
 
 "1st"
 
-_ns.NumberUtils.asOrdinal(25)
+_ns.asOrdinal(25)
 
 "25th"
 ```
@@ -404,11 +402,11 @@ _ns.NumberUtils.asOrdinal(25)
 Round up a float.
 
 ```JavaScript
-_ns.NumberUtils.roundUpIfFloat(1.22)
+_ns.roundUpIfFloat(1.22)
 
 "2"
 
-_ns.NumberUtils.roundUpIfFloat(-37.00001)
+_ns.roundUpIfFloat(-37.00001)
 
 "-38"
 ```
@@ -416,11 +414,11 @@ _ns.NumberUtils.roundUpIfFloat(-37.00001)
 Leading zeroes. Number string.
 
 ```JavaScript
-_ns.NumberUtils.leadingZeroes(18, 6)
+_ns.leadingZeroes(18, 6)
 
 "000018"
 
-_ns.NumberUtils.leadingZeroes(-11.923, 4)
+_ns.leadingZeroes(-11.923, 4)
 
 "-0011.923"
 ```
@@ -430,7 +428,7 @@ _ns.NumberUtils.leadingZeroes(-11.923, 4)
 Match a string and all the characters leading up to it.
 
 ```JavaScript
-_ns.RegexUtils.matchStringAndLeadup("House")
+_ns.matchStringAndLeadup("House")
 
 /* Returns regex that matches h, H, ho, Ho, hou, Hou, etc. */
 ```
@@ -438,7 +436,7 @@ _ns.RegexUtils.matchStringAndLeadup("House")
 Check if a string is an email.
 
 ```JavaScript
-_ns.RegexUtils.isEmail("contact@neosavvy.com")
+_ns.isEmail("contact@neosavvy.com")
 
 true
 ```
@@ -455,7 +453,7 @@ var f2 = function(a) {
   return a;
 };
 
-_ns.SpecialUtils.keepTrying(f1, [], f2, ["First Argument"]);
+_ns.keepTrying(f1, [], f2, ["First Argument"]);
 
 "First Argument"
 ```
@@ -465,15 +463,15 @@ _ns.SpecialUtils.keepTrying(f1, [], f2, ["First Argument"]);
 Check if a string or number is blank, returns true for undefined, null, "" and "    ", etc.
 
 ```JavaScript
-_ns.StringUtils.isBlank(" ")
+_ns.isBlank(" ")
 
 true
 
-_ns.StringUtils.isBlank(undefined)
+_ns.isBlank(undefined)
 
 true
 
-_ns.StringUtils.isBlank(0)
+_ns.isBlank(0)
 
 false
 ```
@@ -483,7 +481,7 @@ false
 ```JavaScript
 /* Create Url Objects */
 
-var url = _ns.UrlUtils.parse("http://www.google.com:8888/api?param=56");
+var url = _ns.parse("http://www.google.com:8888/api?param=56");
 
 url.getHost()
 
@@ -516,14 +514,14 @@ url.toString()
 
 /* Create URL Objects Using Constructor */
 
-var url = new _ns.UrlUtils.URL("http://www.google.com:8888/api?param=56");
+var url = new _ns.URL("http://www.google.com:8888/api?param=56");
 
 /* All the same methods are implemented */
 
 
 /* Create QueryString Objects */
 
-var queryString = new _ns.UrlUtils.QueryString("param=78&otherParam=cheese");
+var queryString = new _ns.QueryString("param=78&otherParam=cheese");
 
 /* Also implements parse, get, set, remove, add */
 

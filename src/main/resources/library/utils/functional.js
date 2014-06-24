@@ -1,10 +1,10 @@
 var _ns = _ns || {};
 
 /**
- * @class _ns.SpecialUtils
+ * @class FunctionalUtils
  * @static
  **/
-_ns.FunctionalUtils = (function () {
+var FunctionalUtils = (function () {
     return {
         /**
          * Allows the developer to functionally stack up methods that may fail and move on to the next in that case.
@@ -21,3 +21,8 @@ _ns.FunctionalUtils = (function () {
         }
     }
 })();
+
+_.merge(_ns, FunctionalUtils);
+
+//For backward compatibility
+_ns.FunctionalUtils = FunctionalUtils;

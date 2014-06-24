@@ -1,10 +1,10 @@
 var _ns = _ns || {};
 
 /**
- * @class _ns.NumberUtils
+ * @class NumberUtils
  * @static
  **/
-_ns.NumberUtils = (function () {
+var NumberUtils = (function () {
 
     return {
         asOrdinal:function (n) {
@@ -45,3 +45,8 @@ _ns.NumberUtils = (function () {
     }
 
 })();
+
+_.merge(_ns, NumberUtils);
+
+//For backward compatibility
+_ns.NumberUtils = NumberUtils;

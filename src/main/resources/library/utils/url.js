@@ -4,10 +4,10 @@ var _ns = _ns || {};
  * Thanks to philidem on github for this great starting point.
  * https://github.com/philidem/url-util-js/blob/master/test/url-util-spec.js
  *
- * @class _ns.UrlUtils
+ * @class UrlUtils
  * @static
  **/
-_ns.UrlUtils = (function () {
+var UrlUtils = (function () {
 
         function URL(url, queryString) {
             if (url) {
@@ -429,3 +429,8 @@ _ns.UrlUtils = (function () {
             }
         }
 })();
+
+_.merge(_ns, UrlUtils);
+
+//For backward compatibility
+_ns.UrlUtils = UrlUtils;

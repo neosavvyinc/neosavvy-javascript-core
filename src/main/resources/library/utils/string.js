@@ -1,10 +1,10 @@
 var _ns = _ns || {};
 
 /**
- * @class _ns.StringUtils
+ * @class StringUtils
  * @static
  **/
-_ns.StringUtils = (function () {
+var StringUtils = (function () {
     var BLANK_STRING_REGEX = /^\s*$/;
 
     return {
@@ -21,3 +21,8 @@ _ns.StringUtils = (function () {
         }
     }
 })();
+
+_.merge(_ns,StringUtils);
+
+//For backward compatibility
+_ns.StringUtils = StringUtils;

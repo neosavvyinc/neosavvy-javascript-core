@@ -1,10 +1,10 @@
 var _ns = _ns || {};
 
 /**
- * @class _ns.RegexUtils
+ * @class RegexUtils
  * @static
  **/
-_ns.RegexUtils = (function () {
+var RegexUtils = (function () {
     var EMAIL_REGEX = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
     return {
         matchStringAndLeadup: function(str) {
@@ -30,3 +30,8 @@ _ns.RegexUtils = (function () {
         }
     };
 })();
+
+_.merge(_ns, RegexUtils);
+
+//For backward compatibility
+_ns.RegexUtils = RegexUtils;

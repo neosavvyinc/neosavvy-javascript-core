@@ -1,10 +1,10 @@
 var _ns = _ns || {};
 
 /**
- * @class _ns.CollectionUtils
+ * @class CollectionUtils
  * @static
  **/
-_ns.CollectionUtils = (function () {
+var CollectionUtils = (function () {
     return {
         /**
          * does a thing...
@@ -145,3 +145,8 @@ _ns.CollectionUtils = (function () {
         }
     };
 })();
+
+_.merge(_ns,CollectionUtils);
+
+//For backward compatibility
+_ns.CollectionUtils = CollectionUtils;

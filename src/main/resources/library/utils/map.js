@@ -1,10 +1,10 @@
 var _ns = _ns || {};
 
 /**
- * @class _ns.MapUtils
+ * @class MapUtils
  * @static
  **/
-_ns.MapUtils = (function () {
+var MapUtils = (function () {
     return {
         /**
          * returns the value in map that matches the passed in property.
@@ -157,3 +157,8 @@ _ns.MapUtils = (function () {
         }
     }
 })();
+
+_.merge(_ns,MapUtils);
+
+//For backward compatibility
+_ns.MapUtils = MapUtils;

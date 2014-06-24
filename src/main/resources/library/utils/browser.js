@@ -1,10 +1,6 @@
 var _ns = _ns || {};
 
-/**
- * @class _ns.BrowserUtils
- * @static
- **/
-_ns.BrowserUtils = (function () {
+var BrowserUtils = (function(_ns){
     var browser, browserVersion, os, osVersion;
 
     function _load(userAgent) {
@@ -149,5 +145,8 @@ _ns.BrowserUtils = (function () {
         def['reload'] = _load;
     }
 
-    return def;
-})();
+    return _.merge(_ns,def);
+})(_ns);
+
+//For backward compatibility
+_ns.BrowserUtils = BrowserUtils;

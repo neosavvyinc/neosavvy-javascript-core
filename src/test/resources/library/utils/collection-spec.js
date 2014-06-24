@@ -1,48 +1,48 @@
-describe("_ns.CollectionUtils", function () {
+describe("CollectionUtils", function () {
     describe("itemByProperty", function () {
         it("Should return null in the case of a null or empty collection or value", function () {
-            expect(_ns.CollectionUtils.itemByProperty(null, "name", "Mike")).toBeNull();
-            expect(_ns.CollectionUtils.itemByProperty([], "age", 5)).toBeNull();
-            expect(_ns.CollectionUtils.itemByProperty(["Howard"], null, null)).toBeNull();
+            expect(_ns.itemByProperty(null, "name", "Mike")).toBeNull();
+            expect(_ns.itemByProperty([], "age", 5)).toBeNull();
+            expect(_ns.itemByProperty(["Howard"], null, null)).toBeNull();
         });
 
         it("Should return the item that matches if no property name is provided", function () {
-            expect(_ns.CollectionUtils.itemByProperty(["John", 5, "Lemon"], null, "John")).toEqual("John");
+            expect(_ns.itemByProperty(["John", 5, "Lemon"], null, "John")).toEqual("John");
         });
 
         it("Should play nice with single properties", function () {
-            expect(_ns.CollectionUtils.itemByProperty([
+            expect(_ns.itemByProperty([
                 {id: 5},
                 {id: 7}
             ], "id", 7)).toEqual({id: 7});
         });
 
         it("Should play nice with dot properties", function () {
-            expect(_ns.CollectionUtils.itemByProperty([
+            expect(_ns.itemByProperty([
                 {name: {first: "Horton"}},
                 {name: {first: "Charles"}}
             ], "name.first", "Charles")).toEqual({name: {first: "Charles"}});
         });
 
         it("Should return null if there is no match", function () {
-            expect(_ns.CollectionUtils.itemByProperty([
+            expect(_ns.itemByProperty([
                 {name: {first: "Horton"}},
                 {name: {first: "Charles"}}
             ], "name.first", "Charle")).toBeNull();
         });
 
         it("Should return null if there is no match without a property", function () {
-            expect(_ns.CollectionUtils.itemByProperty(["John", 5, "Lemon"], null, "6")).toBeNull();
+            expect(_ns.itemByProperty(["John", 5, "Lemon"], null, "6")).toBeNull();
         });
     });
 
     describe("updateByProperty", function () {
         it("Should do nothing with a null or empty collection", function () {
             var collection = null;
-            _ns.CollectionUtils.updateByProperty(collection, {name: "Tom"}, "name")
+            _ns.updateByProperty(collection, {name: "Tom"}, "name")
             expect(collection).toBeNull();
             collection = [];
-            _ns.CollectionUtils.updateByProperty(collection, {name: "Tom"}, "name")
+            _ns.updateByProperty(collection, {name: "Tom"}, "name")
             expect(collection).toEqual([]);
         });
 
@@ -50,7 +50,7 @@ describe("_ns.CollectionUtils", function () {
             var collection = [
                 {name: "Mike"}
             ];
-            _ns.CollectionUtils.updateByProperty(collection, null, "name");
+            _ns.updateByProperty(collection, null, "name");
             expect(collection).toEqual([
                 {name: "Mike"}
             ]);
@@ -60,7 +60,7 @@ describe("_ns.CollectionUtils", function () {
             var collection = [
                 {name: "Mike"}
             ];
-            _ns.CollectionUtils.updateByProperty(collection, {name: "Kyle"}, null);
+            _ns.updateByProperty(collection, {name: "Kyle"}, null);
             expect(collection).toEqual([
                 {name: "Mike"}
             ]);
@@ -72,7 +72,7 @@ describe("_ns.CollectionUtils", function () {
                 {name: "Smitty"},
                 {name: "Mike"}
             ];
-            _ns.CollectionUtils.updateByProperty(collection, {name: "Mike", color: "Puce"}, "name");
+            _ns.updateByProperty(collection, {name: "Mike", color: "Puce"}, "name");
             expect(collection).toEqual([
                 {name: "Mike", color: "Puce"},
                 {name: "Smitty"},
@@ -86,7 +86,7 @@ describe("_ns.CollectionUtils", function () {
                 {name: "Smitty"},
                 null
             ];
-            _ns.CollectionUtils.updateByProperty(collection, {name: "Mike", color: "Puce"}, "name");
+            _ns.updateByProperty(collection, {name: "Mike", color: "Puce"}, "name");
             expect(collection).toEqual([
                 {name: "Mike", color: "Puce"},
                 {name: "Smitty"},
@@ -96,7 +96,7 @@ describe("_ns.CollectionUtils", function () {
 
         it("Should be able to handle undefineds in a list", function () {
             var collection = [undefined, {name: "Smitty"}, null];
-            _ns.CollectionUtils.updateByProperty(collection, {name: "Mike", color: "Puce"}, "name");
+            _ns.updateByProperty(collection, {name: "Mike", color: "Puce"}, "name");
             expect(collection).toEqual([undefined, {name: "Smitty"}, null]);
         });
     });
@@ -104,10 +104,10 @@ describe("_ns.CollectionUtils", function () {
     describe("removeByProperty", function () {
         it("Should do nothing with a null or empty collection", function () {
             var collection = null;
-            _ns.CollectionUtils.removeByProperty(collection, {name: "Tom"}, "name")
+            _ns.removeByProperty(collection, {name: "Tom"}, "name")
             expect(collection).toBeNull();
             collection = [];
-            _ns.CollectionUtils.removeByProperty(collection, {name: "Tom"}, "name")
+            _ns.removeByProperty(collection, {name: "Tom"}, "name")
             expect(collection).toEqual([]);
         });
 
@@ -115,7 +115,7 @@ describe("_ns.CollectionUtils", function () {
             var collection = [
                 {name: "Mike"}
             ];
-            _ns.CollectionUtils.removeByProperty(collection, null, "name");
+            _ns.removeByProperty(collection, null, "name");
             expect(collection).toEqual([
                 {name: "Mike"}
             ]);
@@ -125,7 +125,7 @@ describe("_ns.CollectionUtils", function () {
             var collection = [
                 {name: "Mike"}
             ];
-            _ns.CollectionUtils.removeByProperty(collection, {name: "Kyle"}, null);
+            _ns.removeByProperty(collection, {name: "Kyle"}, null);
             expect(collection).toEqual([
                 {name: "Mike"}
             ]);
@@ -137,7 +137,7 @@ describe("_ns.CollectionUtils", function () {
                 {name: "Smitty"},
                 {name: "Mike"}
             ];
-            _ns.CollectionUtils.removeByProperty(collection, {name: "Mike", color: "Puce"}, "name");
+            _ns.removeByProperty(collection, {name: "Mike", color: "Puce"}, "name");
             expect(collection).toEqual([
                 {name: "Smitty"},
                 {name: "Mike"}
@@ -150,7 +150,7 @@ describe("_ns.CollectionUtils", function () {
                 {name: "Smitty"},
                 null
             ];
-            _ns.CollectionUtils.removeByProperty(collection, {name: "Mike", color: "Puce"}, "name");
+            _ns.removeByProperty(collection, {name: "Mike", color: "Puce"}, "name");
             expect(collection).toEqual([
                 {name: "Smitty"},
                 null
@@ -159,41 +159,41 @@ describe("_ns.CollectionUtils", function () {
 
         it("Should be able to handle undefineds in a list", function () {
             var collection = [undefined, {name: "Smitty"}, null];
-            _ns.CollectionUtils.removeByProperty(collection, {name: "Mike", color: "Puce"}, "name");
+            _ns.removeByProperty(collection, {name: "Mike", color: "Puce"}, "name");
             expect(collection).toEqual([undefined, {name: "Smitty"}, null]);
         });
 
         describe("containsExclusively", function () {
             it("Should return false if either the collection or compare are null", function () {
-                expect(_ns.CollectionUtils.containsExclusively(undefined, undefined)).toBeFalsy();
-                expect(_ns.CollectionUtils.containsExclusively(null, undefined)).toBeFalsy();
-                expect(_ns.CollectionUtils.containsExclusively(undefined, null)).toBeFalsy();
-                expect(_ns.CollectionUtils.containsExclusively([], null)).toBeFalsy();
-                expect(_ns.CollectionUtils.containsExclusively(null, [])).toBeFalsy();
+                expect(_ns.containsExclusively(undefined, undefined)).toBeFalsy();
+                expect(_ns.containsExclusively(null, undefined)).toBeFalsy();
+                expect(_ns.containsExclusively(undefined, null)).toBeFalsy();
+                expect(_ns.containsExclusively([], null)).toBeFalsy();
+                expect(_ns.containsExclusively(null, [])).toBeFalsy();
             });
 
             it("Should return true if they are both empty", function () {
-                expect(_ns.CollectionUtils.containsExclusively([], [])).toBeTruthy();
+                expect(_ns.containsExclusively([], [])).toBeTruthy();
             });
 
             it("Should not worry about order", function () {
-                expect(_ns.CollectionUtils.containsExclusively([4, 5, 6], [6, 4, 5])).toBeTruthy();
+                expect(_ns.containsExclusively([4, 5, 6], [6, 4, 5])).toBeTruthy();
             });
 
             it("Should play nice in the case order is okay", function () {
-                expect(_ns.CollectionUtils.containsExclusively(["Mike", "Tom", 0], ["Mike", "Tom", 0])).toBeTruthy();
+                expect(_ns.containsExclusively(["Mike", "Tom", 0], ["Mike", "Tom", 0])).toBeTruthy();
             });
 
             it("Should return false for comparison sets that are included but not exclusive", function () {
-                expect(_ns.CollectionUtils.containsExclusively([1, "Tom", 6], [1, "Tom"])).toBeFalsy();
+                expect(_ns.containsExclusively([1, "Tom", 6], [1, "Tom"])).toBeFalsy();
             });
 
             it("Should worry about types", function () {
-                expect(_ns.CollectionUtils.containsExclusively([5, 6], [6, "5"])).toBeFalsy();
+                expect(_ns.containsExclusively([5, 6], [6, "5"])).toBeFalsy();
             });
 
             it("Should return false when the comparison has an item that the original does not have", function () {
-                expect(_ns.CollectionUtils.containsExclusively([1, 2], [1, 2, 3])).toBeFalsy();
+                expect(_ns.containsExclusively([1, 2], [1, 2, 3])).toBeFalsy();
             });
         });
     });
@@ -201,17 +201,17 @@ describe("_ns.CollectionUtils", function () {
 
     describe("uniqueMap", function () {
         it("Should return an empty map if the collection is null, undefined or empty", function () {
-            expect(_ns.CollectionUtils.uniqueMap(undefined)).toEqual({});
-            expect(_ns.CollectionUtils.uniqueMap(null)).toEqual({});
-            expect(_ns.CollectionUtils.uniqueMap([])).toEqual({});
+            expect(_ns.uniqueMap(undefined)).toEqual({});
+            expect(_ns.uniqueMap(null)).toEqual({});
+            expect(_ns.uniqueMap([])).toEqual({});
         });
 
         it("Should play nice with no properties", function () {
-            expect(_ns.CollectionUtils.uniqueMap(["Trevor", "Mike", "Howard"])).toEqual({Trevor: "Trevor", Mike: "Mike", Howard: "Howard"});
+            expect(_ns.uniqueMap(["Trevor", "Mike", "Howard"])).toEqual({Trevor: "Trevor", Mike: "Mike", Howard: "Howard"});
         });
 
         it("Should play nice with dot properties", function () {
-            expect(_ns.CollectionUtils.uniqueMap([
+            expect(_ns.uniqueMap([
                 {name: {first: "Charles", last: "Evans"}}
             ], "name.last")).toEqual({Evans: {name: {first: "Charles", last: "Evans"}}});
         });
@@ -219,31 +219,31 @@ describe("_ns.CollectionUtils", function () {
 
     describe("containsMatchByProperty", function () {
         it("Should return false if collectionA is undefined", function () {
-            expect(_ns.CollectionUtils.containMatchByProperty(undefined, [
+            expect(_ns.containMatchByProperty(undefined, [
                 {name: 1}
             ], 'name')).toBeFalsy();
         });
 
         it("Should return false if collectionB is undefined", function () {
-            expect(_ns.CollectionUtils.containMatchByProperty([
+            expect(_ns.containMatchByProperty([
                 {name: 1}
             ], null, 'name')).toBeFalsy();
         });
 
         it("Should return false if collectionA is empty", function () {
-            expect(_ns.CollectionUtils.containMatchByProperty([], [
+            expect(_ns.containMatchByProperty([], [
                 {name: "tom"}
             ], "name")).toBeFalsy();
         });
 
         it("Should return false if collectionB is empty", function () {
-            expect(_ns.CollectionUtils.containMatchByProperty([
+            expect(_ns.containMatchByProperty([
                 {age: 50}
             ], [], 'age')).toBeFalsy();
         });
 
         it("Should play nice with single properties", function () {
-            expect(_ns.CollectionUtils.containMatchByProperty([
+            expect(_ns.containMatchByProperty([
                 {color: "Orange"},
                 {color: "Red"},
                 {color: "Blue"}
@@ -255,7 +255,7 @@ describe("_ns.CollectionUtils", function () {
         });
 
         it("Should play nice with deep properties", function () {
-            expect(_ns.CollectionUtils.containMatchByProperty([
+            expect(_ns.containMatchByProperty([
                 {color: {hue: {saturation: "Light"}}, hex: "#000000"},
                 {color: {hue: {saturation: "Light"}}},
                 {color: {hue: {saturation: "Heavy"}}}
@@ -267,7 +267,7 @@ describe("_ns.CollectionUtils", function () {
         });
 
         it("Should return true when there is a match", function () {
-            expect(_ns.CollectionUtils.containMatchByProperty([
+            expect(_ns.containMatchByProperty([
                 {color: {hue: {saturation: "Light"}}, hex: "#000000"},
                 {color: {hue: {saturation: "Light"}, hex: "#00FF00"}},
                 {color: {hue: {saturation: "Heavy"}}}
@@ -279,7 +279,7 @@ describe("_ns.CollectionUtils", function () {
         });
 
         it("Should return false when there is not a match", function () {
-            expect(_ns.CollectionUtils.containMatchByProperty([
+            expect(_ns.containMatchByProperty([
                 {color: {hue: {saturation: "Light"}}, hex: "#000000"},
                 {color: {hue: {saturation: "Light"}, hex: "#00FF00"}},
                 {color: {hue: {saturation: "Heavy"}}}
@@ -293,31 +293,31 @@ describe("_ns.CollectionUtils", function () {
 
     describe("collectionContainsAllOtherItems", function () {
         it("Should return false if collectionA is undefined", function () {
-            expect(_ns.CollectionUtils.collectionContainsAllOtherItems(undefined, [
+            expect(_ns.collectionContainsAllOtherItems(undefined, [
                 {name: 1}
             ], 'name')).toBeFalsy();
         });
 
         it("Should return false if collectionB is undefined", function () {
-            expect(_ns.CollectionUtils.collectionContainsAllOtherItems([
+            expect(_ns.collectionContainsAllOtherItems([
                 {name: 1}
             ], null, 'name')).toBeFalsy();
         });
 
         it("Should return false if collectionA is empty", function () {
-            expect(_ns.CollectionUtils.collectionContainsAllOtherItems([], [
+            expect(_ns.collectionContainsAllOtherItems([], [
                 {name: "tom"}
             ], "name")).toBeFalsy();
         });
 
         it("Should return false if collectionB is empty", function () {
-            expect(_ns.CollectionUtils.collectionContainsAllOtherItems([
+            expect(_ns.collectionContainsAllOtherItems([
                 {age: 50}
             ], [], 'age')).toBeFalsy();
         });
 
         it("Should play nice with single properties", function () {
-            expect(_ns.CollectionUtils.collectionContainsAllOtherItems([
+            expect(_ns.collectionContainsAllOtherItems([
                 {age: 60}, {age: 50}
             ], [
                 {age: 50}, {age: 60}
@@ -325,7 +325,7 @@ describe("_ns.CollectionUtils", function () {
         });
 
         it("Should play nice with deep properties", function () {
-            expect(_ns.CollectionUtils.collectionContainsAllOtherItems([
+            expect(_ns.collectionContainsAllOtherItems([
                 {age: {time: 39, value: 78989}}, {age: {time: 34, value: "George"}}
             ], [
                 {age: {time: 34, value: 67}}, {age: {time: 39, value: 102}}
@@ -333,7 +333,7 @@ describe("_ns.CollectionUtils", function () {
         });
 
         it("Should return false when there is a mismatch", function () {
-            expect(_ns.CollectionUtils.collectionContainsAllOtherItems([
+            expect(_ns.collectionContainsAllOtherItems([
                 {age: {time: 39, value: 78989}}, {age: {time: 34, value: "George"}}
             ], [
                 {age: {time: 34, value: 67}}, {age: {time: 39, value: 102}}, 55
@@ -341,7 +341,7 @@ describe("_ns.CollectionUtils", function () {
         });
 
         it("Should return true in cases where the collections match up via these properties", function () {
-            expect(_ns.CollectionUtils.collectionContainsAllOtherItems([
+            expect(_ns.collectionContainsAllOtherItems([
                 {age: {time: 39, value: 78989}}, {age: {time: 34, value: "George"}}, {name: "Steiny"}, 90
             ], [
                 {age: {time: 34, value: 67}}, {age: {time: 39, value: 102}}

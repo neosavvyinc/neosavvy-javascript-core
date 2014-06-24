@@ -12,6 +12,7 @@ _ns.CollectionBuilder = function (collection) {
         throw "You must pass in a collection as the base upon which to build!";
     }
 };
+
 _ns.CollectionBuilder.prototype = {
     /**
      * Operates on the collection to nest each item down to the level of the property string specified
