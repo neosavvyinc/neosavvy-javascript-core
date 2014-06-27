@@ -1,4 +1,4 @@
-var _ns = _ns || {};
+var ns = ns || {};
 
 /**
  * @class MapUtils
@@ -158,7 +158,7 @@ var MapUtils = (function () {
     }
 })();
 
-_.merge(_ns,MapUtils);
+_.merge(ns,MapUtils);
 
 //For backward compatibility
-_ns.MapUtils = MapUtils;
+ns.MapUtils = MapUtils;

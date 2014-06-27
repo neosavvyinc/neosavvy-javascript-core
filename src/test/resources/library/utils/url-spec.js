@@ -3,24 +3,24 @@ describe("UrlUtils", function () {
     describe("URL", function () {
 
         it("Should be able to construct a url with the url and queryString", function () {
-            new _ns.URL("http://www.neosavvy.com", "id=50");
+            new ns.URL("http://www.neosavvy.com", "id=50");
         });
 
         it("Should throw an error when no url is provided", function () {
             expect(function () {
-                new _ns.URL(undefined, "id=50");
+                new ns.URL(undefined, "id=50");
             }).toThrow();
         });
 
         it("Should add the query string to its own query string when called", function () {
-            var url = new _ns.URL("http://www.neosavvy.com", "id=50");
+            var url = new ns.URL("http://www.neosavvy.com", "id=50");
             expect(url.getQueryString().toString()).toEqual("id=50");
         });
 
         describe("parse", function () {
             describe("basic", function () {
                 var origUrl = 'http://www.google.com:8080/?q=red%20roses#this#is#a#test';
-                var url = _ns.parse(origUrl);
+                var url = ns.parse(origUrl);
                 var queryString = url.getQueryString();
 
                 it('should format ' + url, function () {
@@ -50,7 +50,7 @@ describe("UrlUtils", function () {
 
             describe("advanced", function () {
                 var origUrl = 'http://www.google.com:8080/?q=red%20roses&q=something#this#is#a#test';
-                var url = _ns.parse(origUrl);
+                var url = ns.parse(origUrl);
                 var queryString = url.getQueryString();
 
                 it('should format ' + url, function () {
@@ -81,17 +81,17 @@ describe("UrlUtils", function () {
 
         describe("isValidProtocol", function () {
             it("Should true when the protocol is valid", function () {
-                expect(_ns.URL.isValidProtocol("www.broadway.com")).toBeTruthy();
+                expect(ns.URL.isValidProtocol("www.broadway.com")).toBeTruthy();
             });
 
             it("Should return false when the protocol is invalid", function () {
-                expect(_ns.URL.isValidProtocol("w%ww.broadw$ay.com")).toBeFalsy();
+                expect(ns.URL.isValidProtocol("w%ww.broadw$ay.com")).toBeFalsy();
             });
         });
 
         describe("setQueryString", function () {
             it("Should set the query string of the url", function () {
-                var url = new _ns.URL("http://www.neosavvy.com", "id=50");
+                var url = new ns.URL("http://www.neosavvy.com", "id=50");
                 url.setQueryString("QUERY STRING TEST");
                 expect(url.queryString).toEqual("QUERY STRING TEST");
             });
@@ -99,13 +99,13 @@ describe("UrlUtils", function () {
 
         describe("removeParameter", function () {
             it("Should remove a specified parameter from the url", function () {
-                var url = new _ns.URL("http://www.neosavvy.com", "name=sprite&make=chevy");
+                var url = new ns.URL("http://www.neosavvy.com", "name=sprite&make=chevy");
                 url.removeParameter("name");
                 expect(url.getQueryString().toString()).toEqual("make=chevy");
             });
 
             it("Should do nothing if the parameter is not present", function () {
-                var url = new _ns.URL("http://www.neosavvy.com", "uid=sprite&make=chevy");
+                var url = new ns.URL("http://www.neosavvy.com", "uid=sprite&make=chevy");
                 url.removeParameter("name");
                 expect(url.getQueryString().toString()).toEqual("uid=sprite&make=chevy");
             });
@@ -115,7 +115,7 @@ describe("UrlUtils", function () {
             var url;
 
             beforeEach(function () {
-                url = new _ns.URL("http://www.neosavvy.com", "uid=sprite&make=chevy");
+                url = new ns.URL("http://www.neosavvy.com", "uid=sprite&make=chevy");
             });
 
             it("Should be able to change a parameter", function () {
@@ -141,7 +141,7 @@ describe("UrlUtils", function () {
 
         describe("setHost", function () {
             it("should set and get host", function () {
-                var url = _ns.URL.parse("http://www.neosavvy.com/something/else");
+                var url = ns.URL.parse("http://www.neosavvy.com/something/else");
                 expect(url.getHost()).toEqual("www.neosavvy.com");
                 url.setHost("api.neosavvy.com");
                 expect(url.getHost()).toEqual("api.neosavvy.com");
@@ -154,13 +154,13 @@ describe("UrlUtils", function () {
 
             it("should correctly return the hostname", function () {
                 var originalUrl = "http://www.neosavvy.com/wrote/this/awesome/app";
-                var url = _ns.URL.parse(originalUrl);
+                var url = ns.URL.parse(originalUrl);
                 expect(url.host).toEqual("www.neosavvy.com");
             });
 
             it("should allow you to override the hostname", function () {
                 var originalUrl = "http://www.neosavvy.com/wrote/this/awesome/app";
-                var url = _ns.URL.parse(originalUrl);
+                var url = ns.URL.parse(originalUrl);
                 url.setHost("www.adam.com");
                 expect(url.host).toEqual("www.adam.com");
                 expect(url.toString()).toEqual("http://www.adam.com/wrote/this/awesome/app");
@@ -171,7 +171,7 @@ describe("UrlUtils", function () {
             var url;
 
             beforeEach(function () {
-                url = new _ns.URL("http://www.evileyes.org:87", "uid=sprite&make=chevy");
+                url = new ns.URL("http://www.evileyes.org:87", "uid=sprite&make=chevy");
             });
 
             it("Should return a parameter in the url", function () {
@@ -187,7 +187,7 @@ describe("UrlUtils", function () {
             var url;
 
             beforeEach(function () {
-                url = new _ns.URL("http://www.neosavvy.com:96", "uid=sprite&make=chevy");
+                url = new ns.URL("http://www.neosavvy.com:96", "uid=sprite&make=chevy");
             });
 
             it("Should return a port if one is defined", function () {
@@ -217,7 +217,7 @@ describe("UrlUtils", function () {
         var qs;
 
         beforeEach(function () {
-            qs = new _ns.QueryString("make=ford&model=T&cut=75");
+            qs = new ns.QueryString("make=ford&model=T&cut=75");
         });
 
         describe("getParameters", function () {
@@ -226,7 +226,7 @@ describe("UrlUtils", function () {
             });
 
             it("Should return a blank hash for a blank query string", function () {
-                qs = new _ns.QueryString("");
+                qs = new ns.QueryString("");
                 expect(qs.getParameters()).toEqual({});
             });
         });
@@ -235,38 +235,38 @@ describe("UrlUtils", function () {
 
             describe("definition", function () {
                 it("Should just return a new QueryString when passed nothing", function () {
-                    expect(_ns.QueryString.parse()).toEqual(new _ns.QueryString());
+                    expect(ns.QueryString.parse()).toEqual(new ns.QueryString());
                 });
 
                 it("Should just return the queryString if it is passed the object", function () {
-                    expect(_ns.QueryString.parse(new _ns.QueryString())).toEqual(new _ns.QueryString());
+                    expect(ns.QueryString.parse(new ns.QueryString())).toEqual(new ns.QueryString());
                 });
             });
 
             describe("prototype", function () {
                 it("Should be able to create a new string", function () {
-                    qs = new _ns.QueryString.parse("hair=brown&eyes=blue");
+                    qs = new ns.QueryString.parse("hair=brown&eyes=blue");
                     expect(qs.getParameters()).toEqual({hair: "brown", eyes: "blue"});
                 });
 
                 it("Should be able to create a QueryString from an existing one", function () {
-                    qs = new _ns.QueryString.parse(qs);
+                    qs = new ns.QueryString.parse(qs);
                     expect(qs.getParameters()).toEqual({make: "ford", model: "T", cut: "75"});
                 });
 
                 it("Should play nice with a parsible object", function () {
-                    qs = new _ns.QueryString();
+                    qs = new ns.QueryString();
                     qs.parse({dollars: 50, cents: 89});
                     expect(qs.getParameters()).toEqual({dollars: 50, cents: 89});
                 });
 
                 it("Should set a param to null if there is no equal sign", function () {
-                    qs = new _ns.QueryString.parse("country");
+                    qs = new ns.QueryString.parse("country");
                     expect(qs.getParameters()).toEqual({country: null});
                 });
 
                 it("Should not add a param if it does not have a name", function () {
-                    qs = new _ns.QueryString.parse("=saudiarabia");
+                    qs = new ns.QueryString.parse("=saudiarabia");
                     expect(qs.getParameters()).toEqual({});
                 });
             });
@@ -310,7 +310,7 @@ describe("UrlUtils", function () {
 
         describe("add", function () {
             it("Should work with multiple parameters", function () {
-                qs = new _ns.QueryString();
+                qs = new ns.QueryString();
                 qs.parse({dollars: [17, 26, 89], cents: 89});
                 expect(qs.getParameters()).toEqual({dollars: [17, 26, 89], cents: 89});
                 qs.add("dollars", 18);
@@ -318,7 +318,7 @@ describe("UrlUtils", function () {
             });
 
             it("Should work with adding another array to multiple parameters", function () {
-                qs = new _ns.QueryString();
+                qs = new ns.QueryString();
                 qs.parse({dollars: [17, 26, 89], cents: 89});
                 expect(qs.getParameters()).toEqual({dollars: [17, 26, 89], cents: 89});
                 qs.add("dollars", [90, 92]);
@@ -342,7 +342,7 @@ describe("UrlUtils", function () {
             });
 
             it("Should work with null and undefined properties", function () {
-                qs = new _ns.QueryString.parse("hair=brown&eyes=blue&something");
+                qs = new ns.QueryString.parse("hair=brown&eyes=blue&something");
                 expect(qs.toString()).toEqual("hair=brown&eyes=blue&something");
             });
         });
@@ -350,23 +350,23 @@ describe("UrlUtils", function () {
 
     describe("parse", function () {
         it("Should call the URL.parse method", function () {
-            var parseSpy = spyOn(_ns.URL, "parse").andReturn("PARSE!");
-            expect(_ns.parse(1, 2, 7)).toEqual("PARSE!");
+            var parseSpy = spyOn(ns.URL, "parse").andReturn("PARSE!");
+            expect(ns.parse(1, 2, 7)).toEqual("PARSE!");
             expect(parseSpy).toHaveBeenCalledWith(1, 2, 7);
         });
 
         it("Should only set a protocol for http", function () {
-            expect(_ns.parse("http:").protocol).toEqual("http");
+            expect(ns.parse("http:").protocol).toEqual("http");
         });
 
         it("Should play nice with non http or https protocols", function () {
-            expect(_ns.parse("ftp:neosavvy.org").protocol).toEqual("ftp");
-            expect(_ns.parse("ftp:neosavvy.org").path).toEqual("neosavvy.org");
+            expect(ns.parse("ftp:neosavvy.org").protocol).toEqual("ftp");
+            expect(ns.parse("ftp:neosavvy.org").path).toEqual("neosavvy.org");
         });
 
         it("should throw an error when undefined or null param for url", function () {
             expect(function () {
-                _ns.parse(undefined)
+                ns.parse(undefined)
             }).toThrow(new Error("Can not create a url with undefined URL param"));
         });
 

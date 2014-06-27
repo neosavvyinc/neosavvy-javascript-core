@@ -1,6 +1,6 @@
-var _ns = _ns || {};
+var ns = ns || {};
 
-var BrowserUtils = (function(_ns){
+var BrowserUtils = (function(ns){
     var browser, browserVersion, os, osVersion;
 
     function _load(userAgent) {
@@ -145,8 +145,8 @@ var BrowserUtils = (function(_ns){
         def['reload'] = _load;
     }
 
-    return _.merge(_ns,def);
-})(_ns);
+    return _.merge(ns,def);
+})(ns);
 
 //For backward compatibility
-_ns.BrowserUtils = BrowserUtils;
+ns.BrowserUtils = BrowserUtils;

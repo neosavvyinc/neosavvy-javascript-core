@@ -1,10 +1,10 @@
-var _ns = _ns || {};
+var ns = ns || {};
 
 /**
- * @class _ns.Collection
+ * @class ns.Collection
  * @constructor
  **/
-_ns.CollectionBuilder = function (collection) {
+ns.CollectionBuilder = function (collection) {
     if (collection) {
         this.operations = {};
         this.collection = collection;
@@ -13,11 +13,11 @@ _ns.CollectionBuilder = function (collection) {
     }
 };
 
-_ns.CollectionBuilder.prototype = {
+ns.CollectionBuilder.prototype = {
     /**
      * Operates on the collection to nest each item down to the level of the property string specified
      * @param {String} propertyString
-     * @returns _ns.Collection
+     * @returns ns.Collection
      * @method nest
      **/
     nest: function (propertyString) {

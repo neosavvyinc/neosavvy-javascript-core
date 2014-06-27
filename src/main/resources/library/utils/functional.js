@@ -1,4 +1,4 @@
-var _ns = _ns || {};
+var ns = ns || {};
 
 /**
  * @class FunctionalUtils
@@ -13,7 +13,7 @@ var FunctionalUtils = (function () {
          * @method keepTrying
          **/
         tryCall:function (obj, fnName, args, elseCase) {
-            var fn = _ns.MapUtils.highPerformanceGet(obj, fnName);
+            var fn = ns.MapUtils.highPerformanceGet(obj, fnName);
             if (typeof fn == 'function') {
                 return fn.apply(obj, args);
             }
@@ -22,7 +22,7 @@ var FunctionalUtils = (function () {
     }
 })();
 
-_.merge(_ns, FunctionalUtils);
+_.merge(ns, FunctionalUtils);
 
 //For backward compatibility
-_ns.FunctionalUtils = FunctionalUtils;
+ns.FunctionalUtils = FunctionalUtils;

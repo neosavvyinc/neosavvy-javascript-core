@@ -1,4 +1,4 @@
-var _ns = _ns || {};
+var ns = ns || {};
 
 /**
  * @class SpecialUtils
@@ -33,7 +33,7 @@ var SpecialUtils = (function () {
     }
 })();
 
-_.merge(_ns, SpecialUtils);
+_.merge(ns, SpecialUtils);
 
 //For backward compatibility
-_ns.SpecialUtils = SpecialUtils;
+ns.SpecialUtils = SpecialUtils;

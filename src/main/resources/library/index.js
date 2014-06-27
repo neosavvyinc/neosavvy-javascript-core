@@ -1,9 +1,9 @@
 /**
- * @class _ns
+ * @class ns
  * @static
  **/
 
-var _ns = _ns || {};
+var ns = ns || {};
 
 
 /* Ensuring backward compatibility*/
@@ -12,23 +12,23 @@ var _ns = _ns || {};
  * @class Neosavvy
  * @static
  **/
-var Neosavvy = _ns;
+var Neosavvy = ns;
 
 /**
  * @class Neosavvy.Core
  * @static
  **/
-Neosavvy.Core = _ns || {};
+Neosavvy.Core = ns || {};
 
 /**
  * @class Neosavvy.Core.Utils
  * @static
  **/
-Neosavvy.Core.Utils = _ns || {};
+Neosavvy.Core.Utils = ns || {};
 
 /**
  * @class Neosavvy.Core.Builders
  * @static
  **/
-Neosavvy.Core.Builders = _ns || {};
+Neosavvy.Core.Builders = ns || {};
 

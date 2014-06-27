@@ -1,8 +1,8 @@
 describe("FunctionalUtils", function () {
 
     describe("tryCall", function () {
-        var _hpGet = _ns.highPerformanceGet;
-        var _tryCall = _ns.tryCall;
+        var _hpGet = ns.highPerformanceGet;
+        var _tryCall = ns.tryCall;
 
         it("Should return undefined if there is no object in question", function () {
             expect(_tryCall(undefined, 'join')).toBeUndefined();

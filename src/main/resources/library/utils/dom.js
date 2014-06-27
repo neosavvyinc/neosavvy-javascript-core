@@ -1,4 +1,4 @@
-var _ns = _ns || {};
+var ns = ns || {};
 
 /**
  * @class DomUtils
@@ -29,7 +29,7 @@ var DomUtils = (function () {
     };
 })();
 
-_.merge(_ns, DomUtils);
+_.merge(ns, DomUtils);
 
 //For backward compatibility
-_ns.DomUtils = DomUtils;
+ns.DomUtils = DomUtils;

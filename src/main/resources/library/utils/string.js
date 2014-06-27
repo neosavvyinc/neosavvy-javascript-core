@@ -1,4 +1,4 @@
-var _ns = _ns || {};
+var ns = ns || {};
 
 /**
  * @class StringUtils
@@ -22,7 +22,7 @@ var StringUtils = (function () {
     }
 })();
 
-_.merge(_ns,StringUtils);
+_.merge(ns,StringUtils);
 
 //For backward compatibility
-_ns.StringUtils = StringUtils;
+ns.StringUtils = StringUtils;

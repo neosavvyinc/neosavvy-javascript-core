@@ -1,4 +1,4 @@
-var _ns = _ns || {};
+var ns = ns || {};
 
 /**
  * @class RegexUtils
@@ -31,7 +31,7 @@ var RegexUtils = (function () {
     };
 })();
 
-_.merge(_ns, RegexUtils);
+_.merge(ns, RegexUtils);
 
 //For backward compatibility
-_ns.RegexUtils = RegexUtils;
+ns.RegexUtils = RegexUtils;

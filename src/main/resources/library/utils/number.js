@@ -1,4 +1,4 @@
-var _ns = _ns || {};
+var ns = ns || {};
 
 /**
  * @class NumberUtils
@@ -46,7 +46,7 @@ var NumberUtils = (function () {
 
 })();
 
-_.merge(_ns, NumberUtils);
+_.merge(ns, NumberUtils);
 
 //For backward compatibility
-_ns.NumberUtils = NumberUtils;
+ns.NumberUtils = NumberUtils;

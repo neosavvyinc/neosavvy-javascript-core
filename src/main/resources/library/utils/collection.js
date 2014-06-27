@@ -1,4 +1,4 @@
-var _ns = _ns || {};
+var ns = ns || {};
 
 /**
  * @class CollectionUtils
@@ -15,7 +15,7 @@ var CollectionUtils = (function () {
         itemByProperty: function (collection, property, value) {
             if (collection && collection.length && value) {
                 for (var i = 0; i < collection.length; i++) {
-                    var found = _ns.MapUtils.get(collection[i], property);
+                    var found = ns.MapUtils.get(collection[i], property);
                     if (found === value) {
                         return collection[i];
                     }
@@ -65,7 +65,7 @@ var CollectionUtils = (function () {
             var map = {};
             if (collection && collection.length) {
                 for (var i = 0; i < collection.length; i++) {
-                    map[String(_ns.MapUtils.get(collection[i], properties))] = collection[i];
+                    map[String(ns.MapUtils.get(collection[i], properties))] = collection[i];
                 }
             }
             return map;
@@ -81,12 +81,12 @@ var CollectionUtils = (function () {
         containMatchByProperty: function (collectionA, collectionB, propertyName) {
             if (collectionA && collectionB && collectionA.length && collectionB.length) {
                 var compare = collectionB.map(function (item) {
-                    return _ns.MapUtils.get(item, propertyName);
+                    return ns.MapUtils.get(item, propertyName);
                 });
 
                 var item;
                 for (var i = 0; i < collectionA.length; i++) {
-                    item = _ns.MapUtils.get(collectionA[i], propertyName);
+                    item = ns.MapUtils.get(collectionA[i], propertyName);
                     if (item !== undefined &&
                         compare.indexOf(item) !== -1) {
                         return true;
@@ -106,12 +106,12 @@ var CollectionUtils = (function () {
         collectionContainsAllOtherItems: function (collection, otherItems, propertyName) {
             if (collection && collection.length && otherItems && otherItems.length) {
                 var collectionProperties = collection.map(function (item) {
-                    return _ns.MapUtils.get(item, propertyName);
+                    return ns.MapUtils.get(item, propertyName);
                 });
 
                 var item;
                 for (var i = 0; i < otherItems.length; i++) {
-                    item = typeof otherItems[i] === 'object' ? _ns.MapUtils.get(otherItems[i], propertyName) : undefined;
+                    item = typeof otherItems[i] === 'object' ? ns.MapUtils.get(otherItems[i], propertyName) : undefined;
                     if (item === undefined && collectionProperties.indexOf(item) === -1) {
                         return false;
                     }
@@ -146,7 +146,7 @@ var CollectionUtils = (function () {
     };
 })();
 
-_.merge(_ns,CollectionUtils);
+_.merge(ns,CollectionUtils);
 
 //For backward compatibility
-_ns.CollectionUtils = CollectionUtils;
+ns.CollectionUtils = CollectionUtils;

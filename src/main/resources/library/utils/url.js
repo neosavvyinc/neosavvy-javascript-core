@@ -1,4 +1,4 @@
-var _ns = _ns || {};
+var ns = ns || {};
 
 /**
  * Thanks to philidem on github for this great starting point.
@@ -430,7 +430,7 @@ var UrlUtils = (function () {
         }
 })();
 
-_.merge(_ns, UrlUtils);
+_.merge(ns, UrlUtils);
 
 //For backward compatibility
-_ns.UrlUtils = UrlUtils;
+ns.UrlUtils = UrlUtils;
