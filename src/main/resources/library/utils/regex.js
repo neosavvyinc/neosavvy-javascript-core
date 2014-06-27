@@ -1,12 +1,10 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+var ns = ns || {};
 
 /**
- * @class Neosavvy.Core.Utils.RegexUtils
+ * @class RegexUtils
  * @static
  **/
-Neosavvy.Core.Utils.RegexUtils = (function () {
+var RegexUtils = (function () {
     var EMAIL_REGEX = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
     return {
         matchStringAndLeadup: function(str) {
@@ -32,3 +30,8 @@ Neosavvy.Core.Utils.RegexUtils = (function () {
         }
     };
 })();
+
+_.merge(ns, RegexUtils);
+
+//For backward compatibility
+ns.RegexUtils = RegexUtils;

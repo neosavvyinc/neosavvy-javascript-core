@@ -1,4 +1,4 @@
-describe("DomUtils", function () {
+describe("Neosavvy.Core.Utils.DomUtils", function () {
     describe("getElementsByAttribute", function () {
         beforeEach(function() {
             $('body').append('<div first-name="clark" age="43"></div>');
@@ -10,23 +10,23 @@ describe("DomUtils", function () {
         });
 
         it("Should return one item match the first-name attribute", function () {
-            expect(ns.getElementsByAttribute('div', 'first-name', "clark").length).toEqual(1);
+            expect(Neosavvy.Core.Utils.DomUtils.getElementsByAttribute('div', 'first-name', "clark").length).toEqual(1);
         });
 
         it("Should return two items matching the first-name attribute", function () {
-            expect(ns.getElementsByAttribute('span', 'first-name', "clark").length).toEqual(2);
+            expect(Neosavvy.Core.Utils.DomUtils.getElementsByAttribute('span', 'first-name', "clark").length).toEqual(2);
         });
 
         it("Should return one item matching the age attribute", function () {
-            expect(ns.getElementsByAttribute('div', 'age', "49").length).toEqual(1);
+            expect(Neosavvy.Core.Utils.DomUtils.getElementsByAttribute('div', 'age', "49").length).toEqual(1);
         });
 
         it("Should return two items matching the age attribute", function () {
-            expect(ns.getElementsByAttribute('a', 'age', "36").length).toEqual(2);
+            expect(Neosavvy.Core.Utils.DomUtils.getElementsByAttribute('a', 'age', "36").length).toEqual(2);
         });
 
         it("Should be able to pick up all the ones where an attribute is undefined", function () {
-            expect(ns.getElementsByAttribute('div', 'first-name', undefined).length).toEqual(1);
+            expect(Neosavvy.Core.Utils.DomUtils.getElementsByAttribute('div', 'first-name', undefined).length).toEqual(1);
         });
 
         afterEach(function() {

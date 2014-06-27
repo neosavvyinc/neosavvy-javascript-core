@@ -1,15 +1,13 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+var ns = ns || {};
 
 /**
  * Thanks to philidem on github for this great starting point.
  * https://github.com/philidem/url-util-js/blob/master/test/url-util-spec.js
  *
- * @class Neosavvy.Core.Utils.UrlUtils
+ * @class UrlUtils
  * @static
  **/
-Neosavvy.Core.Utils.UrlUtils = (function () {
+var UrlUtils = (function () {
 
         function URL(url, queryString) {
             if (url) {
@@ -431,3 +429,8 @@ Neosavvy.Core.Utils.UrlUtils = (function () {
             }
         }
 })();
+
+_.merge(ns, UrlUtils);
+
+//For backward compatibility
+ns.UrlUtils = UrlUtils;

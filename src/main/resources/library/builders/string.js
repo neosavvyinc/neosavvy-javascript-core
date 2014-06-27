@@ -1,12 +1,11 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Builders = Neosavvy.Core.Builders || {};
+var ns = ns || {};
+
 
 /**
- * @class Neosavvy.Core.Builders.StringBuilder
+ * @class ns.StringBuilder
  * @constructor
  **/
-Neosavvy.Core.Builders.StringBuilder = function (input) {
+ns.StringBuilder = function (input) {
     //Nothing defined here yet
     if (input) {
         this.input = input;
@@ -16,10 +15,10 @@ Neosavvy.Core.Builders.StringBuilder = function (input) {
     }
 };
 
-Neosavvy.Core.Builders.StringBuilder.prototype = {
+ns.StringBuilder.prototype = {
     /**
      * Converts any camel case in a string to dash case: myNameMike >> my-name-mike.
-     * @returns Neosavvy.Core.Builders.StringBuilder
+     * @returns ns.StringBuilder
      * @method camelToDash
      **/
     camelToDash: function () {
@@ -29,7 +28,7 @@ Neosavvy.Core.Builders.StringBuilder.prototype = {
     },
     /**
      * Changes a standard constant syntax to standard dash syntax: MY_NAME_MIKE >> my-name-mike.
-     * @returns Neosavvy.Core.Builders.StringBuilder
+     * @returns ns.StringBuilder
      * @method constantToDash
      **/
     constantToDash: function () {
@@ -38,7 +37,7 @@ Neosavvy.Core.Builders.StringBuilder.prototype = {
     },
     /**
      * Changes the string to proper case, first letters of words capitalized.
-     * @returns Neosavvy.Core.Builders.StringBuilder
+     * @returns ns.StringBuilder
      * @method properCase
      **/
     properCase: function () {

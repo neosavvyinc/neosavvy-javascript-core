@@ -1,12 +1,10 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Builders = Neosavvy.Core.Builders || {};
+var ns = ns || {};
 
 /**
- * @class Neosavvy.Core.Builders.Collection
+ * @class ns.Collection
  * @constructor
  **/
-Neosavvy.Core.Builders.CollectionBuilder = function (collection) {
+ns.CollectionBuilder = function (collection) {
     if (collection) {
         this.operations = {};
         this.collection = collection;
@@ -14,11 +12,12 @@ Neosavvy.Core.Builders.CollectionBuilder = function (collection) {
         throw "You must pass in a collection as the base upon which to build!";
     }
 };
-Neosavvy.Core.Builders.CollectionBuilder.prototype = {
+
+ns.CollectionBuilder.prototype = {
     /**
      * Operates on the collection to nest each item down to the level of the property string specified
      * @param {String} propertyString
-     * @returns Neosavvy.Core.Builders.Collection
+     * @returns ns.Collection
      * @method nest
      **/
     nest: function (propertyString) {

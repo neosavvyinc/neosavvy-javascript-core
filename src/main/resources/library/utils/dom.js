@@ -1,12 +1,10 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+var ns = ns || {};
 
 /**
- * @class Neosavvy.Core.Utils.DomUtils
+ * @class DomUtils
  * @static
  **/
-Neosavvy.Core.Utils.DomUtils = (function () {
+var DomUtils = (function () {
     return {
         /**
          * returns an array of DOM elements that contain the passed
@@ -30,3 +28,8 @@ Neosavvy.Core.Utils.DomUtils = (function () {
         }
     };
 })();
+
+_.merge(ns, DomUtils);
+
+//For backward compatibility
+ns.DomUtils = DomUtils;

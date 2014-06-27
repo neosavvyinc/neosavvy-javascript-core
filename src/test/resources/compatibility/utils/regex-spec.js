@@ -1,17 +1,17 @@
-describe("RegexUtils", function () {
+describe("Neosavvy.Core.Utils.RegexUtils", function () {
 
     describe("matchStringAndLeadup", function () {
 
         it("Should return undefined for an undefined string", function () {
-            expect(ns.matchStringAndLeadup()).toBeUndefined();
+            expect(Neosavvy.Core.Utils.RegexUtils.matchStringAndLeadup()).toBeUndefined();
         });
 
         it("Should return undefined for an empty string", function () {
-            expect(ns.matchStringAndLeadup("")).toBeUndefined();
+            expect(Neosavvy.Core.Utils.RegexUtils.matchStringAndLeadup("")).toBeUndefined();
         });
 
         it("Should return a regex that can match a string and every leadup word", function () {
-            var re = ns.matchStringAndLeadup("Morton Shapiro");
+            var re = Neosavvy.Core.Utils.RegexUtils.matchStringAndLeadup("Morton Shapiro");
             expect(re.test("M")).toBeTruthy();
             expect(re.test("N")).toBeFalsy();
             expect(re.test("Mo")).toBeTruthy();
@@ -29,7 +29,7 @@ describe("RegexUtils", function () {
         });
 
         it("Should be case insensitive", function () {
-            var re = ns.matchStringAndLeadup("Morton Shapiro");
+            var re = Neosavvy.Core.Utils.RegexUtils.matchStringAndLeadup("Morton Shapiro");
             expect(re.test("m")).toBeTruthy();
             expect(re.test("n")).toBeFalsy();
             expect(re.test("mo")).toBeTruthy();
@@ -49,27 +49,27 @@ describe("RegexUtils", function () {
 
     describe("isEmail", function () {
         it("Should return true for a valid email", function () {
-            expect(ns.isEmail("tewen@ns.com")).toBeTruthy();
+            expect(Neosavvy.Core.Utils.RegexUtils.isEmail("tewen@Neosavvy.com")).toBeTruthy();
         });
 
         it("Should return true for other valid emails with weirder suffix", function () {
-            expect(ns.isEmail("mike.howard@worldbiz.me")).toBeTruthy();
+            expect(Neosavvy.Core.Utils.RegexUtils.isEmail("mike.howard@worldbiz.me")).toBeTruthy();
         });
 
         it("Should return false for missing @ signs", function () {
-            expect(ns.isEmail("someone&earthlink.net")).toBeFalsy();
+            expect(Neosavvy.Core.Utils.RegexUtils.isEmail("someone&earthlink.net")).toBeFalsy();
         });
 
         it("Should return false with spaces", function () {
-            expect(ns.isEmail("some name of a@comcastic.comc")).toBeFalsy();
+            expect(Neosavvy.Core.Utils.RegexUtils.isEmail("some name of a@comcastic.comc")).toBeFalsy();
         });
 
         it("Should return false when the string is null", function () {
-            expect(ns.isEmail(null)).toBeFalsy();
+            expect(Neosavvy.Core.Utils.RegexUtils.isEmail(null)).toBeFalsy();
         });
 
         it("Should return false when the string is undefined", function () {
-            expect(ns.isEmail(undefined)).toBeFalsy();
+            expect(Neosavvy.Core.Utils.RegexUtils.isEmail(undefined)).toBeFalsy();
         });
     });
 

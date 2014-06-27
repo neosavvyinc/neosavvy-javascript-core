@@ -1,12 +1,10 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+var ns = ns || {};
 
 /**
- * @class Neosavvy.Core.Utils.SpecialUtils
+ * @class FunctionalUtils
  * @static
  **/
-Neosavvy.Core.Utils.FunctionalUtils = (function () {
+var FunctionalUtils = (function () {
     return {
         /**
          * Allows the developer to functionally stack up methods that may fail and move on to the next in that case.
@@ -15,7 +13,7 @@ Neosavvy.Core.Utils.FunctionalUtils = (function () {
          * @method keepTrying
          **/
         tryCall:function (obj, fnName, args, elseCase) {
-            var fn = Neosavvy.Core.Utils.MapUtils.highPerformanceGet(obj, fnName);
+            var fn = ns.MapUtils.highPerformanceGet(obj, fnName);
             if (typeof fn == 'function') {
                 return fn.apply(obj, args);
             }
@@ -23,3 +21,8 @@ Neosavvy.Core.Utils.FunctionalUtils = (function () {
         }
     }
 })();
+
+_.merge(ns, FunctionalUtils);
+
+//For backward compatibility
+ns.FunctionalUtils = FunctionalUtils;

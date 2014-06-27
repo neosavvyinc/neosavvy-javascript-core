@@ -38,16 +38,16 @@ To run unit tests while developing,
 ## Modules
 
 ```JavaScript
-Neosavvy.Core.Builders
-Neosavvy.Core.Utils
+   Builders
+   Utils
 ```
 
-## Neosavvy.Core.Builders
+## Builders
 
 Nest collections into properties.
 
 ```JavaScript
-new Neosavvy.Core.Builders.CollectionBuilder(
+new ns.CollectionBuilder(
     [{name: "Cheddar"}, {name: "Swiss"}, {name: "Pepperjack"}]
   ).nest('my.favorite.cheese').build()
 
@@ -63,7 +63,7 @@ Build out service and parameterized urls.
 ```JavaScript
 /* Required & Optional Params */
 
-new Neosavvy.Core.Builders.RequestUrlBuilder(
+new ns.RequestUrlBuilder(
     "http://api.neosavvy.com/:user_id/clients/:company_id"
   )
   .paramReplace(":user_id", 150)
@@ -75,7 +75,7 @@ new Neosavvy.Core.Builders.RequestUrlBuilder(
 
 /* Object Support */
 
-new Neosavvy.Core.Builders.RequestUrlBuilder(
+new ns.RequestUrlBuilder(
     "http://api.neosavvy.com/:user_id/clients/:company_id"
   )
   .paramReplace({":user_id": 150, ":company_id", 7})
@@ -91,7 +91,7 @@ String operations.
 ```JavaScript
 /* Camel To Dash */
 
-new Neosavvy.Core.Builders.StringBuilder(
+new ns.StringBuilder(
     "myCamelCaseString"
   ).camelToDash().build()
 
@@ -100,7 +100,7 @@ new Neosavvy.Core.Builders.StringBuilder(
 
 /* Constant Case To Dash */
 
-new Neosavvy.Core.Builders.StringBuilder(
+new ns.StringBuilder(
     "MY_CONSTANT_CASE"
   ).constantToDash().build()
 
@@ -108,14 +108,12 @@ new Neosavvy.Core.Builders.StringBuilder(
 
 
 /* Proper Case */
-new Neosavvy.Core.Builders.StringBuilder(
+new ns.StringBuilder(
     "MY iNCorrect cAse"
   ).camelToDash().build()
 
 "My Incorrect Case"
 ```
-
-## Neosavvy.Core.Utils
 
 ### BrowserUtils
 
@@ -124,50 +122,50 @@ Browser and user agent info.
 ```JavaScript
 /* Full Info Hash */
 
-Neosavvy.Core.Utils.BrowserUtils.info()
+ns.info()
 
 {"browser":"chrome","browserVersion":"32.0.1700.107","os":"mac","osVersion":"10.8.5"}
 
 /* Individual Methods */
 
-Neosavvy.Core.Utils.BrowserUtils.browser()
+ns.browser()
 
 "chrome"
 
-Neosavvy.Core.Utils.BrowserUtils.browserVersion()
+ns.browserVersion()
 
 "32.0.1700.107"
 
-Neosavvy.Core.Utils.BrowserUtils.os()
+ns.os()
 
 "mac"
 
-Neosavvy.Core.Utils.BrowserUtils.osVersion()
+ns.osVersion()
 
 "10.8.5"
 
 /* 'is' Methods, Available For All Proper Cased Constants */
 
-Neosavvy.Core.Utils.BrowserUtils.isChrome()
+ns.isChrome()
 
 true
 
-Neosavvy.Core.Utils.BrowserUtils.isOsx()
+ns.isOsx()
 
 true
 
-Neosavvy.Core.Utils.BrowserUtils.isFirefox()
+ns.isFirefox()
 
 false
 
-Neosavvy.Core.Utils.BrowserUtils.isWindows()
+ns.isWindows()
 
 false
 
 
 /* Constants */
 
-Neosavvy.Core.Utils.BrowserUtils.CONSTANTS.OS
+ns.CONSTANTS.OS
 
 {
   OSX: "mac",
@@ -183,7 +181,7 @@ Neosavvy.Core.Utils.BrowserUtils.CONSTANTS.OS
   WEB_TV: "webtv"
 }
 
-Neosavvy.Core.Utils.BrowserUtils.CONSTANTS.BROWSER
+ns.BrowserUtils.CONSTANTS.BROWSER
 
 {
   INTERNET_EXPLORER: "msie",
@@ -200,7 +198,7 @@ Neosavvy.Core.Utils.BrowserUtils.CONSTANTS.BROWSER
 Get an item from a collection, by a property string.
 
 ```JavaScript
-Neosavvy.Core.Utils.CollectionUtils.itemByProperty(
+ns.itemByProperty(
   [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}],
   "fruit.id",
   7)
@@ -211,7 +209,7 @@ Neosavvy.Core.Utils.CollectionUtils.itemByProperty(
 Update an item in a collection from a single property.
 
 ```JavaScript
-Neosavvy.Core.Utils.CollectionUtils.updateByProperty(
+ns.updateByProperty(
   [{id: 6, name: "Apple"}, {id: 7, name: "Pear"}],
   {id: 7, name: "Orange"},
   "id")
@@ -222,7 +220,7 @@ Neosavvy.Core.Utils.CollectionUtils.updateByProperty(
 Remove an item from a single property.
 
 ```JavaScript
-Neosavvy.Core.Utils.CollectionUtils.removeByProperty(
+ns.removeByProperty(
   [{id: 6, name: "Apple"}, {id: 7, name: "Pear"}],
   {id: 7},
   "id")
@@ -233,7 +231,7 @@ Neosavvy.Core.Utils.CollectionUtils.removeByProperty(
 A unique map by property value.
 
 ```JavaScript
-Neosavvy.Core.Utils.CollectionUtils.uniqueMap(
+ns.uniqueMap(
   [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}],
   "fruit.name")
 
@@ -246,14 +244,14 @@ Neosavvy.Core.Utils.CollectionUtils.uniqueMap(
 A match for a single property contained in both collections.
 
 ```JavaScript
-Neosavvy.Core.Utils.CollectionUtils.containMatchByProperty(
+ns.containMatchByProperty(
   [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}],
   [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 7, name: "Pear"}}]
   "fruit.name")
 
 true
 
-Neosavvy.Core.Utils.CollectionUtils.containMatchByProperty(
+ns.containMatchByProperty(
   [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}],
   [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 8, name: "Plum"}}]
   "fruit.name")
@@ -264,14 +262,14 @@ false
 Check to see if collection contains another collection as subset. Non order specific.
 
 ```JavaScript
-Neosavvy.Core.Utils.CollectionUtils.collectionContainsAllOtherItems(
+ns.collectionContainsAllOtherItems(
   [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}, {fruit: {id: 5, name: "Orange"}}],
   [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 7, name: "Pear"}}]
   "fruit.id")
 
 true
 
-Neosavvy.Core.Utils.CollectionUtils.collectionContainsAllOtherItems(
+ns.collectionContainsAllOtherItems(
   [{fruit: {id: 6, name: "Apple"}}, {fruit: {id: 7, name: "Pear"}}],
   [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 8, name: "Plum"}}]
   "fruit.name")
@@ -282,14 +280,14 @@ false
 Check to see if two collections contain the same values, order does not matter.
 
 ```JavaScript
-Neosavvy.Core.Utils.CollectionUtils.containsExclusively(
+ns.containsExclusively(
   [{fruit: {id: 7, name: "Pear"}}, {fruit: {id: 5, name: "Orange"}}],
   [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 7, name: "Pear"}}]
   "fruit.id")
 
 true
 
-Neosavvy.Core.Utils.CollectionUtils.containsExclusively(
+ns.containsExclusively(
   [{fruit: {id: 8, name: "Plum"}}, {fruit: {id: 7, name: "Pear"}}, {fruit: {id: 5, name: "Orange"}}],
   [{fruit: {id: 5, name: "Orange"}}, {fruit: {id: 8, name: "Plum"}}]
   "fruit.name")
@@ -302,7 +300,7 @@ false
 Get all the elements with the attribute of value.
 
 ```JavaScript
-Neosavvy.Core.Utils.DomUtils.getElementsByAttribute("input", "type", "submit")
+ns.getElementsByAttribute("input", "type", "submit")
 
 /* Returns native submit elements */
 
@@ -315,13 +313,13 @@ Try to call a function, doesn't fail if the object is not there.
 ```JavaScript
 var possiblyBlankArray = ["Terry", "Jim", "Willis"];
 
-Neosavvy.Core.Utils.FunctionalUtils.tryCall(possiblyBlankArray, 'join', [', '], 'No Names Provided');
+ns.tryCall(possiblyBlankArray, 'join', [', '], 'No Names Provided');
 
 'Terry, Jim, Willis'
 
 possiblyBlankArray = null;
 
-Neosavvy.Core.Utils.FunctionalUtils.tryCall(possiblyBlankArray, 'join', [', '], 'No Names Provided');
+ns.tryCall(possiblyBlankArray, 'join', [', '], 'No Names Provided');
 
 'No Names Provided'
 
@@ -332,14 +330,14 @@ Neosavvy.Core.Utils.FunctionalUtils.tryCall(possiblyBlankArray, 'join', [', '], 
 Get a property string off of a hash.
 
 ```JavaScript
-Neosavvy.Core.Utils.MapUtils.get(
+ns.get(
   {fruit: {name: {first: "Pear"}}}, "fruit.name.first")
 
 "Pear"
 
 /* Fallback for when the property is not found */
 
-Neosavvy.Core.Utils.MapUtils.get(
+ns.get(
   {fruit: {name: {first: "Pear"}}}, "fruit.otherName.last")
 
 undefined
@@ -348,14 +346,14 @@ undefined
 Get up to a length of 10 properties, no loops, more performant.
 
 ```JavaScript
-Neosavvy.Core.Utils.MapUtils.highPerformanceGet(
+ns.highPerformanceGet(
   {fruit: {name: {first: "Pear"}}}, "fruit.name.first")
 
 "Pear"
 
 /* Fallback for when the property is not found */
 
-Neosavvy.Core.Utils.MapUtils.highPerformanceGet(
+ns.highPerformanceGet(
   {fruit: {name: {first: "Pear"}}}, "fruit.otherName.last")
 
 undefined
@@ -366,7 +364,7 @@ Apply a value to an object via string.
 ```JavaScript
 var val = {names: {first: "Stein"};
 
-Neosavvy.Core.Utils.MapUtils.applyTo(val, "names.last", "Malloy")
+ns.applyTo(val, "names.last", "Malloy")
 
 /* Updates Val */
 
@@ -377,11 +375,11 @@ Neosavvy.Core.Utils.MapUtils.applyTo(val, "names.last", "Malloy")
 Determine if the keys in multiple hashes are distinct.
 
 ```JavaScript
-Neosavvy.Core.Utils.MapUtils.keysDistinct({whoomp: 'there it is'}, {whoomp: 'here it goes'})
+ns.keysDistinct({whoomp: 'there it is'}, {whoomp: 'here it goes'})
 
 false
 
-Neosavvy.Core.Utils.MapUtils.keysDistinct({whoomp: 'there it is'}, {tagTeam: 'back again'})
+ns.keysDistinct({whoomp: 'there it is'}, {tagTeam: 'back again'})
 
 true
 
@@ -392,11 +390,11 @@ true
 Format number to ordinal string.
 
 ```JavaScript
-Neosavvy.Core.Utils.NumberUtils.asOrdinal(1)
+ns.asOrdinal(1)
 
 "1st"
 
-Neosavvy.Core.Utils.NumberUtils.asOrdinal(25)
+ns.asOrdinal(25)
 
 "25th"
 ```
@@ -404,11 +402,11 @@ Neosavvy.Core.Utils.NumberUtils.asOrdinal(25)
 Round up a float.
 
 ```JavaScript
-Neosavvy.Core.Utils.NumberUtils.roundUpIfFloat(1.22)
+ns.roundUpIfFloat(1.22)
 
 "2"
 
-Neosavvy.Core.Utils.NumberUtils.roundUpIfFloat(-37.00001)
+ns.roundUpIfFloat(-37.00001)
 
 "-38"
 ```
@@ -416,11 +414,11 @@ Neosavvy.Core.Utils.NumberUtils.roundUpIfFloat(-37.00001)
 Leading zeroes. Number string.
 
 ```JavaScript
-Neosavvy.Core.Utils.NumberUtils.leadingZeroes(18, 6)
+ns.leadingZeroes(18, 6)
 
 "000018"
 
-Neosavvy.Core.Utils.NumberUtils.leadingZeroes(-11.923, 4)
+ns.leadingZeroes(-11.923, 4)
 
 "-0011.923"
 ```
@@ -430,7 +428,7 @@ Neosavvy.Core.Utils.NumberUtils.leadingZeroes(-11.923, 4)
 Match a string and all the characters leading up to it.
 
 ```JavaScript
-Neosavvy.Core.Utils.RegexUtils.matchStringAndLeadup("House")
+ns.matchStringAndLeadup("House")
 
 /* Returns regex that matches h, H, ho, Ho, hou, Hou, etc. */
 ```
@@ -438,7 +436,7 @@ Neosavvy.Core.Utils.RegexUtils.matchStringAndLeadup("House")
 Check if a string is an email.
 
 ```JavaScript
-Neosavvy.Core.Utils.RegexUtils.isEmail("contact@neosavvy.com")
+ns.isEmail("contact@neosavvy.com")
 
 true
 ```
@@ -455,7 +453,7 @@ var f2 = function(a) {
   return a;
 };
 
-Neosavvy.Core.Utils.SpecialUtils.keepTrying(f1, [], f2, ["First Argument"]);
+ns.keepTrying(f1, [], f2, ["First Argument"]);
 
 "First Argument"
 ```
@@ -465,15 +463,15 @@ Neosavvy.Core.Utils.SpecialUtils.keepTrying(f1, [], f2, ["First Argument"]);
 Check if a string or number is blank, returns true for undefined, null, "" and "    ", etc.
 
 ```JavaScript
-Neosavvy.Core.Utils.StringUtils.isBlank(" ")
+ns.isBlank(" ")
 
 true
 
-Neosavvy.Core.Utils.StringUtils.isBlank(undefined)
+ns.isBlank(undefined)
 
 true
 
-Neosavvy.Core.Utils.StringUtils.isBlank(0)
+ns.isBlank(0)
 
 false
 ```
@@ -483,7 +481,7 @@ false
 ```JavaScript
 /* Create Url Objects */
 
-var url = Neosavvy.Core.Utils.UrlUtils.parse("http://www.google.com:8888/api?param=56");
+var url = ns.parse("http://www.google.com:8888/api?param=56");
 
 url.getHost()
 
@@ -516,14 +514,14 @@ url.toString()
 
 /* Create URL Objects Using Constructor */
 
-var url = new Neosavvy.Core.Utils.UrlUtils.URL("http://www.google.com:8888/api?param=56");
+var url = new ns.URL("http://www.google.com:8888/api?param=56");
 
 /* All the same methods are implemented */
 
 
 /* Create QueryString Objects */
 
-var queryString = new Neosavvy.Core.Utils.UrlUtils.QueryString("param=78&otherParam=cheese");
+var queryString = new ns.QueryString("param=78&otherParam=cheese");
 
 /* Also implements parse, get, set, remove, add */
 

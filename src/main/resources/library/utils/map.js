@@ -1,12 +1,10 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+var ns = ns || {};
 
 /**
- * @class Neosavvy.Core.Utils.MapUtils
+ * @class MapUtils
  * @static
  **/
-Neosavvy.Core.Utils.MapUtils = (function () {
+var MapUtils = (function () {
     return {
         /**
          * returns the value in map that matches the passed in property.
@@ -159,3 +157,8 @@ Neosavvy.Core.Utils.MapUtils = (function () {
         }
     }
 })();
+
+_.merge(ns,MapUtils);
+
+//For backward compatibility
+ns.MapUtils = MapUtils;

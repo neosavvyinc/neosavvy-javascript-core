@@ -1,12 +1,10 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+var ns = ns || {};
 
 /**
- * @class Neosavvy.Core.Utils.NumberUtils
+ * @class NumberUtils
  * @static
  **/
-Neosavvy.Core.Utils.NumberUtils = (function () {
+var NumberUtils = (function () {
 
     return {
         asOrdinal:function (n) {
@@ -47,3 +45,8 @@ Neosavvy.Core.Utils.NumberUtils = (function () {
     }
 
 })();
+
+_.merge(ns, NumberUtils);
+
+//For backward compatibility
+ns.NumberUtils = NumberUtils;

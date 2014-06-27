@@ -1,8 +1,8 @@
-describe("FunctionalUtils", function () {
+describe("Neosavvy.Core.Utils.FunctionalUtils", function () {
 
     describe("tryCall", function () {
-        var _hpGet = ns.highPerformanceGet;
-        var _tryCall = ns.tryCall;
+        var _hpGet = Neosavvy.Core.Utils.MapUtils.highPerformanceGet;
+        var _tryCall = Neosavvy.Core.Utils.FunctionalUtils.tryCall;
 
         it("Should return undefined if there is no object in question", function () {
             expect(_tryCall(undefined, 'join')).toBeUndefined();

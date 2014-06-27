@@ -1,12 +1,10 @@
-var Neosavvy = Neosavvy || {};
-Neosavvy.Core = Neosavvy.Core || {};
-Neosavvy.Core.Utils = Neosavvy.Core.Utils || {};
+var ns = ns || {};
 
 /**
- * @class Neosavvy.Core.Utils.SpecialUtils
+ * @class SpecialUtils
  * @static
  **/
-Neosavvy.Core.Utils.SpecialUtils = (function () {
+var SpecialUtils = (function () {
     return {
         /**
          * Allows the developer to functionally stack up methods that may fail and move on to the next in that case.
@@ -34,3 +32,8 @@ Neosavvy.Core.Utils.SpecialUtils = (function () {
         }
     }
 })();
+
+_.merge(ns, SpecialUtils);
+
+//For backward compatibility
+ns.SpecialUtils = SpecialUtils;
