@@ -73,6 +73,8 @@ var CollectionUtils = (function () {
             }
             return map;
         },
+
+        /* @TODO Performance, switch this to highPerformanceGet for any properties with less than 11 levels */
         /**
          * Returns true if two collections contain at least one match by a property value, ie a.id === b.id.
          * @param {Array} collectionA
@@ -98,6 +100,8 @@ var CollectionUtils = (function () {
             }
             return false;
         },
+
+        /* @TODO Performance, switch this to highPerformanceGet for any properties with less than 11 levels */
         /**
          * Matches the containing of an exclusive set of items by property. Supports deep properties as well.
          * @param {Array} collection

@@ -2,6 +2,7 @@
  * @class window
  * @static
  **/
+/* @TODO Lodash, may be able to rewrite this using the lodash version of memoize to provide the same implementation */
 (function (global) {
     "use strict";
     /**

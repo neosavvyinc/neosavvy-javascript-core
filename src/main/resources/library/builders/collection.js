@@ -37,6 +37,7 @@ ns.CollectionBuilder.prototype = {
         if (_.keys(this.operations).length) {
             //Nest
             var nest = function (item, propertyString) {
+                /* @TODO Performance, this shouldn't need to split every time */
                 var ar = propertyString.split(".");
                 while (ar.length) {
                     var tempObj = {};
