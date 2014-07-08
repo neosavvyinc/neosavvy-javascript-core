@@ -1,5 +1,6 @@
 var ns = ns || {};
 
+/* @TODO DEPRECATED */
 /**
  * @class DomUtils
  * @static

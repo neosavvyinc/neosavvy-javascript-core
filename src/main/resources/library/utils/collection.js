@@ -6,6 +6,7 @@ var ns = ns || {};
  **/
 var CollectionUtils = (function () {
     return {
+        /* @TODO DEPRECATED */
         /**
          * does a thing...
          * @param {type} name
@@ -23,6 +24,7 @@ var CollectionUtils = (function () {
             }
             return null;
         },
+        /* @TODO DEPRECATED */
         /**
          * does a thing...
          * @param {type} name
@@ -39,6 +41,7 @@ var CollectionUtils = (function () {
                 }
             }
         },
+        /* @TODO DEPRECATED */
         /**
          * does a thing...
          * @param {type} name

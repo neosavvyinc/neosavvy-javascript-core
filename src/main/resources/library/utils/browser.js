@@ -1,5 +1,6 @@
 var ns = ns || {};
 
+/* @TODO DEPRECATED */
 var BrowserUtils = (function(ns){
     var browser, browserVersion, os, osVersion;
 
