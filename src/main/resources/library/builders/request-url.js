@@ -27,7 +27,7 @@ ns.RequestUrlBuilder.prototype = {
             } else {
                 throw "You have passed overlapping keys for object arguments."
             }
-        } else if (key && value) {
+        } else if (key && (value || value === 0)) {
             this.keyValues = this.keyValues || {};
             if (this.keyValues[key] === undefined) {
                 this.keyValues[key] = value;
