@@ -528,7 +528,7 @@ var queryString = new ns.QueryString("param=78&otherParam=cheese");
 ```
 
 
-### 0.1.2 - 09/29/2013
+### 0.1.3 - 09/29/2013
 
 ## LICENSE
 
